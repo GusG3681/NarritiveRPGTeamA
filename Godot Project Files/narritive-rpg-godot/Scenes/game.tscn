@@ -1,5 +1,22 @@
 [gd_scene format=3 uid="uid://flpjwrhuf2jt"]
 
+[ext_resource type="Script" uid="uid://br47ffimcneqi" path="res://Scripts/game.gd" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://Scenes/main_character.tscn" id="2_qxrlw"]
+
+[sub_resource type="Gradient" id="Gradient_wrm1d"]
+colors = PackedColorArray(0, 0, 0, 1, 0.2901961, 0.9137255, 0.2509804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e3e5j"]
+gradient = SubResource("Gradient_wrm1d")
+
 [node name="Game" type="Node2D" unique_id=97050831]
+script = ExtResource("1_ebmjs")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=573728585]
+
+[node name="MainCharacter" parent="." unique_id=1801353458 instance=ExtResource("2_qxrlw")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=373760459]
+position = Vector2(667.00006, 391)
+scale = Vector2(22.296875, 2.546875)
+texture = SubResource("GradientTexture2D_e3e5j")
