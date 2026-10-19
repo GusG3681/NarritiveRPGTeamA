@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctbwwpa1v6vg2"]
 
-[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://Scripts/main_character.gd" id="1_0eyao"]
+[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://scripts/main_character.gd" id="1_nrcqd"]
 
 [sub_resource type="Gradient" id="Gradient_0eyao"]
 colors = PackedColorArray(0.9019608, 0, 0, 1, 1, 1, 1, 1)
@@ -12,7 +12,7 @@ gradient = SubResource("Gradient_0eyao")
 size = Vector2(12.999992, 13)
 
 [node name="MainCharacter" type="Node2D" unique_id=1801353458]
-script = ExtResource("1_0eyao")
+script = ExtResource("1_nrcqd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1975103307]
 position = Vector2(65, 130)
