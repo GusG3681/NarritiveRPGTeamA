@@ -16,8 +16,9 @@ script = ExtResource("1_yqjtg")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=573728585]
 
 [node name="MainCharacter" parent="." unique_id=1801353458 instance=ExtResource("2_lnu2h")]
+SPEED = 4559
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=373760459]
-position = Vector2(667.00006, 391)
-scale = Vector2(22.296875, 2.546875)
+position = Vector2(667.00006, 384.75)
+scale = Vector2(22.296875, 2.7421877)
 texture = SubResource("GradientTexture2D_e3e5j")
