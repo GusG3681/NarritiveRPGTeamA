@@ -15,6 +15,7 @@ script = ExtResource("1_yqjtg")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=573728585]
 
 [node name="MainCharacter" parent="." unique_id=1801353458 instance=ExtResource("2_lnu2h")]
+SPEED = 4559
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=373760459]
 position = Vector2(667.00006, 384.75)
