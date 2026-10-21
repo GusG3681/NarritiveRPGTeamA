@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dmb4lff5enocb" path="res://Scenes/car_door.tscn" id="3_wrm1d"]
 
 [sub_resource type="Gradient" id="Gradient_wrm1d"]
+offsets = PackedFloat32Array(0, 0.030120483)
 colors = PackedColorArray(0, 0, 0, 1, 0.2901961, 0.9137255, 0.2509804, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_e3e5j"]
