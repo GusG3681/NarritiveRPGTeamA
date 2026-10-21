@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://flpjwrhuf2jt"]
 
-[ext_resource type="Script" uid="uid://br47ffimcneqi" path="res://scripts/game.gd" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://scenes/main_character.tscn" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://br47ffimcneqi" path="res://Scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://Scenes/main_character.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dmb4lff5enocb" path="res://Scenes/car_door.tscn" id="3_wrm1d"]
 
 [sub_resource type="Gradient" id="Gradient_wrm1d"]
 colors = PackedColorArray(0, 0, 0, 1, 0.2901961, 0.9137255, 0.2509804, 1)
@@ -21,3 +22,6 @@ SPEED = 4559
 position = Vector2(667.00006, 384.75)
 scale = Vector2(22.296875, 2.7421877)
 texture = SubResource("GradientTexture2D_e3e5j")
+
+[node name="CarDoor" parent="." unique_id=228578840 instance=ExtResource("3_wrm1d")]
+position = Vector2(-84, -62)
