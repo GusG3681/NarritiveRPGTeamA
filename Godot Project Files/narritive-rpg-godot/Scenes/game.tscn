@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://flpjwrhuf2jt"]
 
-[ext_resource type="Script" uid="uid://br47ffimcneqi" path="res://Scripts/game.gd" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://Scenes/main_character.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://dmb4lff5enocb" path="res://Scenes/car_door.tscn" id="3_wrm1d"]
+[ext_resource type="Script" uid="uid://br47ffimcneqi" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://scenes/main_character.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dmb4lff5enocb" path="res://scenes/car_door.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://h1gtmgwfpjuv" path="res://scenes/npc.tscn" id="4_lbhrr"]
 
 [sub_resource type="Gradient" id="Gradient_wrm1d"]
 offsets = PackedFloat32Array(0, 0.030120483)
@@ -17,7 +18,6 @@ script = ExtResource("1_yqjtg")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=573728585]
 
 [node name="MainCharacter" parent="." unique_id=1801353458 instance=ExtResource("2_lnu2h")]
-SPEED = 4559
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=373760459]
 position = Vector2(667.00006, 384.75)
@@ -26,3 +26,6 @@ texture = SubResource("GradientTexture2D_e3e5j")
 
 [node name="CarDoor" parent="." unique_id=228578840 instance=ExtResource("3_wrm1d")]
 position = Vector2(-84, -62)
+
+[node name="NPC" parent="." unique_id=1223202182 instance=ExtResource("4_lbhrr")]
+position = Vector2(387, 32)
