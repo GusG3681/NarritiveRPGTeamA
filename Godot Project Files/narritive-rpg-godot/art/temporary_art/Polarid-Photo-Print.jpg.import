@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4yaj6yqy4ftt"
-path="res://.godot/imported/car door.jpg-a33b0b75875e33aab84a0f553483a728.ctex"
+uid="uid://f87wpyynwv7t"
+path="res://.godot/imported/Polarid-Photo-Print.jpg-e0324a76f0b0f8e861ed56163bee2489.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/car door.jpg"
-dest_files=["res://.godot/imported/car door.jpg-a33b0b75875e33aab84a0f553483a728.ctex"]
+source_file="res://art/temporary_art/Polarid-Photo-Print.jpg"
+dest_files=["res://.godot/imported/Polarid-Photo-Print.jpg-e0324a76f0b0f8e861ed56163bee2489.ctex"]
 
 [params]
 
