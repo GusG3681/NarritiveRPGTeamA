@@ -1,15 +1,14 @@
-extends Node2D
+extends CharacterBody2D
 
-@export var SPEED = 998
+@export var SPEED = 150
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-var hello = "temporary haha!!!!!"
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("Left"):
 		position.x -= SPEED * delta
 	if Input.is_action_pressed("Right"):
 		position.x += SPEED * delta
+	if Input.is_action_pressed("Back"):
+		position.y -= SPEED * delta
+	if Input.is_action_pressed("Forward"):
+		position.y += SPEED * delta
+	move_and_slide()
