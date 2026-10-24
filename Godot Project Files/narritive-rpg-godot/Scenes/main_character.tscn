@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctbwwpa1v6vg2"]
 
-[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://scripts/main_character.gd" id="1_nrcqd"]
+[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://Scripts/main_character.gd" id="1_nrcqd"]
 
 [sub_resource type="Gradient" id="Gradient_0eyao"]
 colors = PackedColorArray(0.9019608, 0, 0, 1, 1, 1, 1, 1)
@@ -11,7 +11,7 @@ gradient = SubResource("Gradient_0eyao")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]
 size = Vector2(12.999992, 13)
 
-[node name="MainCharacter" type="Node2D" unique_id=1801353458]
+[node name="MainCharacter" type="CharacterBody2D" unique_id=658210933 groups=["player"]]
 script = ExtResource("1_nrcqd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1975103307]
@@ -19,9 +19,7 @@ position = Vector2(65, 130)
 scale = Vector2(2, 4)
 texture = SubResource("GradientTexture2D_11o2n")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1576442254]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=839244148]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839244148]
 position = Vector2(65.00006, 130.00006)
 scale = Vector2(10, 20)
 shape = SubResource("RectangleShape2D_e3e5j")

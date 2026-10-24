@@ -2,26 +2,410 @@
 
 [ext_resource type="Script" uid="uid://br47ffimcneqi" path="res://Scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://Scenes/main_character.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://dmb4lff5enocb" path="res://Scenes/car_door.tscn" id="3_wrm1d"]
+[ext_resource type="Texture2D" uid="uid://coo7t8hfg6oux" path="res://art/true exit.png" id="3_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://ddxtk3dpae60q" path="res://art/subway.jpg" id="4_v158k"]
+[ext_resource type="Texture2D" uid="uid://bwrrq3fjwutny" path="res://art/gangway.jpg" id="5_h4fw4"]
+[ext_resource type="Script" uid="uid://colu7hwbp1d6v" path="res://Scenes/car_door.gd" id="5_v158k"]
+[ext_resource type="Texture2D" uid="uid://c4yaj6yqy4ftt" path="res://art/car door.jpg" id="6_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://dkt1fklxfdtgn" path="res://art/false exit.jpg" id="7_o5yvi"]
 
-[sub_resource type="Gradient" id="Gradient_wrm1d"]
-colors = PackedColorArray(0, 0, 0, 1, 0.2901961, 0.9137255, 0.2509804, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xj16"]
+size = Vector2(10316, 68)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e3e5j"]
-gradient = SubResource("Gradient_wrm1d")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrgp0"]
+size = Vector2(50, 861)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukjcv"]
+size = Vector2(473.5, 611)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6rvp"]
+size = Vector2(238, 610)
+
+[sub_resource type="Animation" id="Animation_rku1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rfjv2"]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 612.895), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1phco"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nb51f"]
+resource_name = "open"
+length = 0.96666664
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 612.895), Vector2(0, 612.895)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nnt18"]
+_data = {
+&"RESET": SubResource("Animation_rku1e"),
+&"close": SubResource("Animation_rfjv2"),
+&"idle": SubResource("Animation_1phco"),
+&"open": SubResource("Animation_nb51f")
+}
 
 [node name="Game" type="Node2D" unique_id=97050831]
 script = ExtResource("1_yqjtg")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=573728585]
 
+[node name="upper_floor_bound" type="StaticBody2D" parent="." unique_id=401545985]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="upper_floor_bound" unique_id=1295618425]
+position = Vector2(1946, -282)
+scale = Vector2(1, 10.045)
+shape = SubResource("RectangleShape2D_5xj16")
+
+[node name="left_wall_bound" type="StaticBody2D" parent="." unique_id=1895819957]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall_bound" unique_id=1764462481]
+position = Vector2(-3184, 80)
+shape = SubResource("RectangleShape2D_rrgp0")
+
+[node name="right_wall_bound" type="StaticBody2D" parent="." unique_id=436206707]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_wall_bound" unique_id=1933022266]
+position = Vector2(7026, 53)
+shape = SubResource("RectangleShape2D_rrgp0")
+
+[node name="lower_floor_bound" type="StaticBody2D" parent="." unique_id=1291528933]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lower_floor_bound" unique_id=403760868]
+position = Vector2(1926, 475.395)
+shape = SubResource("RectangleShape2D_5xj16")
+
+[node name="front_car" type="Sprite2D" parent="." unique_id=426458156]
+position = Vector2(-2500, 104)
+scale = Vector2(1.4, 1.1)
+texture = ExtResource("3_1l0tm")
+
+[node name="car1" type="Sprite2D" parent="." unique_id=23052179]
+position = Vector2(112.00006, 47)
+scale = Vector2(1.306, 0.7)
+texture = ExtResource("4_v158k")
+
+[node name="gangway1" type="Sprite2D" parent="." unique_id=1118486081]
+position = Vector2(-1392, 47.500015)
+scale = Vector2(1.4934638, 2.3343024)
+texture = ExtResource("5_h4fw4")
+
+[node name="car_door0" type="Node2D" parent="." unique_id=1666353116]
+position = Vector2(-904.34, 4)
+script = ExtResource("5_v158k")
+
+[node name="door_trigger1" type="Area2D" parent="car_door0" unique_id=2101157053]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door0/door_trigger1" unique_id=1307879477]
+position = Vector2(-858.25, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="door" type="StaticBody2D" parent="car_door0" unique_id=1784195513]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door0/door" unique_id=98412931]
+position = Vector2(-937, 142)
+shape = SubResource("RectangleShape2D_a6rvp")
+debug_color = Color(0.94736856, 3.465414e-06, 0.58574486, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="car_door0/door" unique_id=887317439]
+position = Vector2(-936, 142)
+scale = Vector2(0.5239651, 1)
+texture = ExtResource("6_ldgsr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="car_door0/door" unique_id=1019452059]
+libraries/ = SubResource("AnimationLibrary_nnt18")
+
+[node name="door_trigger2" type="Area2D" parent="car_door0" unique_id=1215619346]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door0/door_trigger2" unique_id=1031700146]
+position = Vector2(-1011, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="car_door1" type="Node2D" parent="." unique_id=944982058]
+position = Vector2(0, 4)
+script = ExtResource("5_v158k")
+
+[node name="door_trigger1" type="Area2D" parent="car_door1" unique_id=1891556200]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door1/door_trigger1" unique_id=318585708]
+position = Vector2(-858.25, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="door" type="StaticBody2D" parent="car_door1" unique_id=609146552]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door1/door" unique_id=982214022]
+position = Vector2(-937, 142)
+shape = SubResource("RectangleShape2D_a6rvp")
+debug_color = Color(0.94736856, 3.465414e-06, 0.58574486, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="car_door1/door" unique_id=48839887]
+position = Vector2(-936, 142)
+scale = Vector2(0.5239651, 1)
+texture = ExtResource("6_ldgsr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="car_door1/door" unique_id=1071722146]
+libraries/ = SubResource("AnimationLibrary_nnt18")
+
+[node name="door_trigger2" type="Area2D" parent="car_door1" unique_id=438921289]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door1/door_trigger2" unique_id=274651054]
+position = Vector2(-1011, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="car2" type="Sprite2D" parent="." unique_id=1580473790]
+position = Vector2(2577.345, 47)
+scale = Vector2(1.306, 0.7)
+texture = ExtResource("4_v158k")
+
+[node name="gangway2" type="Sprite2D" parent="." unique_id=2127040717]
+position = Vector2(1348, 47.5)
+scale = Vector2(1.182, 2.334)
+texture = ExtResource("5_h4fw4")
+
+[node name="car_door2" type="Node2D" parent="." unique_id=1365764684]
+position = Vector2(1918.585, 4)
+script = ExtResource("5_v158k")
+
+[node name="door_trigger1" type="Area2D" parent="car_door2" unique_id=1542750622]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door2/door_trigger1" unique_id=307269647]
+position = Vector2(-858.25, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="door" type="StaticBody2D" parent="car_door2" unique_id=1261859859]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door2/door" unique_id=1244133880]
+position = Vector2(-937, 142)
+shape = SubResource("RectangleShape2D_a6rvp")
+debug_color = Color(0.94736856, 3.465414e-06, 0.58574486, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="car_door2/door" unique_id=1062207582]
+position = Vector2(-936, 142)
+scale = Vector2(0.5239651, 1)
+texture = ExtResource("6_ldgsr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="car_door2/door" unique_id=1565534448]
+libraries/ = SubResource("AnimationLibrary_nnt18")
+
+[node name="door_trigger2" type="Area2D" parent="car_door2" unique_id=1671437806]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door2/door_trigger2" unique_id=538844438]
+position = Vector2(-1011, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="car_door3" type="Node2D" parent="." unique_id=1124643732]
+position = Vector2(2638.425, 4)
+script = ExtResource("5_v158k")
+
+[node name="door_trigger1" type="Area2D" parent="car_door3" unique_id=434866891]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door3/door_trigger1" unique_id=1952021235]
+position = Vector2(-858.25, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="door" type="StaticBody2D" parent="car_door3" unique_id=1355912487]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door3/door" unique_id=285430390]
+position = Vector2(-937, 142)
+shape = SubResource("RectangleShape2D_a6rvp")
+debug_color = Color(0.94736856, 3.465414e-06, 0.58574486, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="car_door3/door" unique_id=1257703201]
+position = Vector2(-936, 142)
+scale = Vector2(0.5239651, 1)
+texture = ExtResource("6_ldgsr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="car_door3/door" unique_id=250367915]
+libraries/ = SubResource("AnimationLibrary_nnt18")
+
+[node name="door_trigger2" type="Area2D" parent="car_door3" unique_id=955262032]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door3/door_trigger2" unique_id=165352926]
+position = Vector2(-1011, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="car3" type="Sprite2D" parent="." unique_id=891562407]
+position = Vector2(5052.51, 47)
+scale = Vector2(1.306, 0.7)
+texture = ExtResource("4_v158k")
+
+[node name="gangway3" type="Sprite2D" parent="." unique_id=1903164641]
+position = Vector2(3820.8, 47.5)
+scale = Vector2(1.182, 2.334)
+texture = ExtResource("5_h4fw4")
+
+[node name="car_door4" type="Node2D" parent="." unique_id=673478432]
+position = Vector2(4390.645, 4)
+script = ExtResource("5_v158k")
+
+[node name="door_trigger1" type="Area2D" parent="car_door4" unique_id=1457056956]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door4/door_trigger1" unique_id=956997898]
+position = Vector2(-858.25, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="door" type="StaticBody2D" parent="car_door4" unique_id=903221171]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door4/door" unique_id=1677689662]
+position = Vector2(-937, 142)
+shape = SubResource("RectangleShape2D_a6rvp")
+debug_color = Color(0.94736856, 3.465414e-06, 0.58574486, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="car_door4/door" unique_id=423318612]
+position = Vector2(-936, 142)
+scale = Vector2(0.5239651, 1)
+texture = ExtResource("6_ldgsr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="car_door4/door" unique_id=864249870]
+libraries/ = SubResource("AnimationLibrary_nnt18")
+
+[node name="door_trigger2" type="Area2D" parent="car_door4" unique_id=451859009]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door4/door_trigger2" unique_id=970019113]
+position = Vector2(-1011, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="car_door5" type="Node2D" parent="." unique_id=2094346641]
+position = Vector2(5112.02, 4)
+script = ExtResource("5_v158k")
+
+[node name="door_trigger1" type="Area2D" parent="car_door5" unique_id=1358550506]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door5/door_trigger1" unique_id=1849672756]
+position = Vector2(-858.25, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="door" type="StaticBody2D" parent="car_door5" unique_id=945146385]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door5/door" unique_id=798038128]
+position = Vector2(-937, 142)
+shape = SubResource("RectangleShape2D_a6rvp")
+debug_color = Color(0.94736856, 3.465414e-06, 0.58574486, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="car_door5/door" unique_id=1165598518]
+position = Vector2(-936, 142)
+scale = Vector2(0.5239651, 1)
+texture = ExtResource("6_ldgsr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="car_door5/door" unique_id=1288354555]
+libraries/ = SubResource("AnimationLibrary_nnt18")
+
+[node name="door_trigger2" type="Area2D" parent="car_door5" unique_id=129867939]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door5/door_trigger2" unique_id=545371559]
+position = Vector2(-1011, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="backcar" type="Sprite2D" parent="." unique_id=1540966209]
+position = Vector2(6555.31, 47)
+scale = Vector2(1.4836606, 1.9338233)
+texture = ExtResource("7_o5yvi")
+
+[node name="car_door6" type="Node2D" parent="." unique_id=1275310676]
+position = Vector2(7023.53, 4)
+script = ExtResource("5_v158k")
+
+[node name="door_trigger1" type="Area2D" parent="car_door6" unique_id=748672066]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door6/door_trigger1" unique_id=1693270320]
+position = Vector2(-858.25, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="door" type="StaticBody2D" parent="car_door6" unique_id=898697797]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door6/door" unique_id=9873177]
+position = Vector2(-937, 142)
+shape = SubResource("RectangleShape2D_a6rvp")
+debug_color = Color(0.94736856, 3.465414e-06, 0.58574486, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="car_door6/door" unique_id=2124811663]
+position = Vector2(-936, 142)
+scale = Vector2(0.5239651, 1)
+texture = ExtResource("6_ldgsr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="car_door6/door" unique_id=1719263269]
+libraries/ = SubResource("AnimationLibrary_nnt18")
+
+[node name="door_trigger2" type="Area2D" parent="car_door6" unique_id=1694990533]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car_door6/door_trigger2" unique_id=1239373928]
+position = Vector2(-1011, 141.5)
+shape = SubResource("RectangleShape2D_ukjcv")
+
 [node name="MainCharacter" parent="." unique_id=1801353458 instance=ExtResource("2_lnu2h")]
 SPEED = 4559
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=373760459]
-position = Vector2(667.00006, 384.75)
-scale = Vector2(22.296875, 2.7421877)
-texture = SubResource("GradientTexture2D_e3e5j")
-
-[node name="CarDoor" parent="." unique_id=228578840 instance=ExtResource("3_wrm1d")]
-position = Vector2(-84, -62)
+[connection signal="body_entered" from="car_door0/door_trigger1" to="car_door0" method="_on_door_trigger_1_body_entered"]
+[connection signal="body_exited" from="car_door0/door_trigger1" to="car_door0" method="_on_door_trigger_1_body_exited"]
+[connection signal="body_entered" from="car_door0/door_trigger2" to="car_door0" method="_on_door_trigger_2_body_entered"]
+[connection signal="body_exited" from="car_door0/door_trigger2" to="car_door0" method="_on_door_trigger_2_body_exited"]
+[connection signal="body_entered" from="car_door1/door_trigger1" to="car_door1" method="_on_door_trigger_1_body_entered"]
+[connection signal="body_exited" from="car_door1/door_trigger1" to="car_door1" method="_on_door_trigger_1_body_exited"]
+[connection signal="body_entered" from="car_door1/door_trigger2" to="car_door1" method="_on_door_trigger_2_body_entered"]
+[connection signal="body_exited" from="car_door1/door_trigger2" to="car_door1" method="_on_door_trigger_2_body_exited"]
+[connection signal="body_entered" from="car_door2/door_trigger1" to="car_door2" method="_on_door_trigger_1_body_entered"]
+[connection signal="body_exited" from="car_door2/door_trigger1" to="car_door2" method="_on_door_trigger_1_body_exited"]
+[connection signal="body_entered" from="car_door2/door_trigger2" to="car_door2" method="_on_door_trigger_2_body_entered"]
+[connection signal="body_exited" from="car_door2/door_trigger2" to="car_door2" method="_on_door_trigger_2_body_exited"]
+[connection signal="body_entered" from="car_door3/door_trigger1" to="car_door3" method="_on_door_trigger_1_body_entered"]
+[connection signal="body_exited" from="car_door3/door_trigger1" to="car_door3" method="_on_door_trigger_1_body_exited"]
+[connection signal="body_entered" from="car_door3/door_trigger2" to="car_door3" method="_on_door_trigger_2_body_entered"]
+[connection signal="body_exited" from="car_door3/door_trigger2" to="car_door3" method="_on_door_trigger_2_body_exited"]
+[connection signal="body_entered" from="car_door4/door_trigger1" to="car_door4" method="_on_door_trigger_1_body_entered"]
+[connection signal="body_exited" from="car_door4/door_trigger1" to="car_door4" method="_on_door_trigger_1_body_exited"]
+[connection signal="body_entered" from="car_door4/door_trigger2" to="car_door4" method="_on_door_trigger_2_body_entered"]
+[connection signal="body_exited" from="car_door4/door_trigger2" to="car_door4" method="_on_door_trigger_2_body_exited"]
+[connection signal="body_entered" from="car_door5/door_trigger1" to="car_door5" method="_on_door_trigger_1_body_entered"]
+[connection signal="body_exited" from="car_door5/door_trigger1" to="car_door5" method="_on_door_trigger_1_body_exited"]
+[connection signal="body_entered" from="car_door5/door_trigger2" to="car_door5" method="_on_door_trigger_2_body_entered"]
+[connection signal="body_exited" from="car_door5/door_trigger2" to="car_door5" method="_on_door_trigger_2_body_exited"]
+[connection signal="body_entered" from="car_door6/door_trigger1" to="car_door6" method="_on_door_trigger_1_body_entered"]
+[connection signal="body_exited" from="car_door6/door_trigger1" to="car_door6" method="_on_door_trigger_1_body_exited"]
+[connection signal="body_entered" from="car_door6/door_trigger2" to="car_door6" method="_on_door_trigger_2_body_entered"]
+[connection signal="body_exited" from="car_door6/door_trigger2" to="car_door6" method="_on_door_trigger_2_body_exited"]
