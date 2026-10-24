@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
-@export var SPEED = 150
+@export var SPEED = 1000
 
 func _physics_process(delta: float) -> void:
+	velocity = Vector2(0, 0)
 	if Input.is_action_pressed("Left"):
-		position.x -= SPEED * delta
+		velocity.x -= 1
 	if Input.is_action_pressed("Right"):
-		position.x += SPEED * delta
+		velocity.x += 1
 	if Input.is_action_pressed("Back"):
-		position.y -= SPEED * delta
+		velocity.y -= 1
 	if Input.is_action_pressed("Forward"):
-		position.y += SPEED * delta
+		velocity.y += 1
+	velocity = velocity.normalized() * SPEED
 	move_and_slide()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddxtk3dpae60q"
-path="res://.godot/imported/subway.jpg-e83969101c57999fb0c7298c4c8b8e58.ctex"
+uid="uid://c4yaj6yqy4ftt"
+path="res://.godot/imported/car door.jpg-d8563b1f1fbffb075a230ca4d72a435c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/subway.jpg"
-dest_files=["res://.godot/imported/subway.jpg-e83969101c57999fb0c7298c4c8b8e58.ctex"]
+source_file="res://art/temporary_art/car door.jpg"
+dest_files=["res://.godot/imported/car door.jpg-d8563b1f1fbffb075a230ca4d72a435c.ctex"]
 
 [params]
 

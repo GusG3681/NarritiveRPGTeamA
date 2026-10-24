@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://canuk851uyopb"]
+
+[ext_resource type="Script" uid="uid://b20ro0grgsol8" path="res://scripts/memory.gd" id="1_c5y6f"]
+[ext_resource type="Texture2D" uid="uid://f87wpyynwv7t" path="res://art/temporary_art/Polarid-Photo-Print.jpg" id="2_au0oe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]
+size = Vector2(340, 260)
+
+[node name="Memory" type="Node2D" unique_id=1269942407]
+z_index = -1
+script = ExtResource("1_c5y6f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2088385121]
+position = Vector2(40, 40)
+scale = Vector2(0.114285715, 0.1)
+texture = ExtResource("2_au0oe")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=357276851]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1384411081]
+position = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_e3e5j")
+
+[node name="Label" type="Label" parent="." unique_id=669796780]
+offset_left = -30.0
+offset_top = -40.0
+offset_right = 110.0
+theme_override_font_sizes/font_size = 24
+text = "Interact"
+horizontal_alignment = 1

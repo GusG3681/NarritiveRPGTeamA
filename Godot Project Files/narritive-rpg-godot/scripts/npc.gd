@@ -2,36 +2,68 @@ extends Node2D
 
 @export var speech = [
 	"Hello there",
-	"frick you"
+	"frick you",
+	"Imma a projection"
 	]
 
-var curSpeech = 0
+
+#if the npc is a main character
+@export var important = false
 
 @onready var interaction_area: Area2D = $Area2D
+@onready var random_text: Label = $RandomSpeech
+@onready var interaction_text: Label = $InteractText
+
+
+
+
+
+
 var player_in_range = false
+var curSpeech = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	interaction_area.area_entered.connect(_on_area_entered)
-	interaction_area.area_exited.connect(_on_area_exited)
-	$Label.visible = false
+	interaction_area.body_entered.connect(_on_body_entered)
+	interaction_area.body_exited.connect(_on_body_exited)
+	random_text.visible = false
+	interaction_text.visible = false
+	if important:
+		setup_important()
+	else:
+		setup_normal()
 
+func setup_important() -> void:
+	$Sprite2D.texture = load("res://art/temporary_art/shadow.png")
+	
+
+func setup_normal() -> void:
+	pass
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("Interact") and player_in_range and important:
+		interact()
+
+func interact() -> void:
+	print("Interacted with important npc")
 
 
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
 		player_in_range = true
 		curSpeech = randi() % speech.size()
-		$Label.text = speech[curSpeech]
-		$Label.visible = true
+		random_text.text = speech[curSpeech]
+		random_text.visible = true
+		if important:
+			interaction_text.visible = true
 		#print("entered")
 
-func _on_area_exited(area: Area2D) -> void:
-	if area.is_in_group("player"):
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
 		player_in_range = false
-		$Label.visible = false
+		random_text.visible = false
+		if important:
+			interaction_text.visible = false
 		#print("exited")
