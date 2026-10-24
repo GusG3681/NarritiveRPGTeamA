@@ -20,6 +20,10 @@ config/icon="res://art/temporary_art/icon.svg"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+player="for the player object"
+
 [input]
 
 Left={

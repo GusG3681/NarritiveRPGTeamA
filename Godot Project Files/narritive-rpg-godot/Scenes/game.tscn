@@ -379,7 +379,6 @@ position = Vector2(-1011, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
 
 [node name="MainCharacter" parent="." unique_id=1801353458 instance=ExtResource("2_lnu2h")]
-SPEED = 4559
 
 [connection signal="body_entered" from="car_door0/door_trigger1" to="car_door0" method="_on_door_trigger_1_body_entered"]
 [connection signal="body_exited" from="car_door0/door_trigger1" to="car_door0" method="_on_door_trigger_1_body_exited"]

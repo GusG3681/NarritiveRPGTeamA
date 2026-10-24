@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://h1gtmgwfpjuv"]
+
+[ext_resource type="Script" uid="uid://cwoqvr07g40ln" path="res://scripts/npc.gd" id="1_nh2m4"]
+[ext_resource type="Texture2D" uid="uid://gwoxytlufvqa" path="res://art/temporary_art/Ghost Png.png" id="2_abqhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]
+size = Vector2(290, 220)
+
+[node name="NPC" type="Node2D" unique_id=1223202182]
+script = ExtResource("1_nh2m4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1346419299]
+position = Vector2(150.00002, 110.000015)
+scale = Vector2(0.52109706, 0.47093022)
+texture = ExtResource("2_abqhh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=616734323]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1377828194]
+position = Vector2(145, 110)
+shape = SubResource("RectangleShape2D_e3e5j")
+
+[node name="Label" type="Label" parent="." unique_id=1311656754]
+offset_right = 140.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 30
+text = "asdfadfasdfasdf"

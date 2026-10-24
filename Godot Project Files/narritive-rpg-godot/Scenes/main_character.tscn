@@ -13,6 +13,7 @@ size = Vector2(12.999992, 13)
 
 [node name="MainCharacter" type="CharacterBody2D" unique_id=658210933 groups=["player"]]
 script = ExtResource("1_nrcqd")
+SPEED = 1000
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1975103307]
 position = Vector2(65, 130)
@@ -26,3 +27,6 @@ shape = SubResource("RectangleShape2D_e3e5j")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1935927454]
 position = Vector2(68, 124)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
