@@ -1,5 +1,16 @@
 [gd_scene format=3 uid="uid://flpjwrhuf2jt"]
 
+[ext_resource type="Script" uid="uid://br47ffimcneqi" path="res://Scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://Scenes/main_character.tscn" id="2_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://coo7t8hfg6oux" path="res://art/true exit.png" id="3_1l0tm"]
+[ext_resource type="Script" uid="uid://bnuisoccqvcit" path="res://Scenes/music_trigger.gd" id="4_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://ddxtk3dpae60q" path="res://art/subway.jpg" id="4_v158k"]
+[ext_resource type="Texture2D" uid="uid://bwrrq3fjwutny" path="res://art/gangway.jpg" id="5_h4fw4"]
+[ext_resource type="AudioStream" uid="uid://y2ely6fg3i0x" path="res://Music/twins at the carousel.mp3" id="5_o5yvi"]
+[ext_resource type="Script" uid="uid://colu7hwbp1d6v" path="res://Scenes/car_door.gd" id="5_v158k"]
+[ext_resource type="Texture2D" uid="uid://c4yaj6yqy4ftt" path="res://art/car door.jpg" id="6_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://dkt1fklxfdtgn" path="res://art/false exit.jpg" id="7_o5yvi"]
+[ext_resource type="AudioStream" uid="uid://ba50omf23cgnu" path="res://Music/bon bon jellyfish planet.mp3" id="9_o5yvi"]
 [ext_resource type="Script" uid="uid://br47ffimcneqi" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://scenes/main_character.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://coo7t8hfg6oux" path="res://art/temporary_art/true exit.png" id="3_1l0tm"]
@@ -16,6 +27,9 @@ size = Vector2(10316, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrgp0"]
 size = Vector2(50, 861)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vurmi"]
+size = Vector2(2079.6328, 1277.1431)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukjcv"]
 size = Vector2(473.5, 611)
@@ -135,6 +149,18 @@ position = Vector2(112.00006, 47)
 scale = Vector2(1.306, 0.7)
 texture = ExtResource("4_v158k")
 
+[node name="music_trigger" type="Area2D" parent="car1" unique_id=1143599042]
+script = ExtResource("4_ldgsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car1/music_trigger" unique_id=231212239]
+position = Vector2(-100.30633, -15.714306)
+scale = Vector2(0.9999999, 0.9999996)
+shape = SubResource("RectangleShape2D_vurmi")
+debug_color = Color(0.65138775, 0.519554, 0, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="car1/music_trigger" unique_id=1384646955]
+stream = ExtResource("5_o5yvi")
+
 [node name="gangway1" type="Sprite2D" parent="." unique_id=1118486081]
 z_index = -2
 position = Vector2(-1392, 47.500015)
@@ -211,6 +237,18 @@ position = Vector2(2577.345, 47)
 scale = Vector2(1.306, 0.7)
 texture = ExtResource("4_v158k")
 
+[node name="music_trigger" type="Area2D" parent="car2" unique_id=492686992]
+script = ExtResource("4_ldgsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car2/music_trigger" unique_id=1819318810]
+position = Vector2(3.7, -15.714)
+scale = Vector2(0.905, 1)
+shape = SubResource("RectangleShape2D_vurmi")
+debug_color = Color(0.65138775, 0.519554, 0, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="car2/music_trigger" unique_id=1087350405]
+stream = ExtResource("9_o5yvi")
+
 [node name="gangway2" type="Sprite2D" parent="." unique_id=2127040717]
 z_index = -2
 position = Vector2(1348, 47.5)
@@ -286,6 +324,20 @@ z_index = -2
 position = Vector2(5052.51, 47)
 scale = Vector2(1.306, 0.7)
 texture = ExtResource("4_v158k")
+
+[node name="music_trigger" type="Area2D" parent="car3" unique_id=1825623814]
+position = Vector2(14.78, 0)
+scale = Vector2(0.84, 1)
+script = ExtResource("4_ldgsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="car3/music_trigger" unique_id=1479690213]
+position = Vector2(-100.30633, -15.714306)
+scale = Vector2(0.9999999, 0.9999996)
+shape = SubResource("RectangleShape2D_vurmi")
+debug_color = Color(0.65138775, 0.519554, 0, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="car3/music_trigger" unique_id=1202506928]
+stream = ExtResource("5_o5yvi")
 
 [node name="gangway3" type="Sprite2D" parent="." unique_id=1903164641]
 z_index = -2
@@ -397,6 +449,8 @@ shape = SubResource("RectangleShape2D_ukjcv")
 
 [node name="MainCharacter" parent="." unique_id=1801353458 instance=ExtResource("2_lnu2h")]
 
+[connection signal="body_entered" from="car1/music_trigger" to="car1/music_trigger" method="_on_body_entered"]
+[connection signal="body_exited" from="car1/music_trigger" to="car1/music_trigger" method="_on_body_exited"]
 [node name="NPC" parent="." unique_id=1223202182 instance=ExtResource("9_0tnpc")]
 position = Vector2(614, 81)
 
@@ -415,6 +469,8 @@ important = true
 [connection signal="body_exited" from="car_door1/door_trigger1" to="car_door1" method="_on_door_trigger_1_body_exited"]
 [connection signal="body_entered" from="car_door1/door_trigger2" to="car_door1" method="_on_door_trigger_2_body_entered"]
 [connection signal="body_exited" from="car_door1/door_trigger2" to="car_door1" method="_on_door_trigger_2_body_exited"]
+[connection signal="body_entered" from="car2/music_trigger" to="car2/music_trigger" method="_on_body_entered"]
+[connection signal="body_exited" from="car2/music_trigger" to="car2/music_trigger" method="_on_body_exited"]
 [connection signal="body_entered" from="car_door2/door_trigger1" to="car_door2" method="_on_door_trigger_1_body_entered"]
 [connection signal="body_exited" from="car_door2/door_trigger1" to="car_door2" method="_on_door_trigger_1_body_exited"]
 [connection signal="body_entered" from="car_door2/door_trigger2" to="car_door2" method="_on_door_trigger_2_body_entered"]
@@ -423,6 +479,8 @@ important = true
 [connection signal="body_exited" from="car_door3/door_trigger1" to="car_door3" method="_on_door_trigger_1_body_exited"]
 [connection signal="body_entered" from="car_door3/door_trigger2" to="car_door3" method="_on_door_trigger_2_body_entered"]
 [connection signal="body_exited" from="car_door3/door_trigger2" to="car_door3" method="_on_door_trigger_2_body_exited"]
+[connection signal="body_entered" from="car3/music_trigger" to="car3/music_trigger" method="_on_body_entered"]
+[connection signal="body_exited" from="car3/music_trigger" to="car3/music_trigger" method="_on_body_exited"]
 [connection signal="body_entered" from="car_door4/door_trigger1" to="car_door4" method="_on_door_trigger_1_body_entered"]
 [connection signal="body_exited" from="car_door4/door_trigger1" to="car_door4" method="_on_door_trigger_1_body_exited"]
 [connection signal="body_entered" from="car_door4/door_trigger2" to="car_door4" method="_on_door_trigger_2_body_entered"]
