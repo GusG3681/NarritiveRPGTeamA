@@ -1,0 +1,264 @@
+[gd_scene format=3 uid="uid://bb0moxhhvxmdu"]
+
+[ext_resource type="Theme" uid="uid://5lacq73qg3pw" path="res://dialogue/components/theme.tres" id="1_skrb2"]
+[ext_resource type="Resource" uid="uid://b0vffmtvds545" path="res://dialogue/conversations/dialogue.dialogue" id="2_rpa03"]
+[ext_resource type="PackedScene" uid="uid://4cyajmpvya0t" path="res://dialogue/components/dialogue_box.tscn" id="4_fcybp"]
+[ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="5_qnsjq"]
+
+[sub_resource type="GDScript" id="GDScript_55vex"]
+script/source = "extends Control
+
+@export var dialogue_resource: DialogueResource
+
+@onready var scroll: ScrollContainer = %Scroll
+@onready var v_scroll_bar: VScrollBar = %VScrollBar
+@onready var content: VBoxContainer = %Content
+@onready var dialogue_box: DialogueBox = %DialogueBox
+@onready var answer_overlay: ColorRect = %AnswerOverlay
+@onready var answer_edit: LineEdit = %AnswerEdit
+@onready var submit_button: Button = %SubmitButton
+@onready var responses_overlay: ColorRect = %ResponsesOverlay
+@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+
+
+var favourite_food: String = \"\"
+var correct_answer: int = 0
+var guess: int = 0
+var tries: int = 0
+var guess_is_number: bool = false
+
+
+#region Hooks
+
+
+func _ready() -> void:
+	dialogue_box.dialogue_line = await dialogue_resource.get_next_dialogue_line(\"start\")
+	dialogue_box.grab_focus()
+
+	answer_overlay.hide()
+	responses_overlay.hide()
+
+	scroll.get_v_scroll_bar().share(v_scroll_bar)
+
+
+#endregion
+
+#region Mutations
+
+
+func ask_for_string() -> String:
+	answer_edit.text = \"\"
+	answer_overlay.show()
+	answer_edit.grab_focus()
+	await submit_button.pressed
+	answer_overlay.hide()
+	return answer_edit.text
+
+
+func ask_for_number() -> int:
+	answer_edit.text = \"\"
+	answer_overlay.show()
+	answer_edit.grab_focus()
+	await submit_button.pressed
+	answer_overlay.hide()
+	guess_is_number = str(answer_edit.text.to_int()) == answer_edit.text
+	tries += 1
+	return answer_edit.text.to_int()
+
+
+#endregion
+
+#region Helpers
+
+
+func next_line(next_id: String) -> void:
+	var next_dialogue_line: DialogueLine = await dialogue_resource.get_next_dialogue_line(next_id)
+
+	if not is_instance_valid(next_dialogue_line): return
+
+	if next_dialogue_line.type == DMConstants.TYPE_RESPONSE:
+		responses_overlay.show()
+		responses_menu.responses = next_dialogue_line.responses
+		responses_menu.get_menu_items()[0].grab_focus()
+	else:
+		var copy: DialogueBox = dialogue_box.duplicate()
+		content.add_child(copy)
+		content.move_child(copy, dialogue_box.get_index())
+		dialogue_box.dialogue_line = next_dialogue_line
+
+		await get_tree().create_timer(0.2).timeout
+		scroll.set_deferred(\"scroll_vertical\", 10000)
+
+		dialogue_box.grab_focus()
+
+
+func handle_click(event: InputEvent) -> void:
+	var is_left_click: bool = event.is_pressed() and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
+	var is_accept_key: bool = event.is_action_pressed(\"ui_accept\")
+	if is_left_click or is_accept_key:
+		get_viewport().set_input_as_handled()
+		if dialogue_box.is_typing:
+			dialogue_box.skip_typing()
+		else:
+			next_line(dialogue_box.dialogue_line.next_id)
+
+
+#endregion
+
+#region Signals
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	handle_click(event)
+
+
+func _on_dialogue_box_gui_input(event: InputEvent) -> void:
+	handle_click(event)
+
+
+func _on_responses_menu_response_selected(response: Variant) -> void:
+	responses_overlay.hide()
+	next_line(response.next_id)
+
+
+func _on_answer_edit_gui_input(event: InputEvent) -> void:
+	if event.is_pressed() and event is InputEventKey and (event as InputEventKey).keycode == KEY_ENTER:
+		submit_button.pressed.emit()
+
+
+#endregion
+"
+
+[node name="MainDialogue" type="Control" unique_id=2106106644]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = ExtResource("1_skrb2")
+script = SubResource("GDScript_55vex")
+dialogue_resource = ExtResource("2_rpa03")
+
+[node name="DialogueStateContext" type="Node" parent="." unique_id=1717959752 node_paths=PackedStringArray("target")]
+script = ExtResource("4_tefeu")
+alias = "main"
+target = NodePath("..")
+metadata/_custom_type_script = "uid://cd3222nx3y3k5"
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1222722440]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin" unique_id=798405847]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/HBoxContainer" unique_id=1249872013]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Content" type="VBoxContainer" parent="Margin/HBoxContainer/Scroll" unique_id=1850202833]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="DialogueBox" parent="Margin/HBoxContainer/Scroll/Content" unique_id=26923367 instance=ExtResource("4_fcybp")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="Margin/HBoxContainer" unique_id=790508691]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ChosenResponse" type="Button" parent="." unique_id=1903856762]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -258.0
+offset_top = 134.0
+offset_right = -95.0
+offset_bottom = 167.0
+disabled = true
+text = "Chosen response"
+
+[node name="AnswerOverlay" type="ColorRect" parent="." unique_id=1887624276]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.588235)
+
+[node name="AnswerEdit" type="LineEdit" parent="AnswerOverlay" unique_id=1704954027]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -26.0
+offset_right = 285.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter your answer"
+
+[node name="SubmitButton" type="Button" parent="AnswerOverlay" unique_id=793206439]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = 52.0
+offset_right = 42.5
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Submit"
+
+[node name="ResponsesOverlay" type="ColorRect" parent="." unique_id=675370890]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.588235)
+
+[node name="CenterContainer" type="CenterContainer" parent="ResponsesOverlay" unique_id=397134641]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="ResponsesOverlay/CenterContainer" unique_id=1439355959]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("5_qnsjq")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="gui_input" from="Margin/HBoxContainer/Scroll/Content/DialogueBox" to="." method="_on_dialogue_box_gui_input"]
+[connection signal="gui_input" from="AnswerOverlay/AnswerEdit" to="." method="_on_answer_edit_gui_input"]
+[connection signal="response_selected" from="ResponsesOverlay/CenterContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

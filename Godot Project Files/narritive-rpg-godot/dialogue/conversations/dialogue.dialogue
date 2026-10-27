@@ -1,0 +1,58 @@
+~ start
+Intercom_Angel: [[Hi|Hello|Howdy]], testing the intercom system. Is everything working? Can you hear me?
+- Yes
+	Bad_Father: I can hear you, and I wish I couldn't.
+- No
+	Bad_Father: Nope. I definitely can't hear you at all.
+	=> start
+#- Start again => start
+#- End the conversation => END
+Intercom_Angel: No wonder you're going to hell.
+=> END
+
+~ demonstration
+Nathan: [[Hi|Hello|Howdy]], I'm Nathan.
+Coco: Hi, I'm Coco.
+Nathan: What is your favourite food?
+# "main" is referencing a DialogueStateContext node in main.tscn
+$> main.favourite_food = main.ask_for_string()
+Coco: My favourite food is {{main.favourite_food}}.
+Nathan: Ok, if you can guess the number I'm thinking of you can have some {{main.favourite_food}}.
+Coco: Ok.
+$> main.correct_answer = roll_dice(10)
+Nathan: Guess a number between 1 and 10, inclusive.
+~ guessing
+$> guess = main.ask_for_number()
+if main.guess_is_number
+	Coco: Is it {{main.guess}}?
+else
+	Coco: What did I have to do again?
+	Nathan: Guess a number between 1 and 10, inclusive.
+	=> guessing
+
+if main.guess == main.correct_answer
+	if main.tries == 1
+		Nathan: Wow! You got it on your first try!
+	else
+		Nathan: You guessed it in {{main.tries}} tries.
+elif main.guess > main.correct_answer
+	Nathan: Nope. It's less than {{main.guess}}. Try again.
+	=> guessing
+else
+	Nathan: Nope. It's higher than {{main.guess}}. Try again.
+	=> guessing
+Nathan: Well done! You can go enjoy some {{main.favourite_food}}.
+Nathan: Do you want to play again?
+- Sure thing!
+	$> main.correct_answer = roll_dice(10)
+	Nathan: Guess a number between 1 and 10, inclusive.
+	$> main.tries = 0
+	=> guessing
+- Only if the number is {{main.correct_answer}} again
+	Coco: Only if the number is {{main.correct_answer}} again.
+	Nathan: That seems too easy but Ok. Guess a number between 1 and 10, inclusive.
+	$> tries = 0
+	=> guessing
+- No thanks
+	Coco: No thanks.
+=> END
