@@ -14,6 +14,8 @@ extends Node2D
 @onready var random_text: Label = $RandomSpeech
 @onready var interaction_text: Label = $InteractText
 
+@export var dialogue_scene: PackedScene
+
 
 
 
@@ -48,6 +50,8 @@ func _process(delta: float) -> void:
 
 func interact() -> void:
 	print("Interacted with important npc")
+	var dialogue = dialogue_scene.instantiate()
+	add_child(dialogue)
 
 
 func _on_body_entered(body: Node2D) -> void:
