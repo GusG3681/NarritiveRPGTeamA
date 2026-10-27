@@ -7,6 +7,7 @@
 size = Vector2(290, 220)
 
 [node name="NPC" type="Node2D" unique_id=1223202182]
+z_index = -1
 script = ExtResource("1_nh2m4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1346419299]
@@ -20,8 +21,17 @@ texture = ExtResource("2_abqhh")
 position = Vector2(145, 110)
 shape = SubResource("RectangleShape2D_e3e5j")
 
-[node name="Label" type="Label" parent="." unique_id=1311656754]
+[node name="RandomSpeech" type="Label" parent="." unique_id=1311656754]
 offset_right = 140.0
 offset_bottom = 70.0
 theme_override_font_sizes/font_size = 30
 text = "asdfadfasdfasdf"
+
+[node name="InteractText" type="Label" parent="." unique_id=244526343]
+offset_left = 40.0
+offset_top = -50.0
+offset_right = 250.0
+offset_bottom = 5.0
+theme_override_font_sizes/font_size = 40
+text = "Interact"
+horizontal_alignment = 1

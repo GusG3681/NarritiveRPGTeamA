@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctbwwpa1v6vg2"]
 
-[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://Scripts/main_character.gd" id="1_nrcqd"]
+[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://scripts/main_character.gd" id="1_nrcqd"]
 
 [sub_resource type="Gradient" id="Gradient_0eyao"]
 colors = PackedColorArray(0.9019608, 0, 0, 1, 1, 1, 1, 1)
@@ -13,7 +13,6 @@ size = Vector2(12.999992, 13)
 
 [node name="MainCharacter" type="CharacterBody2D" unique_id=658210933 groups=["player"]]
 script = ExtResource("1_nrcqd")
-SPEED = 1000
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1975103307]
 position = Vector2(65, 130)
@@ -27,3 +26,4 @@ shape = SubResource("RectangleShape2D_e3e5j")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1935927454]
 position = Vector2(63, 29)
+position = Vector2(68, 124)

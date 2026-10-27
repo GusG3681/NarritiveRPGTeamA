@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coo7t8hfg6oux"
-path="res://.godot/imported/true exit.png-dae73aaad5b7023eca0e820bdbcfd282.ctex"
+uid="uid://bwrrq3fjwutny"
+path="res://.godot/imported/gangway.jpg-beb700de5f21795058bff185b2d75bb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/true exit.png"
-dest_files=["res://.godot/imported/true exit.png-dae73aaad5b7023eca0e820bdbcfd282.ctex"]
+source_file="res://art/temporary_art/gangway.jpg"
+dest_files=["res://.godot/imported/gangway.jpg-beb700de5f21795058bff185b2d75bb1.ctex"]
 
 [params]
 
