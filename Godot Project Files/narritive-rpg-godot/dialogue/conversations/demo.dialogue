@@ -1,0 +1,10 @@
+~ start
+Intercom Angel: [[Hi|Hello|Howdy]], testing the intercom system. Is everything working? Can you hear me?
+- Yes
+	Bad Father: I can hear you, and I wish I couldn't.
+- No
+	Bad Father: Nope. I definitely can't hear you at all.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://0mxcm7rvf64o"
+path="res://.godot/imported/dialogue2.dialogue-54858c3b7ebae2e45f2ec2600535896f.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/dialogue2.dialogue"
+dest_files=["res://.godot/imported/dialogue2.dialogue-54858c3b7ebae2e45f2ec2600535896f.tres"]
+
+[params]
+
+defaults=true
