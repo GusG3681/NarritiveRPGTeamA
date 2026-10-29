@@ -31,6 +31,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [global_group]
 
 player="for the player object"
+intercom="for the intercom objects and the main script to interact with them"
 
 [input]
 
