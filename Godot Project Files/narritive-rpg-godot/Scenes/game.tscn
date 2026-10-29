@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bnuisoccqvcit" path="res://Scenes/music_trigger.gd" id="4_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://ddxtk3dpae60q" path="res://art/temporary_art/subway.jpg" id="4_v158k"]
 [ext_resource type="Texture2D" uid="uid://bwrrq3fjwutny" path="res://art/temporary_art/gangway.jpg" id="5_h4fw4"]
-[ext_resource type="AudioStream" uid="uid://y2ely6fg3i0x" path="res://Music/twins at the carousel.mp3" id="5_o5yvi"]
+[ext_resource type="AudioStream" uid="uid://y2ely6fg3i0x" path="res://Music/temporary/twins at the carousel.mp3" id="5_o5yvi"]
 [ext_resource type="Script" uid="uid://colu7hwbp1d6v" path="res://Scenes/car_door.gd" id="5_v158k"]
 [ext_resource type="Texture2D" uid="uid://c4yaj6yqy4ftt" path="res://art/temporary_art/car door.jpg" id="6_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://dkt1fklxfdtgn" path="res://art/temporary_art/false exit.jpg" id="7_o5yvi"]
@@ -115,7 +115,7 @@ shape = SubResource("RectangleShape2D_5xj16")
 position = Vector2(-2123.48, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall_bound" unique_id=1764462481]
-position = Vector2(-3184, 80)
+position = Vector2(-5284.89, 80)
 shape = SubResource("RectangleShape2D_rrgp0")
 
 [node name="right_wall_bound" type="StaticBody2D" parent="." unique_id=436206707]
@@ -491,6 +491,7 @@ position = Vector2(-1011, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
 
 [node name="MainCharacter" parent="." unique_id=1801353458 instance=ExtResource("2_lnu2h")]
+position = Vector2(-3381, 65)
 
 [node name="NPC" parent="." unique_id=1223202182 instance=ExtResource("9_0tnpc")]
 position = Vector2(614, 81)
