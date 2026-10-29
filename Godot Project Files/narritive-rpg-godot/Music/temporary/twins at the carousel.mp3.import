@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://y2ely6fg3i0x"
+path="res://.godot/imported/twins at the carousel.mp3-23efc899d319a330cc979340c6ea42dc.mp3str"
+
+[deps]
+
+source_file="res://Music/temporary/twins at the carousel.mp3"
+dest_files=["res://.godot/imported/twins at the carousel.mp3-23efc899d319a330cc979340c6ea42dc.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
