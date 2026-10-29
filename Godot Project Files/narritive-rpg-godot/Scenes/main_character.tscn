@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctbwwpa1v6vg2"]
 
-[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://Scripts/main_character.gd" id="1_nrcqd"]
+[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://scripts/main_character.gd" id="1_nrcqd"]
 
 [sub_resource type="Gradient" id="Gradient_0eyao"]
 colors = PackedColorArray(0.9019608, 0, 0, 1, 1, 1, 1, 1)
@@ -26,6 +26,7 @@ shape = SubResource("RectangleShape2D_e3e5j")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1935927454]
 position = Vector2(68, 124)
+zoom = Vector2(0.6, 0.6)
 limit_left = -5300
 limit_top = -200
 limit_right = 7000
