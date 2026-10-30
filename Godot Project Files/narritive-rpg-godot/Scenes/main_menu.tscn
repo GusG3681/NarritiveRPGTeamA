@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://dy210x7tdcryu"]
+
+[ext_resource type="Texture2D" uid="uid://kx478fni3ox4" path="res://art/temporary_art/dog_annoying.webp" id="1_28flt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jb3kc"]
+texture = ExtResource("1_28flt")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jb3kc"]
+bg_color = Color(0.23177335, 0.6602957, 0.7708063, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 5
+
+[sub_resource type="FontVariation" id="FontVariation_4orab"]
+
+[node name="MainMenu" type="Control" unique_id=1142520464]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg_placehold" type="Panel" parent="." unique_id=511845048]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -190.0
+offset_right = 1.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jb3kc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=340179928]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = -165.0
+offset_right = 238.0
+offset_bottom = 269.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 74
+
+[node name="start_btn" type="Button" parent="VBoxContainer" unique_id=921726215]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jb3kc")
+text = "Starbt"
+
+[node name="options_btn" type="Button" parent="VBoxContainer" unique_id=376726330]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jb3kc")
+text = "Opt ions"
+
+[node name="quit_btn" type="Button" parent="VBoxContainer" unique_id=858300288]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jb3kc")
+text = "Die"
+
+[node name="title_placehold" type="Label" parent="." unique_id=2041922975]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -167.5
+offset_top = 21.0
+offset_right = 167.5
+offset_bottom = 128.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -60
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 57
+theme_override_fonts/font = SubResource("FontVariation_4orab")
+theme_override_font_sizes/font_size = 78
+text = "Narritive"
