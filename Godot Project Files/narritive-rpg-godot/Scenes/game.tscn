@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c4yaj6yqy4ftt" path="res://art/temporary_art/car door.jpg" id="6_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://dkt1fklxfdtgn" path="res://art/temporary_art/false exit.jpg" id="7_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://h1gtmgwfpjuv" path="res://Scenes/npc.tscn" id="9_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://bb0moxhhvxmdu" path="res://dialogue/components/conversation.tscn" id="10_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://canuk851uyopb" path="res://Scenes/memory.tscn" id="10_vtaks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xj16"]
@@ -400,8 +399,6 @@ shape = SubResource("RectangleShape2D_ukjcv")
 
 [node name="NPC" parent="." unique_id=1223202182 instance=ExtResource("9_0tnpc")]
 position = Vector2(614, 81)
-speech = []
-dialogue_scene = ExtResource("10_o5yvi")
 
 [node name="Memory" parent="." unique_id=1269942407 instance=ExtResource("10_vtaks")]
 position = Vector2(-361, 117)

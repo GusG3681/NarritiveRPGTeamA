@@ -14,13 +14,8 @@ extends Node2D
 @onready var random_text: Label = $RandomSpeech
 @onready var interaction_text: Label = $InteractText
 
-@export var dialogue_scene: PackedScene
-
-
-
-
-
-
+var dialogue_scene = preload("res://dialogue/components/conversation.tscn")
+var player_talking = false 
 var player_in_range = false
 var curSpeech = 0
 
@@ -50,19 +45,25 @@ func _process(delta: float) -> void:
 
 func interact() -> void:
 	print("Interacted with important npc")
+	print(dialogue_scene)
+	if player_talking:
+		return
+	player_talking = true
 	var dialogue = dialogue_scene.instantiate()
-	add_child(dialogue)
+	get_tree().current_scene.add_child(dialogue)
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
-		curSpeech = randi() % speech.size()
-		random_text.text = speech[curSpeech]
-		random_text.visible = true
+		print(speech.size())
 		if important:
 			interaction_text.visible = true
-		#print("entered")
+		else:
+			curSpeech = randi() % speech.size()
+			random_text.text = speech[curSpeech]
+			random_text.visible = true
+		print("entered")
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
