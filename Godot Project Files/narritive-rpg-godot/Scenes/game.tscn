@@ -10,10 +10,16 @@
 [ext_resource type="Script" uid="uid://colu7hwbp1d6v" path="res://scenes/car_door.gd" id="5_v158k"]
 [ext_resource type="Texture2D" uid="uid://c4yaj6yqy4ftt" path="res://art/temporary_art/car door.jpg" id="6_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://dkt1fklxfdtgn" path="res://art/temporary_art/false exit.jpg" id="7_o5yvi"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://h1gtmgwfpjuv" path="res://scenes/npc.tscn" id="9_0tnpc"]
 [ext_resource type="AudioStream" uid="uid://ba50omf23cgnu" path="res://Music/temporary/bon bon jellyfish planet.mp3" id="9_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://canuk851uyopb" path="res://scenes/memory.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://cj1e0lw6efe8o" path="res://scenes/intercom.tscn" id="14_trtic"]
+=======
+[ext_resource type="PackedScene" uid="uid://h1gtmgwfpjuv" path="res://Scenes/npc.tscn" id="9_0tnpc"]
+[ext_resource type="AudioStream" uid="uid://ba50omf23cgnu" path="res://Music/temporary/bon bon jellyfish planet.mp3" id="9_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://canuk851uyopb" path="res://Scenes/memory.tscn" id="10_vtaks"]
+>>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xj16"]
 size = Vector2(13029, 68)
@@ -116,7 +122,7 @@ shape = SubResource("RectangleShape2D_5xj16")
 position = Vector2(-2123.48, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall_bound" unique_id=1764462481]
-position = Vector2(-5284.89, 80)
+position = Vector2(-3197.25, 80)
 shape = SubResource("RectangleShape2D_rrgp0")
 
 [node name="right_wall_bound" type="StaticBody2D" parent="." unique_id=436206707]
