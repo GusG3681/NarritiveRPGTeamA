@@ -20,6 +20,9 @@ var tries: int = 0
 var guess_is_number: bool = false
 
 
+signal dialogue_finished
+
+
 #region Hooks
 
 
@@ -65,8 +68,11 @@ func ask_for_number() -> int:
 
 func next_line(next_id: String) -> void:
 	var next_dialogue_line: DialogueLine = await dialogue_resource.get_next_dialogue_line(next_id)
-
-	if not is_instance_valid(next_dialogue_line): return
+	print("next line")
+	if not is_instance_valid(next_dialogue_line): 
+		dialogue_finished.emit()
+		print("Dialogue Finished")
+		return
 
 	if next_dialogue_line.type == DMConstants.TYPE_RESPONSE:
 		responses_overlay.show()
