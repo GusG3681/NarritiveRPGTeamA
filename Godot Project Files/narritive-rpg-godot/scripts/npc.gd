@@ -5,7 +5,7 @@ extends Node2D
 	"frick you",
 	"Imma a projection"
 	]
-
+@export var dialogue_resource: DialogueResource = preload("res://dialogue/conversations/dialogue.dialogue")
 
 #if the npc is a main character
 @export var important = false
@@ -14,11 +14,11 @@ extends Node2D
 @onready var random_text: Label = $RandomSpeech
 @onready var interaction_text: Label = $InteractText
 
-
-
-
-
-
+var dialogue_scene = preload("res://dialogue/components/conversation.tscn")
+var player_talking = false 
+var dialogue_layer: CanvasLayer
+var dialogue: Control
+var player
 var player_in_range = false
 var curSpeech = 0
 
@@ -28,6 +28,10 @@ func _ready() -> void:
 	interaction_area.body_exited.connect(_on_body_exited)
 	random_text.visible = false
 	interaction_text.visible = false
+	await get_tree().process_frame
+	print(get_tree().get_first_node_in_group("dialogue_layer"))
+	dialogue_layer = get_tree().get_first_node_in_group("dialogue_layer")
+
 	if important:
 		setup_important()
 	else:
@@ -48,17 +52,29 @@ func _process(delta: float) -> void:
 
 func interact() -> void:
 	print("Interacted with important npc")
+	if player_talking:
+		return
+	player_talking = true
+	player = get_tree().get_first_node_in_group("player")
+	player.can_move = false
+	dialogue = dialogue_scene.instantiate()
+	dialogue.dialogue_resource = dialogue_resource
+	dialogue.dialogue_finished.connect(_on_dialogue_finished)
+	dialogue_layer.add_child(dialogue)
+	
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
-		curSpeech = randi() % speech.size()
-		random_text.text = speech[curSpeech]
-		random_text.visible = true
+		print(speech.size())
 		if important:
 			interaction_text.visible = true
-		#print("entered")
+		else:
+			curSpeech = randi() % speech.size()
+			random_text.text = speech[curSpeech]
+			random_text.visible = true
+		print("entered")
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -67,3 +83,12 @@ func _on_body_exited(body: Node2D) -> void:
 		if important:
 			interaction_text.visible = false
 		#print("exited")
+
+func _on_dialogue_finished() -> void:
+	print("recieved")
+	dialogue.queue_free()
+	await get_tree().process_frame
+	player = get_tree().get_first_node_in_group("player")
+	player.can_move = true
+	player_talking = false
+	
