@@ -88,4 +88,7 @@ func _on_dialogue_finished() -> void:
 	print("recieved")
 	dialogue.queue_free()
 	await get_tree().process_frame
+	player = get_tree().get_first_node_in_group("player")
+	player.can_move = true
 	player_talking = false
+	
