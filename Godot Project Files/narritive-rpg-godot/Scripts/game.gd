@@ -7,6 +7,9 @@ var countReset = 2000
 # contains a list of the labels in the intercoms
 var intercomList = []
 
+# variable to create a canvas layer in the scene if there isn't one already (this is for dialogue ui to be anchored to)
+var ui_layer: CanvasLayer
+
 #list of onready calls for objects
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +18,14 @@ func _ready() -> void:
 	var l = get_tree().get_nodes_in_group("intercom")
 	for item in l:
 		intercomList.append(item.get_node("Label"))
-	
+		
+	#creates canvad layer if one doesn't already exist
+	if get_tree().get_first_node_in_group("dialogue_layer") == null:
+		print("Create")
+		ui_layer = CanvasLayer.new()
+		ui_layer.add_to_group("dialogue_layer")
+		add_child(ui_layer)
+
 	#will connect events custom signal handlers
 	Events.good_ending.connect(_on_good_ending)
 	Events.bad_ending.connect(_on_bad_ending)

@@ -5,7 +5,7 @@ extends Node2D
 	"frick you",
 	"Imma a projection"
 	]
-@export var dialogue_resource: DialogueResource
+@export var dialogue_resource: DialogueResource = preload("res://dialogue/conversations/dialogue.dialogue")
 
 #if the npc is a main character
 @export var important = false
@@ -28,7 +28,10 @@ func _ready() -> void:
 	interaction_area.body_exited.connect(_on_body_exited)
 	random_text.visible = false
 	interaction_text.visible = false
+	await get_tree().process_frame
+	print(get_tree().get_first_node_in_group("dialogue_layer"))
 	dialogue_layer = get_tree().get_first_node_in_group("dialogue_layer")
+
 	if important:
 		setup_important()
 	else:
