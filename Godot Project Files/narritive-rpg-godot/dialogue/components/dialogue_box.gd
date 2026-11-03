@@ -39,10 +39,9 @@ var is_typing:
 	get:
 		return dialogue_label.is_typing
 
-var ticket_tex = preload("res://art/ui_art/subway_ticket.png")
+var ticket_tex = preload("res://art/ui_art/new_ticket.png")
 
 @onready var dialogue: HBoxContainer = %Dialogue
-@onready var background: ColorRect = %Background
 @onready var character_name: Label = %CharacterName
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var left_character: TextureRect = %LeftCharacter
@@ -78,7 +77,6 @@ func update_dialogue() -> void:
 		else:
 			offset_transform_rotation = -0.05
 			#right_character.texture = character.portrait
-		background.color = character.color
 		ticket.modulate = character.color
 	dialogue_label.dialogue_line = dialogue_line
 
