@@ -2,7 +2,11 @@ extends CharacterBody2D
 
 @export var SPEED = 1000
 
+var can_move = true
+
 func _physics_process(delta: float) -> void:
+	if not can_move:
+		return
 	velocity = Vector2(0, 0)
 	if Input.is_action_pressed("Left"):
 		velocity.x -= 1

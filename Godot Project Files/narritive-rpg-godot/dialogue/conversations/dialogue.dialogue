@@ -1,9 +1,10 @@
 ~ start
-Intercom_Angel: [[Hi|Hello|Howdy]], testing the intercom system. Is everything working? Can you hear me?
+Intercom_Angel: Hello, testing the intercom system. Is everything working? Can you hear me?
 - Yes
-	Bad_Father: I can hear you, and I wish I couldn't.
+	Bad_Father: Yeah, I can hear you. What is this? Some kind of Death's Transit?
 - No
-	Bad_Father: Nope. I definitely can't hear you at all.
+	Bad_Father: What happens if I say no?
+	Intercom_Angel: Then, I'm just going to repeat myself.
 	=> start
 #- Start again => start
 #- End the conversation => END
