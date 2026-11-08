@@ -1,0 +1,113 @@
+~ start
+if Global.wife_dialogue_progress == 1 and Global.has_wedding_ring:
+	PC: Is this yours?
+
+	W: …
+	W: Do you remember?
+
+	PC: Remember? Remember what?
+
+	W: On the couch, you laid.
+	W: A sickly smell that filled the air. 
+	W: When did we lose what once was?
+
+	#Flashback
+
+	W: Welcome home, Name.
+
+	PC: …
+
+	W: Are you-?
+	W: Drunk again, I see. 
+
+	PC: Do you want some?
+	PC: Hic.
+
+	W: Amy needs to write more dialogue for me. I have no agency without my writer overlord.
+
+	#End Flashback
+
+
+	W: …
+
+	PC: I…
+	PC: (What the hell was that?)
+	PC: (That was me talking? Why?)
+	PC: (I’m missing something…but what?)
+	PC: (It must be somewhere here in the car…)
+	$> Global.wife_dialogue_progress = 2
+	=> END
+elif Global.wife_dialogue_progress == 2 and Global.has_alcohol_bottle:
+	PC: This…is what I drank?
+	PC: It’s cheap. 
+
+	W: It used to be wine. 
+	W: Dare I say, perhaps it was an improvement. 
+	W: Though that isn’t saying much at all, isn’t it?
+
+	#Flashback 
+
+	W: When would you stop drinking?
+	W: It certainly isn’t making your liver any better. 
+
+	PC: Piss off! I do what I want. 
+
+	W: I’m worried about you. 
+
+	PC: I don’t give a rat’s ass about your worry - hic. 
+	PC: Now leave me alone. 
+
+	W: Name...
+
+	PC: I said leave me alone!
+
+	#End Flashback
+
+	$> Global.wife_dialogue_progress = 3
+	=> final
+elif Global.wife_dialogue_progress == 3:
+	~ final
+	W: You used to be a better person. 
+	W: You used to be the man I loved. 
+	W: But tell me, do you even remember what you did?
+	W: What you have done?
+
+	PC: I do know you. 
+
+	W: You thought you did. 
+	
+	# WIP
+	
+	W: I didn’t hate you. 
+	W: I loved you. 
+	W: But even that…has frosted over. 
+
+	W: And perhaps that’s why…I give you this.
+
+	$> Global.has_divorce_papers = true
+
+
+	PC: …
+	PC: The door is open. 
+	PC: I should go. 
+
+	=> END
+elif Global.wife_dialogue_progress == 0:
+	W: …welcome home, {{Global.father_name}}.
+
+	PC: What? How do you–
+	PC: (How do they know my name?)
+
+	PC: Who are you?
+
+	W: …
+	W: Welcome home…
+
+	PC: (This is disturbing to look at.)
+	$> Global.wife_dialogue_progress = 1
+	=> END
+elif Global.wife_dialogue_progress == 1:
+	W: …welcome home, {{Global.father_name}}.
+	PC: (This is disturbing to look at.)
+else:
+	PC: (I’m missing something…but what?)

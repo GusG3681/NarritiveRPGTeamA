@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://bb0moxhhvxmdu"]
+
+[ext_resource type="Theme" uid="uid://5lacq73qg3pw" path="res://dialogue/components/theme.tres" id="1_skrb2"]
+[ext_resource type="Script" uid="uid://c5bbjw64mkglb" path="res://dialogue/components/conversation.gd" id="2_55vex"]
+[ext_resource type="Resource" uid="uid://b0vffmtvds545" path="res://dialogue/conversations/dialogue.dialogue" id="2_rpa03"]
+[ext_resource type="PackedScene" uid="uid://4cyajmpvya0t" path="res://dialogue/components/dialogue_box.tscn" id="4_fcybp"]
+[ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="5_qnsjq"]
+
+[node name="MainDialogue" type="Control" unique_id=2106106644]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 2
+theme = ExtResource("1_skrb2")
+script = ExtResource("2_55vex")
+dialogue_resource = ExtResource("2_rpa03")
+
+[node name="DialogueStateContext" type="Node" parent="." unique_id=1717959752 node_paths=PackedStringArray("target")]
+script = ExtResource("4_tefeu")
+alias = "main"
+target = NodePath("..")
+metadata/_custom_type_script = "uid://cd3222nx3y3k5"
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1222722440]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin" unique_id=798405847]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/HBoxContainer" unique_id=1249872013]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Content" type="VBoxContainer" parent="Margin/HBoxContainer/Scroll" unique_id=1850202833]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(450, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(31.495, 0)
+mouse_filter = 2
+
+[node name="DialogueBox" parent="Margin/HBoxContainer/Scroll/Content" unique_id=26923367 instance=ExtResource("4_fcybp")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="Margin/HBoxContainer" unique_id=790508691]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ChosenResponse" type="Button" parent="." unique_id=1903856762]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -258.0
+offset_top = 134.0
+offset_right = -95.0
+offset_bottom = 167.0
+disabled = true
+text = "Chosen response"
+
+[node name="AnswerOverlay" type="ColorRect" parent="." unique_id=1887624276]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnswerEdit" type="LineEdit" parent="AnswerOverlay" unique_id=1704954027]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -26.0
+offset_right = 285.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter your answer"
+
+[node name="SubmitButton" type="Button" parent="AnswerOverlay" unique_id=793206439]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = 52.0
+offset_right = 42.5
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Submit"
+
+[node name="ResponsesOverlay" type="ColorRect" parent="." unique_id=675370890]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="ResponsesOverlay" unique_id=397134641]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -264.0
+offset_top = 3.0
+offset_right = -264.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="ResponsesOverlay/CenterContainer" unique_id=1439355959]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("5_qnsjq")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="gui_input" from="Margin/HBoxContainer/Scroll/Content/DialogueBox" to="." method="_on_dialogue_box_gui_input"]
+[connection signal="gui_input" from="AnswerOverlay/AnswerEdit" to="." method="_on_answer_edit_gui_input"]
+[connection signal="response_selected" from="ResponsesOverlay/CenterContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

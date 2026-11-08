@@ -1,14 +1,14 @@
 ~ start
-Intercom_Angel: Hello, testing the intercom system. Is everything working? Can you hear me?
+IA: Hello, testing the intercom system. Is everything working? Can you hear me?
 - Yes
-	Bad_Father: Yeah, I can hear you. What is this? Some kind of Death's Transit?
+	PC: Yeah, I can hear you. What is this? Some kind of Death's Transit?
 - No
-	Bad_Father: What happens if I say no?
-	Intercom_Angel: Then, I'm just going to repeat myself.
+	PC: What happens if I say no?
+	IA: Then, I'm just going to repeat myself.
 	=> start
 #- Start again => start
 #- End the conversation => END
-Intercom_Angel: No wonder you're going to hell.
+IA: No wonder you're going to hell.
 => END
 
 ~ demonstration

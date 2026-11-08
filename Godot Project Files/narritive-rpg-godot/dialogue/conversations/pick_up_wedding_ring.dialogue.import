@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dc20rfyqbqafk"
+path="res://.godot/imported/pick_up_wedding_ring.dialogue-0f0ace74f32900c3170cd08e0c0c2473.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/pick_up_wedding_ring.dialogue"
+dest_files=["res://.godot/imported/pick_up_wedding_ring.dialogue-0f0ace74f32900c3170cd08e0c0c2473.tres"]
+
+[params]
+
+defaults=true
