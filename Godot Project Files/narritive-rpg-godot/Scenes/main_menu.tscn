@@ -146,7 +146,7 @@ theme_override_font_sizes/font_size = 60
 text = "Opti ons"
 horizontal_alignment = 1
 
-[node name="back_btn2" type="Button" parent="OptionsMenu" unique_id=256325513]
+[node name="back_btn" type="Button" parent="OptionsMenu" unique_id=256325513]
 modulate = Color(0.097581215, 0.9999998, 0.9746606, 1)
 self_modulate = Color(0.31044284, 0.9999998, 0.8948056, 1)
 layout_mode = 1
@@ -226,6 +226,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_sl8mc")
 [connection signal="pressed" from="MainButtons/start_btn" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainButtons/options_btn" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MainButtons/quit_btn" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="OptionsMenu/back_btn2" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="OptionsMenu/back_btn" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="OptionsMenu/music_slider" to="OptionsMenu/music_slider" method="_on_value_changed"]
 [connection signal="value_changed" from="OptionsMenu/sound_slider" to="OptionsMenu/sound_slider" method="_on_value_changed"]
