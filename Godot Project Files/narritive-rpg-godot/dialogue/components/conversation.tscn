@@ -7,6 +7,75 @@
 [ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="5_qnsjq"]
 
+[sub_resource type="Animation" id="Animation_55vex"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fx27g"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ryw6g"]
+resource_name = "fade_to_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4o4hp"]
+resource_name = "set_to_black"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4o4hp"]
+_data = {
+&"RESET": SubResource("Animation_55vex"),
+&"fade_to_black": SubResource("Animation_fx27g"),
+&"fade_to_normal": SubResource("Animation_ryw6g"),
+&"set_to_black": SubResource("Animation_4o4hp")
+}
+
 [node name="MainDialogue" type="Control" unique_id=2106106644]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 3
@@ -20,6 +89,20 @@ focus_mode = 2
 theme = ExtResource("1_skrb2")
 script = ExtResource("2_55vex")
 dialogue_resource = ExtResource("2_rpa03")
+
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=1572764860]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -713.0
+offset_top = -66.0
+offset_right = 58.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="DialogueStateContext" type="Node" parent="." unique_id=1717959752 node_paths=PackedStringArray("target")]
 script = ExtResource("4_tefeu")
@@ -145,6 +228,9 @@ grow_vertical = 2
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("5_qnsjq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=866321423]
+libraries/ = SubResource("AnimationLibrary_4o4hp")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="Margin/HBoxContainer/Scroll/Content/DialogueBox" to="." method="_on_dialogue_box_gui_input"]

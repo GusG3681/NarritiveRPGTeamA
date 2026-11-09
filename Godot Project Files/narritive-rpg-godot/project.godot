@@ -25,6 +25,7 @@ DialogueManager="*uid://c3rodes2l3gxb"
 Events="*uid://ci05chcpbma1b"
 Inventory="*uid://dgtd0pequmw62"
 AudioGlobal="*uid://donst5oltdy1n"
+Global="*uid://drwjoiedygy27"
 
 [display]
 
@@ -82,7 +83,7 @@ escape={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/conversations/dialogue.dialogue", "res://dialogue/conversations/untitled.dialogue", "res://dialogue/conversations/OpeningScene.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/conversations/dialogue.dialogue", "res://dialogue/conversations/enter_wife_car.dialogue", "res://dialogue/conversations/introduction.dialogue", "res://dialogue/conversations/locked_door.dialogue", "res://dialogue/conversations/npc1_wife_car.dialogue", "res://dialogue/conversations/npc2_wife_car.dialogue", "res://dialogue/conversations/npcs_wife_car.dialogue", "res://dialogue/conversations/pick_up_wedding_ring.dialogue", "res://dialogue/conversations/pregame.dialogue", "res://dialogue/conversations/wife_interaction.dialogue")
 
 [physics]
 

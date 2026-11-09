@@ -11,6 +11,8 @@ extends Control
 @onready var submit_button: Button = %SubmitButton
 @onready var responses_overlay: ColorRect = %ResponsesOverlay
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var black_screen = %BlackScreen
+@onready var animation_player = $AnimationPlayer
 
 
 var favourite_food: String = ""
@@ -19,15 +21,17 @@ var guess: int = 0
 var tries: int = 0
 var guess_is_number: bool = false
 
+#if it's true calls a fade out at the end of the conversation
+var should_fade_out: bool = false
 
 signal dialogue_finished
-
+signal on_transition_finished
 
 #region Hooks
 
 
 func _ready() -> void:
-	dialogue_box.dialogue_line = await dialogue_resource.get_next_dialogue_line("start")
+	dialogue_box.visible = false
 	dialogue_box.grab_focus()
 
 	answer_overlay.hide()
@@ -35,9 +39,24 @@ func _ready() -> void:
 
 	scroll.get_v_scroll_bar().share(v_scroll_bar)
 
-
+	# fading color rect only appears when it's needed
+	black_screen.visible = false
+	# connects siganls to animation player
+	animation_player.animation_finished.connect(_on_animation_finished)
+	
 #endregion
 
+func start_dialogue(blackscreen: bool = false, skip_fade: bool = false) -> void:
+	if blackscreen:
+		if skip_fade:
+			instant_black()
+		else:
+			fade_in()
+		await on_transition_finished
+		should_fade_out = true
+	
+	dialogue_box.visible = true
+	dialogue_box.dialogue_line = await dialogue_resource.get_next_dialogue_line("start")
 #region Mutations
 
 
@@ -60,7 +79,6 @@ func ask_for_number() -> int:
 	tries += 1
 	return answer_edit.text.to_int()
 
-
 #endregion
 
 #region Helpers
@@ -70,6 +88,9 @@ func next_line(next_id: String) -> void:
 	var next_dialogue_line: DialogueLine = await dialogue_resource.get_next_dialogue_line(next_id)
 	print("next line")
 	if not is_instance_valid(next_dialogue_line): 
+		if should_fade_out:
+			fade_out()
+			await on_transition_finished
 		dialogue_finished.emit()
 		print("Dialogue Finished")
 		return
@@ -100,11 +121,32 @@ func handle_click(event: InputEvent) -> void:
 		else:
 			next_line(dialogue_box.dialogue_line.next_id)
 
+func fade_in() -> void:
+	black_screen.visible = true
+	animation_player.play("fade_to_black")
+	
+func fade_out() -> void:
+	black_screen.visible = true
+	animation_player.play("fade_to_normal")
+
+func instant_black() -> void:
+	black_screen.visible = true
+	animation_player.play("set_to_black")
+
 
 #endregion
 
 #region Signals
 
+func _on_animation_finished(anim_name):
+	if anim_name == "fade_to_black":
+		on_transition_finished.emit()
+	if anim_name == "fade_to_normal":
+		black_screen.visible = false
+		on_transition_finished.emit()
+	if anim_name == "set_to_black":
+		on_transition_finished.emit()
+	pass
 
 func _on_gui_input(event: InputEvent) -> void:
 	handle_click(event)

@@ -43,7 +43,6 @@ func _ready() -> void:
 		
 	#creates canvad layer if one doesn't already exist
 	if get_tree().get_first_node_in_group("dialogue_layer") == null:
-		print("Create")
 		ui_layer = CanvasLayer.new()
 		ui_layer.add_to_group("dialogue_layer")
 		add_child(ui_layer)
@@ -55,6 +54,8 @@ func _ready() -> void:
 	Events.settings_request.connect(_on_settings_request)
 	Events.exit_request.connect(_on_exit_request)
 	
+	
+	call_dialogue(autorun_dialogue.pregame.script, true, true)
 	
 
 #rando stuff
@@ -83,7 +84,7 @@ func intercom_speak(speech) -> void:
 	for item in intercomList:
 		item.text = ""
 
-func call_dialogue(dialogue_resource) -> void:
+func call_dialogue(dialogue_resource, blackscreen: bool = false, skip_fade: bool = false) -> void:
 	player_talking = true
 	player = get_tree().get_first_node_in_group("player")
 	player.can_move = false
@@ -91,8 +92,7 @@ func call_dialogue(dialogue_resource) -> void:
 	dialogue.dialogue_resource = dialogue_resource
 	dialogue.dialogue_finished.connect(_on_dialogue_finished)
 	dialogue_layer.add_child(dialogue)
-	print(Global.father_name)
-	
+	dialogue.start_dialogue(blackscreen, skip_fade)
 
 #signal handlers
 func _on_bad_ending() -> void:
