@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cmt0ocaxrh3jr"]
+
+[ext_resource type="Texture2D" uid="uid://b2cbp8mn6k6q1" path="res://art/ScrollingText.png" id="1_1dx2q"]
+[ext_resource type="Script" uid="uid://8q815l3x74m4" path="res://scripts/text_scroller_sign.gd" id="1_05ov2"]
+
+[node name="TextScrollerSign" type="Node2D" unique_id=997148403]
+z_index = -3
+script = ExtResource("1_05ov2")
+
+[node name="ScrollingText" type="Sprite2D" parent="." unique_id=1763694032]
+position = Vector2(325, 71)
+texture = ExtResource("1_1dx2q")
+
+[node name="ScrollingText2" type="Sprite2D" parent="." unique_id=617363028]
+position = Vector2(715, 70)
+texture = ExtResource("1_1dx2q")

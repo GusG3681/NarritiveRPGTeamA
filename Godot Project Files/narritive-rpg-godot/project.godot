@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="SpookySubwayGame"
+config/name="Death's Transit"
 run/main_scene="uid://flpjwrhuf2jt"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://art/temporary_art/icon.svg"
@@ -29,8 +29,8 @@ Global="*uid://drwjoiedygy27"
 
 [display]
 
+window/size/mode=2
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
