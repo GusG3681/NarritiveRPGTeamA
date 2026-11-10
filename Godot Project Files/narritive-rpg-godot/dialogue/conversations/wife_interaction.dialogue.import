@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dnmdvkbo37t8k"
+path="res://.godot/imported/wife_interaction.dialogue-1e327e8675566c732b36e87956f95652.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/wife_interaction.dialogue"
+dest_files=["res://.godot/imported/wife_interaction.dialogue-1e327e8675566c732b36e87956f95652.tres"]
+
+[params]
+
+defaults=true

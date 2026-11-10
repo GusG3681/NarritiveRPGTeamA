@@ -1,0 +1,26 @@
+~ start
+NPCS: What will you buy today?
+if Global.has_interacted_with_wife == false:
+	PC: What?
+	NPCS: What will you buy today?
+	PC: There’s nothing to buy. 
+	NPCS: …then why are you even here?
+else
+	PC: …
+	- A bottle of liquor
+		NPCS: $12.89. 
+		NPCS: Have fun destroying your life, sir. 
+		PC: What?
+		NPCS: What?
+		PC: …
+		=> END
+	- A bag of fruit
+		NPCS: We don't carry that.
+	- A jug of milk
+		NPCS: We don't carry that.
+	- Nothing
+		=> END
+PC: Ah, my bad - I must have misremembered!
+PC: Ha…ha…
+PC: ??????????
+=> END

@@ -3,27 +3,56 @@ class_name DialogueBox extends MarginContainer
 
 signal finished_typing()
 
+# Color palette:
+# Color("392c31")
+# Color("4a3c4a")
+# Color("5a555a")
+# Color("62696a")
+# Color("73817b")
+# Color("83898b")
+# Color("83918b")
+# Color("a49da4")
+# Color("c5b2bd")
+# Color("d5becd")
+# Color("ded6de")
+# Color("e6eaee")
 
 const CHARACTERS = {
-	nathan = {
+	pc = {
 	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "FATHER",
 		side = "left",
-		color = Color(1, 0.869, 0.776)
+		color = Color("83898b")
 	},
-	coco = {
+	unknown = {
 	#	portrait = preload("res://portraits/coco.svg"),
+		name = "UNKNOWN",
 		side = "right",
-		color = Color(0.755, 0.908, 1)
+		color = Color("5a555a"),
 	},
-		intercom_angel = {
+	ia = {
 	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "INTERCOM",
 		side = "right",
-		color = Color(0.870, 0.839, 0.870)
+		color = Color("ded6de")
 	},
-		bad_father = {
+	w = {
 	#	portrait = preload("res://portraits/nathan.svg"),
-		side = "left",
-		color = Color(0.513, 0.537, 0.545)
+		name = "WIFE",
+		side = "right",
+		color = Color("73817b")
+	},
+	npc1 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("392c31")
+	},
+	npc2 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("392c31")
 	}
 }
 
@@ -68,9 +97,10 @@ func update_dialogue() -> void:
 	else:
 		dialogue.show()
 		action_label.hide()
-		character_name.text = dialogue_line.character
+		character_name.text = "???" #dialogue_line.character
 
 		var character: Dictionary = CHARACTERS[dialogue_line.character.to_lower()]
+		character_name.text = character.name
 		if character.side == "left":
 			offset_transform_rotation = 0.05
 			#left_character.texture = character.portrait
