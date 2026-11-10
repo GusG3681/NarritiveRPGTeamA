@@ -21,6 +21,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Margin:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Margin:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(22.04, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_fx27g"]
 resource_name = "fade_to_black"
@@ -52,9 +76,65 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ymf13"]
+resource_name = "fade_to_normal_long"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(3.8637435, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Margin:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Margin:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(0.34151024, 1, 1),
+"update": 0,
+"values": [Vector2(22.04, 0), Vector2(600, 0), Vector2(600, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ynwe8"]
+resource_name = "hide_text"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Margin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.26794344),
+"update": 0,
+"values": [Vector2(22.04, 0), Vector2(600, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_4o4hp"]
 resource_name = "set_to_black"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -68,12 +148,31 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_bo3k2"]
+resource_name = "show_text"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Margin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.26794344, 1),
+"update": 0,
+"values": [Vector2(22.04, -700), Vector2(22.04, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4o4hp"]
 _data = {
 &"RESET": SubResource("Animation_55vex"),
 &"fade_to_black": SubResource("Animation_fx27g"),
 &"fade_to_normal": SubResource("Animation_ryw6g"),
-&"set_to_black": SubResource("Animation_4o4hp")
+&"fade_to_normal_long": SubResource("Animation_ymf13"),
+&"hide_text": SubResource("Animation_ynwe8"),
+&"set_to_black": SubResource("Animation_4o4hp"),
+&"show_text": SubResource("Animation_bo3k2")
 }
 
 [node name="MainDialogue" type="Control" unique_id=2106106644]
@@ -115,6 +214,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 22.04
+offset_right = 22.046082
+offset_bottom = 0.0009765625
 grow_horizontal = 2
 grow_vertical = 2
 

@@ -18,6 +18,8 @@ var player_talking = false
 var dialogue_layer: CanvasLayer
 var dialogue: Control
 var player
+var is_pregame_dialogue = false
+
 # sets up all of the dialogue that is called via the game root and not by NPCs
 var autorun_dialogue = {
 	pregame = {
@@ -54,8 +56,8 @@ func _ready() -> void:
 	Events.settings_request.connect(_on_settings_request)
 	Events.exit_request.connect(_on_exit_request)
 	
-	
-	call_dialogue(autorun_dialogue.pregame.script, true, true)
+	is_pregame_dialogue = true
+	call_dialogue(autorun_dialogue.pregame.script, true, true, true)
 	
 
 #rando stuff
@@ -84,7 +86,7 @@ func intercom_speak(speech) -> void:
 	for item in intercomList:
 		item.text = ""
 
-func call_dialogue(dialogue_resource, blackscreen: bool = false, skip_fade: bool = false) -> void:
+func call_dialogue(dialogue_resource, blackscreen: bool = false, skip_fade: bool = false, fade_long: bool = false) -> void:
 	player_talking = true
 	player = get_tree().get_first_node_in_group("player")
 	player.can_move = false
@@ -92,7 +94,7 @@ func call_dialogue(dialogue_resource, blackscreen: bool = false, skip_fade: bool
 	dialogue.dialogue_resource = dialogue_resource
 	dialogue.dialogue_finished.connect(_on_dialogue_finished)
 	dialogue_layer.add_child(dialogue)
-	dialogue.start_dialogue(blackscreen, skip_fade)
+	dialogue.start_dialogue(blackscreen, skip_fade, fade_long)
 
 #signal handlers
 func _on_bad_ending() -> void:
@@ -108,11 +110,17 @@ func _on_exit_request() -> void:
 	print("exit to menu requested")
 	
 func _on_dialogue_finished() -> void:
-	print("recieved")
-	dialogue.queue_free()
-	await get_tree().process_frame
-	player = get_tree().get_first_node_in_group("player")
-	player.can_move = true
-	await get_tree().create_timer(2).timeout
-	player_talking = false
+	if is_pregame_dialogue == true:
+		is_pregame_dialogue = false
+		dialogue.queue_free()
+		await get_tree().process_frame
+		await get_tree().create_timer(2).timeout
+		call_dialogue(autorun_dialogue.introduction.script)
+	else:
+		dialogue.queue_free()
+		await get_tree().process_frame
+		player = get_tree().get_first_node_in_group("player")
+		player.can_move = true
+		await get_tree().create_timer(2).timeout
+		player_talking = false
 	
