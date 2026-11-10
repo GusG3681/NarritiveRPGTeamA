@@ -29,9 +29,8 @@ func pick_up() -> void:
 		"icon": item_icon
 	}
 	
-	Inventory.add_item(item_data)
-
-	#queue_free() can be added to make the item dissapear after being picked up
+	if Inventory.add_item(item_data):
+		queue_free() # can be added to make the item dissapear after being picked up
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
