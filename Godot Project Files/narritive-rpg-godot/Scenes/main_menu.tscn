@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dy210x7tdcryu"]
 
 [ext_resource type="Texture2D" uid="uid://brmvmsqpikxlg" path="res://art/temporary_art/dogannoying_bg.webp" id="1_28flt"]
-[ext_resource type="Script" uid="uid://bkbsstjekhp74" path="res://Scenes/main_menu.gd" id="1_48xlc"]
+[ext_resource type="Script" uid="uid://bkbsstjekhp74" path="res://scripts/main_menu.gd" id="1_48xlc"]
 [ext_resource type="Texture2D" uid="uid://dk6cppe82o7n1" path="res://art/temporary_art/eitooptions.jpg" id="3_1ehe0"]
-[ext_resource type="Script" uid="uid://ckk4rjr1eg0j0" path="res://Scenes/audio_control.gd" id="4_ce3w2"]
+[ext_resource type="Script" uid="uid://ckk4rjr1eg0j0" path="res://scripts/audio_control.gd" id="4_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://d4bj6w8ek7v5n" path="res://art/temporary_art/musicplaceholder.png" id="5_opfnp"]
 [ext_resource type="Texture2D" uid="uid://dyx2yn2aysc8" path="res://art/temporary_art/soundplaceholder.svg" id="6_cp0ys"]
 
@@ -146,7 +146,7 @@ theme_override_font_sizes/font_size = 60
 text = "Opti ons"
 horizontal_alignment = 1
 
-[node name="back_btn2" type="Button" parent="OptionsMenu" unique_id=256325513]
+[node name="back_btn" type="Button" parent="OptionsMenu" unique_id=256325513]
 modulate = Color(0.097581215, 0.9999998, 0.9746606, 1)
 self_modulate = Color(0.31044284, 0.9999998, 0.8948056, 1)
 layout_mode = 1
@@ -226,6 +226,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_sl8mc")
 [connection signal="pressed" from="MainButtons/start_btn" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainButtons/options_btn" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MainButtons/quit_btn" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="OptionsMenu/back_btn2" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="OptionsMenu/back_btn" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="OptionsMenu/music_slider" to="OptionsMenu/music_slider" method="_on_value_changed"]
 [connection signal="value_changed" from="OptionsMenu/sound_slider" to="OptionsMenu/sound_slider" method="_on_value_changed"]
