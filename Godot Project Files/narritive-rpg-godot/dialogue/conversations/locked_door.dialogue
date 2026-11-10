@@ -1,0 +1,16 @@
+~ start
+if Global.wife_dialogue_progress == 2:
+	PC: It’s unlocked? 
+	PC: Interesting. 
+	PC: I guess I can just leave now…but I still feel like I’m…
+	PC: …missing something. 
+	=> END
+if Global.wife_dialogue_progress == 3:
+	=> END
+else:
+	PC: Huh?
+	PC: It’s locked…
+	PC: (It doesn’t look like anything is jammed…what’s keeping it closed?)
+
+W: …
+=> END

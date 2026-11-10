@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dj7ec8t4e6mg8"
+path="res://.godot/imported/npc2_wife_car.dialogue-942a3b34158ac8af409e9d5776e2e3a2.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/npc2_wife_car.dialogue"
+dest_files=["res://.godot/imported/npc2_wife_car.dialogue-942a3b34158ac8af409e9d5776e2e3a2.tres"]
+
+[params]
+
+defaults=true

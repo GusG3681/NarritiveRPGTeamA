@@ -11,6 +11,8 @@ extends Control
 @onready var submit_button: Button = %SubmitButton
 @onready var responses_overlay: ColorRect = %ResponsesOverlay
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var black_screen = %BlackScreen
+@onready var animation_player = $AnimationPlayer
 
 
 var favourite_food: String = ""
@@ -19,15 +21,20 @@ var guess: int = 0
 var tries: int = 0
 var guess_is_number: bool = false
 
+#if it's true calls a fade out at the end of the conversation
+var should_fade_out: bool = false
+var should_fade_out_long: bool = false
+
+var dialogue_has_ended: bool = false
 
 signal dialogue_finished
-
+signal on_transition_finished
 
 #region Hooks
 
 
 func _ready() -> void:
-	dialogue_box.dialogue_line = await dialogue_resource.get_next_dialogue_line("start")
+	dialogue_box.visible = false
 	dialogue_box.grab_focus()
 
 	answer_overlay.hide()
@@ -35,9 +42,28 @@ func _ready() -> void:
 
 	scroll.get_v_scroll_bar().share(v_scroll_bar)
 
-
+	# fading color rect only appears when it's needed
+	black_screen.visible = false
+	# connects siganls to animation player
+	animation_player.animation_finished.connect(_on_animation_finished)
+	
 #endregion
 
+func start_dialogue(blackscreen: bool = false, skip_fade: bool = false, fade_long: bool = false) -> void:
+	if blackscreen:
+		if skip_fade:
+			instant_black()
+		else:
+			fade_in()
+		await on_transition_finished
+		if fade_long:
+			should_fade_out_long = true
+		else:
+			should_fade_out = true
+	dialogue_box.visible = true
+	dialogue_box.dialogue_line = await dialogue_resource.get_next_dialogue_line("start")
+	show_text()
+	
 #region Mutations
 
 
@@ -60,7 +86,6 @@ func ask_for_number() -> int:
 	tries += 1
 	return answer_edit.text.to_int()
 
-
 #endregion
 
 #region Helpers
@@ -68,10 +93,19 @@ func ask_for_number() -> int:
 
 func next_line(next_id: String) -> void:
 	var next_dialogue_line: DialogueLine = await dialogue_resource.get_next_dialogue_line(next_id)
-	print("next line")
 	if not is_instance_valid(next_dialogue_line): 
-		dialogue_finished.emit()
-		print("Dialogue Finished")
+		if dialogue_has_ended == false:
+			dialogue_has_ended = true
+			if should_fade_out_long:
+				fade_out_long()
+				await on_transition_finished
+			if should_fade_out:
+				fade_out()
+				await on_transition_finished
+			if not should_fade_out_long: 
+				hide_text()
+				await on_transition_finished
+			dialogue_finished.emit()
 		return
 
 	if next_dialogue_line.type == DMConstants.TYPE_RESPONSE:
@@ -94,17 +128,53 @@ func handle_click(event: InputEvent) -> void:
 	var is_left_click: bool = event.is_pressed() and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
 	var is_accept_key: bool = event.is_action_pressed("ui_accept")
 	if is_left_click or is_accept_key:
+		
 		get_viewport().set_input_as_handled()
 		if dialogue_box.is_typing:
 			dialogue_box.skip_typing()
 		else:
 			next_line(dialogue_box.dialogue_line.next_id)
 
+func fade_in() -> void:
+	black_screen.visible = true
+	animation_player.play("fade_to_black")
+
+func fade_out() -> void:
+	black_screen.visible = true
+	animation_player.play("fade_to_normal")
+
+func fade_out_long() -> void:
+	black_screen.visible = true
+	animation_player.play("fade_to_normal_long")
+
+func instant_black() -> void:
+	black_screen.visible = true
+	animation_player.play("set_to_black")
+	
+func show_text() -> void:
+	animation_player.play("show_text")
+	
+func hide_text() -> void:
+	animation_player.play("hide_text")
+
 
 #endregion
 
 #region Signals
 
+func _on_animation_finished(anim_name):
+	if anim_name == "fade_to_black":
+		on_transition_finished.emit()
+	if anim_name == "fade_to_normal":
+		black_screen.visible = false
+		on_transition_finished.emit()
+	if anim_name == "set_to_black":
+		on_transition_finished.emit()
+	if anim_name == "fade_to_normal_long":
+		on_transition_finished.emit()
+	if anim_name == "hide_text":
+		on_transition_finished.emit()
+	pass
 
 func _on_gui_input(event: InputEvent) -> void:
 	handle_click(event)

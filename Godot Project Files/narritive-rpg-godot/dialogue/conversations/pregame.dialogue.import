@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://c3pxud1u6h03o"
+path="res://.godot/imported/pregame.dialogue-79291094a31f9687b36886010e58fcf6.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/pregame.dialogue"
+dest_files=["res://.godot/imported/pregame.dialogue-79291094a31f9687b36886010e58fcf6.tres"]
+
+[params]
+
+defaults=true
