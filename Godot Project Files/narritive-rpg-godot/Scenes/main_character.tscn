@@ -1,25 +1,40 @@
 [gd_scene format=3 uid="uid://ctbwwpa1v6vg2"]
 
-[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://Scripts/main_character.gd" id="1_nrcqd"]
-
-[sub_resource type="Gradient" id="Gradient_0eyao"]
-colors = PackedColorArray(0.9019608, 0, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_11o2n"]
-gradient = SubResource("Gradient_0eyao")
+[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://scripts/main_character.gd" id="1_nrcqd"]
+[ext_resource type="Texture2D" uid="uid://d0er7srt2swwn" path="res://art/temporary_art/backgroundremoved_main_character_concept.png" id="2_ig48j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]
-size = Vector2(12.999992, 13)
+size = Vector2(15.199999, 19.675)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e3e5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ig48j")
+}],
+"loop": 1,
+"name": &"Stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ig48j")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [node name="MainCharacter" type="CharacterBody2D" unique_id=658210933 groups=["player"]]
 script = ExtResource("1_nrcqd")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1975103307]
-position = Vector2(-1, 128)
-scale = Vector2(2, 4)
-texture = SubResource("GradientTexture2D_11o2n")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839244148]
-position = Vector2(-0.99993134, 128.00006)
+position = Vector2(2, 196.25002)
 scale = Vector2(10, 20)
 shape = SubResource("RectangleShape2D_e3e5j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1899441167]
+position = Vector2(2.0000002, 192.00003)
+scale = Vector2(0.18, 0.18)
+sprite_frames = SubResource("SpriteFrames_e3e5j")
+animation = &"Walk"
