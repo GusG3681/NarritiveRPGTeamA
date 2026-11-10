@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://canuk851uyopb" path="res://Scenes/memory.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://cj1e0lw6efe8o" path="res://Scenes/intercom.tscn" id="14_trtic"]
 [ext_resource type="Script" uid="uid://dio0ybgpmir2e" path="res://Scenes/main_camera.gd" id="15_ir15t"]
-[ext_resource type="Script" uid="uid://dgtd0pequmw62" path="res://Scripts/inventory.gd" id="16_nnt18"]
+[ext_resource type="PackedScene" uid="uid://cdb2ac6v36glf" path="res://Scenes/inventory_menu.tscn" id="17_ewbju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xj16"]
 size = Vector2(13029, 68)
@@ -527,8 +527,7 @@ limit_bottom = 445
 script = ExtResource("15_ir15t")
 SPEED = 0.7
 
-[node name="Inventory" type="Node2D" parent="." unique_id=909913232]
-script = ExtResource("16_nnt18")
+[node name="InventoryMenu" parent="." unique_id=1181407074 instance=ExtResource("17_ewbju")]
 
 [connection signal="body_entered" from="car_starter/music_trigger" to="car_starter/music_trigger" method="_on_body_entered"]
 [connection signal="body_exited" from="car_starter/music_trigger" to="car_starter/music_trigger" method="_on_body_exited"]

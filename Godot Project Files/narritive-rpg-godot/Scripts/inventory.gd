@@ -1,12 +1,22 @@
 extends Node2D
 
+signal inventory_changed
+
+@export var max_items: int = 12
+
 # Array to hold the items picked up in the inventory
 var inventory: Array[Dictionary] = [];
 
-func add_item(item_data: Dictionary) -> void:
-		inventory.append(item_data)
-		print("Picked up an item: ", item_data.name)
-		print("Current inventory: ", inventory.map(func(item): return item.name))
+func add_item(item_data: Dictionary) -> bool:
+	if inventory.size() >= max_items:
+		print("Full inventory, couldn't pick up: ", item_data.name)
+		return false
+	
+	inventory.append(item_data)
+	print("Picked up an item: ", item_data.name)
+	print("Current inventory: ", inventory.map(func(item): return item.name))
+	inventory_changed.emit()
+	return true
 		
 func pop_item(item_name: String) -> Dictionary:
 		for i in range(inventory.size()):
@@ -14,6 +24,7 @@ func pop_item(item_name: String) -> Dictionary:
 				var removed_item = inventory.pop_at(i)
 				print("Removed item: ", item_name)
 				print("Current inventory: ", inventory.map(func(item): return item.name))
+				inventory_changed.emit()
 				return removed_item
 		return {}
 		
