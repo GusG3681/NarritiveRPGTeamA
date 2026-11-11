@@ -34,6 +34,7 @@ signal on_transition_finished
 
 
 func _ready() -> void:
+	
 	dialogue_box.visible = false
 	dialogue_box.grab_focus()
 
