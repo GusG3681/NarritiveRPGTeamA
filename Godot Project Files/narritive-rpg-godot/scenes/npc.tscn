@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://gwoxytlufvqa" path="res://art/temporary_art/Ghost Png.png" id="2_abqhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]
-size = Vector2(290, 220)
+size = Vector2(174, 220)
 
 [node name="NPC" type="Node2D" unique_id=1223202182]
 z_index = -1
@@ -18,7 +18,7 @@ texture = ExtResource("2_abqhh")
 [node name="Area2D" type="Area2D" parent="." unique_id=616734323]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1377828194]
-position = Vector2(145, 110)
+position = Vector2(144, 110)
 shape = SubResource("RectangleShape2D_e3e5j")
 
 [node name="RandomSpeech" type="Label" parent="." unique_id=1311656754]

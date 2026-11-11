@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dt0b36p3e3lpf"
+path="res://.godot/imported/daughter_interaction.dialogue-7a2054bbba5f68bf4fd633d0315a499d.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/daughter_interaction.dialogue"
+dest_files=["res://.godot/imported/daughter_interaction.dialogue-7a2054bbba5f68bf4fd633d0315a499d.tres"]
+
+[params]
+
+defaults=true

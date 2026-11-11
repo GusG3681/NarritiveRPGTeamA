@@ -3,10 +3,13 @@ extends Node2D
 @export var item_name: String = "Memorabilia"
 @export var item_icon: Texture2D
 
+@export var dialogue_resource: DialogueResource = preload("res://dialogue/conversations/dialogue.dialogue")
+
 @onready var interaction_area: Area2D = $Area2D
 @onready var text: Label = $Label
 var player_in_range = false
 
+var game: Node2D
 
 func _ready() -> void:
 	interaction_area.body_entered.connect(_on_body_entered)
@@ -22,6 +25,12 @@ func _process(delta: float) -> void:
 	
 
 func pick_up() -> void:
+	if get_game().player_talking:
+		return
+	
+	if game.has_method("call_dialogue"):
+		game.call_dialogue(dialogue_resource)
+	
 	print("input detected for memory")
 	
 	var item_data = {
@@ -31,6 +40,12 @@ func pick_up() -> void:
 	
 	if Inventory.add_item(item_data):
 		queue_free() # can be added to make the item dissapear after being picked up
+
+func get_game() -> Node2D:
+	if game == null:
+		game = get_tree().current_scene
+	return game
+
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

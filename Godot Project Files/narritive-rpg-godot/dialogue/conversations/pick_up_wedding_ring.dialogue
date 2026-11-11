@@ -2,4 +2,5 @@
 PC: What’s this? 
 PC: A…wedding ring?
 PC: Why is it on the floor?
+$> Global.has_wedding_ring = true
 => END
