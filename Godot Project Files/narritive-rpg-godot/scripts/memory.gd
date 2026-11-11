@@ -21,10 +21,15 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact") and player_in_range:
+		AudioGlobal.interaction = true
 		pick_up()
+	else:
+		AudioGlobal.interaction = false
 	
 
 func pick_up() -> void:
+	AudioGlobal.play_sfx()
+	AudioGlobal.interaction = false
 	if get_game().player_talking:
 		return
 	
