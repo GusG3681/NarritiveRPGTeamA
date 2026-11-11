@@ -36,7 +36,10 @@ func setup_normal() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact") and player_in_range:
+		AudioGlobal.interaction = true
+		AudioGlobal.play_sfx()
 		interact()
+		AudioGlobal.interaction = false
 
 func interact() -> void:
 	if get_game().player_talking:

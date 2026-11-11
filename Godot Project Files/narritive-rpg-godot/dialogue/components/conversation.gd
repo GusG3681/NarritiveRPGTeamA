@@ -34,7 +34,7 @@ signal on_transition_finished
 
 
 func _ready() -> void:
-	
+	AudioGlobal.dialogue = true
 	dialogue_box.visible = false
 	dialogue_box.grab_focus()
 
@@ -45,12 +45,14 @@ func _ready() -> void:
 
 	# fading color rect only appears when it's needed
 	black_screen.visible = false
+	
 	# connects siganls to animation player
 	animation_player.animation_finished.connect(_on_animation_finished)
 	
 #endregion
 
 func start_dialogue(blackscreen: bool = false, skip_fade: bool = false, fade_long: bool = false) -> void:
+	AudioGlobal.play_sfx()
 	if blackscreen:
 		if skip_fade:
 			instant_black()
@@ -93,6 +95,7 @@ func ask_for_number() -> int:
 
 
 func next_line(next_id: String) -> void:
+	AudioGlobal.play_sfx()
 	var next_dialogue_line: DialogueLine = await dialogue_resource.get_next_dialogue_line(next_id)
 	if not is_instance_valid(next_dialogue_line): 
 		if dialogue_has_ended == false:
@@ -129,7 +132,6 @@ func handle_click(event: InputEvent) -> void:
 	var is_left_click: bool = event.is_pressed() and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
 	var is_accept_key: bool = event.is_action_pressed("ui_accept")
 	if is_left_click or is_accept_key:
-		
 		get_viewport().set_input_as_handled()
 		if dialogue_box.is_typing:
 			dialogue_box.skip_typing()
@@ -154,6 +156,7 @@ func instant_black() -> void:
 	
 func show_text() -> void:
 	animation_player.play("show_text")
+	
 	
 func hide_text() -> void:
 	animation_player.play("hide_text")

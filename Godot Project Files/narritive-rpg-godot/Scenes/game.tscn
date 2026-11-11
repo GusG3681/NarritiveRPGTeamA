@@ -373,6 +373,12 @@ Vector2i(6, 6): {
 }
 }
 
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_6a4tp"]
+loop = false
+fade_time = 0.5
+stream_count = 1
+stream_0 = ExtResource("10_vs120")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xj16"]
 size = Vector2(13029, 58.888)
 
@@ -617,7 +623,8 @@ autoplay = true
 bus = &"Music"
 
 [node name="dialogueSFX" type="AudioStreamPlayer" parent="WorldAudioManager" unique_id=1377423656]
-stream = ExtResource("10_vs120")
+stream = SubResource("AudioStreamPlaylist_6a4tp")
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="interactionSFX" type="AudioStreamPlayer" parent="WorldAudioManager" unique_id=2100284821]
