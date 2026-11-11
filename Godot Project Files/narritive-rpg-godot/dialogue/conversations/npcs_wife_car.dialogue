@@ -1,6 +1,6 @@
 ~ start
 NPCS: What will you buy today?
-if Global.has_interacted_with_wife == false:
+if Global.wife_dialogue_progress < 1:
 	PC: What?
 	NPCS: What will you buy today?
 	PC: There’s nothing to buy. 
@@ -13,6 +13,7 @@ else
 		PC: What?
 		NPCS: What?
 		PC: …
+		$> Global.has_alcohol_bottle = true
 		=> END
 	- A bag of fruit
 		NPCS: We don't carry that.

@@ -1,10 +1,5 @@
 extends Node2D
 
-@export var speech = [
-	"Hello there",
-	"frick you",
-	"Imma a projection"
-	]
 @export var dialogue_resource: DialogueResource = preload("res://dialogue/conversations/dialogue.dialogue")
 
 #if the npc is a main character
@@ -40,12 +35,10 @@ func setup_normal() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Interact") and player_in_range and important:
+	if Input.is_action_just_pressed("Interact") and player_in_range:
 		interact()
 
 func interact() -> void:
-	print("Interacted with important npc")
-	
 	if get_game().player_talking:
 		return
 	
@@ -61,13 +54,8 @@ func get_game() -> Node2D:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
-		print(speech.size())
-		if important:
-			interaction_text.visible = true
-		else:
-			curSpeech = randi() % speech.size()
-			random_text.text = speech[curSpeech]
-			random_text.visible = true
+		interaction_text.visible = true
+
 		print("entered")
 
 func _on_body_exited(body: Node2D) -> void:

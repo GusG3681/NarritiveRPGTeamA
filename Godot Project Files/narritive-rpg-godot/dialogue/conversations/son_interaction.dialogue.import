@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bpun4twkngkph"
+path="res://.godot/imported/son_interaction.dialogue-148919618dff7e205073582659b91798.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/son_interaction.dialogue"
+dest_files=["res://.godot/imported/son_interaction.dialogue-148919618dff7e205073582659b91798.tres"]
+
+[params]
+
+defaults=true

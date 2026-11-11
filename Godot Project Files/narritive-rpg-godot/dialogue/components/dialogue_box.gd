@@ -53,6 +53,12 @@ const CHARACTERS = {
 		name = "PASSENGER",
 		side = "right",
 		color = Color("392c31")
+	},
+	npcs = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("5a555a")
 	}
 }
 

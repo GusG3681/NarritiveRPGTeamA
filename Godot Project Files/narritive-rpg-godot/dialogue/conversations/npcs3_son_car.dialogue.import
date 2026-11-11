@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://diyhp1iphfd53"
+path="res://.godot/imported/npcs3_son_car.dialogue-a1b9ad91110af2f82ab995fc82bbd480.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/npcs3_son_car.dialogue"
+dest_files=["res://.godot/imported/npcs3_son_car.dialogue-a1b9ad91110af2f82ab995fc82bbd480.tres"]
+
+[params]
+
+defaults=true

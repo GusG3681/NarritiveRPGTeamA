@@ -13,7 +13,7 @@ if Global.wife_dialogue_progress == 1 and Global.has_wedding_ring:
 
 	#Flashback
 
-	W: Welcome home, Name.
+	W: Welcome home, {{Global.father_name}}.
 
 	PC: …
 
@@ -57,7 +57,7 @@ elif Global.wife_dialogue_progress == 2 and Global.has_alcohol_bottle:
 	PC: I don’t give a rat’s ass about your worry - hic. 
 	PC: Now leave me alone. 
 
-	W: Name...
+	W: {{Global.father_name}}...
 
 	PC: I said leave me alone!
 
