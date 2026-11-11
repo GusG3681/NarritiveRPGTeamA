@@ -7,7 +7,6 @@ var car_npc_state: String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_car = AudioGlobal.current_car
-	current_car = "starter"
 	car_npc_state = AudioGlobal.current_car_npc
 	car_npc_state = "hidden"
 	
@@ -22,15 +21,15 @@ func _process(delta: float) -> void:
 		update_music()
 		
 func update_music():
-	var current_car_music: String = "TempMusic1"
+	var current_car_music: String = ""
 	
 	var pick_music: Dictionary = {
-		"starter": {"revealed": "TempMusic1", "hidden": "TempMusic1"},
-		"car1":    {"revealed": "TempMusic2", "hidden": "TempMusic2"}, # Wife Car
+		"starter": {"revealed": "Ambience", "hidden": "Ambience"},
+		"car1":    {"revealed": "WifeRevealed", "hidden": "WifeHidden"}, # Wife Car
 		"car2":    {"revealed": "DaughterRevealed", "hidden": "DaughterHidden"}, # Daughter Car
-		"car3":    {"revealed": "TempMusic2", "hidden": "TempMusic2"}, # Son Car
-		"back_car":  {"revealed": "TempMusic1", "hidden": "TempMusic1"},
-		"front_car": {"revealed": "TempMusic1", "hidden": "TempMusic1"}
+		"car3":    {"revealed": "SonVoiced", "hidden": "SonInstrum"}, # Son Car
+		"back_car":  {"revealed": "Ambience", "hidden": "Ambience"},
+		"front_car": {"revealed": "Ambience", "hidden": "Ambience"}
 	}
 	
 	print(current_car)

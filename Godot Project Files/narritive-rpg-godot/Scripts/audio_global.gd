@@ -8,3 +8,6 @@ var sfx_vol: int
 var current_car_npc: String
 # this is the state of the current car's npc, so the 
 # string would be "revealed" or "hidden"
+
+#func play_dialogue_sfx() -> :
+	

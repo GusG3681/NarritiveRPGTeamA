@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctbwwpa1v6vg2"]
 
-[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://scripts/main_character.gd" id="1_nrcqd"]
+[ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://Scripts/main_character.gd" id="1_nrcqd"]
 [ext_resource type="Texture2D" uid="uid://d0er7srt2swwn" path="res://art/temporary_art/backgroundremoved_main_character_concept.png" id="2_ig48j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]

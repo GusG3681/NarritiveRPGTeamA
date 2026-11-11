@@ -13,7 +13,6 @@ func _update_car() -> void:
 	if str(get_node("..")).begins_with("car_starter"):
 		AudioGlobal.current_car = "starter"
 	elif str(get_node("..")).begins_with("car1"):
-		print("swap")
 		AudioGlobal.current_car = "car1"
 	elif str(get_node("..")).begins_with("car2"):
 		AudioGlobal.current_car = "car2"
@@ -25,5 +24,6 @@ func _update_car() -> void:
 		AudioGlobal.current_car = "back_car"
 
 func _on_body_entered(body: Node2D) -> void:
-	_update_car()
+	if body.is_in_group('player'):
+		_update_car()
 		
