@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://f87wpyynwv7t" path="res://art/temporary_art/Polarid-Photo-Print.jpg" id="2_au0oe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]
-size = Vector2(340, 260)
+size = Vector2(250, 260)
 
 [node name="Memory" type="Node2D" unique_id=1269942407]
 z_index = -1

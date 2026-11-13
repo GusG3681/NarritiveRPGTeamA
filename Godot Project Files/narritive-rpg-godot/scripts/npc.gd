@@ -85,6 +85,7 @@ func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = false
 		random_text.visible = false
+		interaction_text.visible = false
 		if important:
-			interaction_text.visible = false
+			pass
 		#print("exited")
