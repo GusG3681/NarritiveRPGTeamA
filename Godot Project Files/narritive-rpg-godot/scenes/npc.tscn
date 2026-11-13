@@ -1,10 +1,34 @@
 [gd_scene format=3 uid="uid://h1gtmgwfpjuv"]
 
-[ext_resource type="Script" uid="uid://cwoqvr07g40ln" path="res://Scripts/npc.gd" id="1_nh2m4"]
+[ext_resource type="Script" uid="uid://cwoqvr07g40ln" path="res://scripts/npc.gd" id="1_nh2m4"]
 [ext_resource type="Texture2D" uid="uid://gwoxytlufvqa" path="res://art/temporary_art/Ghost Png.png" id="2_abqhh"]
+[ext_resource type="Texture2D" uid="uid://oprnd4qd1blp" path="res://art/Scribble2.png" id="3_tl2vt"]
+[ext_resource type="Texture2D" uid="uid://c853qw8jom56t" path="res://art/Scribble4.png" id="4_hwkja"]
+[ext_resource type="Texture2D" uid="uid://clpftdfogishj" path="res://art/Scribble1.png" id="5_0tygy"]
+[ext_resource type="Texture2D" uid="uid://ccxkkcsr38gdg" path="res://art/Scribble3.png" id="6_sptji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]
 size = Vector2(174, 220)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e3e5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tl2vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hwkja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0tygy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sptji")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="NPC" type="Node2D" unique_id=1223202182]
 z_index = -1
@@ -35,3 +59,8 @@ offset_bottom = 5.0
 theme_override_font_sizes/font_size = 40
 text = "Interact"
 horizontal_alignment = 1
+
+[node name="ScribbleImage" type="AnimatedSprite2D" parent="." unique_id=1588810697]
+position = Vector2(150, 84)
+scale = Vector2(0.31250003, 0.2734375)
+sprite_frames = SubResource("SpriteFrames_e3e5j")

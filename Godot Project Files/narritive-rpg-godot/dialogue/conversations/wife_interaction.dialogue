@@ -85,6 +85,7 @@ elif Global.wife_dialogue_progress == 3:
 	W: And perhaps that’s why…I give you this.
 
 	$> Global.has_divorce_papers = true
+	$> Events.finished_wife_car.emit()
 
 
 	PC: …

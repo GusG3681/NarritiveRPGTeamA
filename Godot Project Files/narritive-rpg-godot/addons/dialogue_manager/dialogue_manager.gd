@@ -126,7 +126,6 @@ func _ready() -> void:
 func reseed_randomizer(next_seed: int) -> void:
 	_rng.seed = next_seed
 
-
 # Receive messages from the debugger
 func _capture(message: String, data: Array) -> bool:
 	match message:

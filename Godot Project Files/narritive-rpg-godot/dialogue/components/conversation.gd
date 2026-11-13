@@ -49,6 +49,10 @@ func _ready() -> void:
 	# connects siganls to animation player
 	animation_player.animation_finished.connect(_on_animation_finished)
 	
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("Skip"):
+		dialogue_finished.emit()
 #endregion
 
 func start_dialogue(blackscreen: bool = false, skip_fade: bool = false, fade_long: bool = false) -> void:

@@ -4,10 +4,20 @@ extends Node2D
 
 #if the npc is a main character
 @export var important = false
+#
+@export var imageOffset = Vector2(0,0)
+#location of scribble
+@export var scribbleOffset = Vector2(0, 0)
 
+@export var NPCImageTexture = "res://art/temporary_art/shadow.png"
+@export var NPCImageScale = Vector2(0.7, 0.7)
+
+@onready var npc_image = $Sprite2D
 @onready var interaction_area: Area2D = $Area2D
 @onready var random_text: Label = $RandomSpeech
 @onready var interaction_text: Label = $InteractText
+@onready var scribble_image = $ScribbleImage
+
 
 var game: Node2D
 
@@ -20,18 +30,28 @@ func _ready() -> void:
 	interaction_area.body_exited.connect(_on_body_exited)
 	random_text.visible = false
 	interaction_text.visible = false
+	
+	npc_image.position += imageOffset
+	npc_image.scale = NPCImageScale
+	
 	if important:
 		setup_important()
 	else:
 		setup_normal()
 
 func setup_important() -> void:
-	$Sprite2D.texture = load("res://art/temporary_art/shadow.png")
-	
+	npc_image.texture = load(NPCImageTexture)
+	scribble_image.position += scribbleOffset
+	scribble_image.play("default")
 
 func setup_normal() -> void:
-	pass
+	scribble_image.visible = false
 	
+
+func scribble_turn_off() -> void:
+	for i in range(100):
+		await get_tree().create_timer(0.05).timeout
+		scribble_image.modulate.a -= 0.01
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
