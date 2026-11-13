@@ -55,6 +55,7 @@ func _ready() -> void:
 	Events.bad_ending.connect(_on_bad_ending)
 	Events.settings_request.connect(_on_settings_request)
 	Events.exit_request.connect(_on_exit_request)
+	Events.finished_wife_car.connect(_on_finished_wife_car_recieved)
 	
 	is_pregame_dialogue = true
 	call_dialogue(autorun_dialogue.pregame.script, true, true, true)
@@ -62,13 +63,10 @@ func _ready() -> void:
 
 #rando stuff
 var INTERCOMTAUNTS1 = ["You suck", "do better", "I am the intercom Angel"]
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if countdown > 0:
-		countdown -=1
-	else:
-		intercom_speak(INTERCOMTAUNTS1[randi() % INTERCOMTAUNTS1.size()])
-		countdown = countReset
+	pass
 
 func intercom_speak(speech) -> void:
 	var current = ""
@@ -124,3 +122,7 @@ func _on_dialogue_finished() -> void:
 		await get_tree().create_timer(2).timeout
 		player_talking = false
 	
+
+
+func _on_finished_wife_car_recieved() -> void:
+	$Wife.scribble_turn_off()
