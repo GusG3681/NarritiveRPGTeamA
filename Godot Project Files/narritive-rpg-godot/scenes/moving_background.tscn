@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://151hebrw1wge"]
+
+[ext_resource type="Texture2D" uid="uid://d4eyowkmy67c5" path="res://art/WindowBackground_Standard.png" id="1_3jnsj"]
+[ext_resource type="Script" uid="uid://te77mk5oaf20" path="res://scripts/moving_background.gd" id="1_5bp0p"]
+
+[node name="moving_background" type="Node2D" unique_id=1197881961]
+z_index = -4
+script = ExtResource("1_5bp0p")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=337743220]
+offset_right = 2100.0
+offset_bottom = 645.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1488463907]
+handle_input_locally = false
+size = Vector2i(2100, 645)
+render_target_update_mode = 4
+
+[node name="Background1" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1665431131]
+position = Vector2(1082, 244)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_3jnsj")
+
+[node name="Background2" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=317458446]
+position = Vector2(386, 277)
+scale = Vector2(0.7, 0.894)
+texture = ExtResource("1_3jnsj")

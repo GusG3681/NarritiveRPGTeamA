@@ -9,7 +9,7 @@ extends Node2D
 #location of scribble
 @export var scribbleOffset = Vector2(0, 0)
 
-@export var NPCImageTexture = "res://art/temporary_art/shadow.png"
+@export var NPCImageTexture = preload("res://art/temporary_art/shadow.png")
 @export var NPCImageScale = Vector2(0.7, 0.7)
 
 @onready var npc_image = $Sprite2D
@@ -40,7 +40,7 @@ func _ready() -> void:
 		setup_normal()
 
 func setup_important() -> void:
-	npc_image.texture = load(NPCImageTexture)
+	npc_image.texture = NPCImageTexture
 	scribble_image.position += scribbleOffset
 	scribble_image.play("default")
 
