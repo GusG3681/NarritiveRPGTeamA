@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d0er7srt2swwn" path="res://art/temporary_art/backgroundremoved_main_character_concept.png" id="2_ig48j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]
-size = Vector2(15.199999, 19.675)
+size = Vector2(13.099998, 19.675)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e3e5j"]
 animations = [{
@@ -29,7 +29,7 @@ animations = [{
 script = ExtResource("1_nrcqd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839244148]
-position = Vector2(2, 196.25002)
+position = Vector2(1.500001, 196.25002)
 scale = Vector2(10, 20)
 shape = SubResource("RectangleShape2D_e3e5j")
 
