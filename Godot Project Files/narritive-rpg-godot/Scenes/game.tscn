@@ -34,6 +34,7 @@
 [ext_resource type="Shader" uid="uid://dr3rjw6uvakq3" path="res://Scenes/game.gdshader" id="22_mg4q0"]
 [ext_resource type="Resource" uid="uid://dc20rfyqbqafk" path="res://dialogue/conversations/pick_up_wedding_ring.dialogue" id="24_8m3t6"]
 [ext_resource type="Resource" uid="uid://dnmdvkbo37t8k" path="res://dialogue/conversations/wife_interaction.dialogue" id="24_oeip8"]
+[ext_resource type="Texture2D" uid="uid://xymjef7g4isc" path="res://art/RingWife.png" id="26_0sl42"]
 [ext_resource type="Resource" uid="uid://coirag21761u2" path="res://dialogue/conversations/npc3_daughter_car.dialogue" id="26_f3c8l"]
 [ext_resource type="Resource" uid="uid://bh18hvwcxwfdb" path="res://dialogue/conversations/npc4_daughter_car.dialogue" id="27_bu0y5"]
 [ext_resource type="Resource" uid="uid://toaxol6lbqrx" path="res://dialogue/conversations/npcs2_daughter_car.dialogue" id="28_6a4tp"]
@@ -44,6 +45,7 @@
 [ext_resource type="Resource" uid="uid://diyhp1iphfd53" path="res://dialogue/conversations/npcs3_son_car.dialogue" id="33_titue"]
 [ext_resource type="Resource" uid="uid://cu5ti5js4gh6n" path="res://dialogue/conversations/memorabilia3_picked_up.dialogue" id="34_tt7mg"]
 [ext_resource type="Resource" uid="uid://bpun4twkngkph" path="res://dialogue/conversations/son_interaction.dialogue" id="35_htg8p"]
+[ext_resource type="PackedScene" uid="uid://151hebrw1wge" path="res://scenes/moving_background.tscn" id="43_05nbr"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_bxfb1"]
 stream_count = 1
@@ -817,9 +819,9 @@ shape = SubResource("RectangleShape2D_ukjcv")
 
 [node name="car2" type="Sprite2D" parent="." unique_id=1580473790]
 z_index = -2
-position = Vector2(2577.345, 47)
-scale = Vector2(1.306, 0.7)
-texture = ExtResource("4_v158k")
+position = Vector2(2577.345, 122)
+scale = Vector2(0.555, 0.6)
+texture = ExtResource("8_ssvqc")
 
 [node name="music_trigger" type="Area2D" parent="car2" unique_id=492686992]
 script = ExtResource("4_ldgsr")
@@ -1055,7 +1057,9 @@ position = Vector2(-300, 81)
 dialogue_resource = ExtResource("22_ese38")
 
 [node name="Memory" parent="." unique_id=1269942407 instance=ExtResource("10_vtaks")]
-position = Vector2(-366, 122)
+position = Vector2(-472, 360)
+item_icon = ExtResource("26_0sl42")
+item_scale = Vector2(0.25, 0.25)
 dialogue_resource = ExtResource("24_8m3t6")
 
 [node name="Wife" parent="." unique_id=2086425241 instance=ExtResource("9_0tnpc")]
@@ -1064,7 +1068,6 @@ dialogue_resource = ExtResource("24_oeip8")
 important = true
 imageOffset = Vector2(0, 30)
 scribbleOffset = Vector2(-10, -75)
-NPCImageTexture = "res://art/wifenpc_coloreddraft.png"
 NPCImageScale = Vector2(0.112, 0.112)
 
 [node name="NPC3" parent="." unique_id=1367143998 instance=ExtResource("9_0tnpc")]
@@ -1204,6 +1207,18 @@ libraries/ = SubResource("AnimationLibrary_fkdbe")
 [node name="TextScrollerSign" parent="." unique_id=997148403 instance=ExtResource("20_1kice")]
 position = Vector2(-2500, -132)
 scale = Vector2(0.6, 0.6)
+
+[node name="StarterBackground" parent="." unique_id=1197881961 instance=ExtResource("43_05nbr")]
+position = Vector2(-3978, -222)
+
+[node name="WifeBackground" parent="." unique_id=121032798 instance=ExtResource("43_05nbr")]
+position = Vector2(-1044, -157)
+
+[node name="DaughterBackground" parent="." unique_id=1813861701 instance=ExtResource("43_05nbr")]
+position = Vector2(1501, -178)
+
+[node name="SonBackground" parent="." unique_id=36634202 instance=ExtResource("43_05nbr")]
+position = Vector2(4086, -189)
 
 [connection signal="body_entered" from="front_car/music_trigger" to="front_car/music_trigger" method="_on_body_entered"]
 [connection signal="body_entered" from="car_starter/music_trigger" to="car_starter/music_trigger" method="_on_body_entered"]

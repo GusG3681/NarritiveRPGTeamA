@@ -1,7 +1,9 @@
 extends Node2D
 
 @export var item_name: String = "Memorabilia"
-@export var item_icon: Texture2D
+@export var item_icon: Texture2D = preload("res://art/temporary_art/Polarid-Photo-Print.jpg")
+
+@export var item_scale = Vector2(0.1, 0.1)
 
 @export var dialogue_resource: DialogueResource = preload("res://dialogue/conversations/dialogue.dialogue")
 
@@ -15,6 +17,8 @@ func _ready() -> void:
 	interaction_area.body_entered.connect(_on_body_entered)
 	interaction_area.body_exited.connect(_on_body_exited)
 	text.visible = false
+	$Sprite2D.texture = item_icon
+	$Sprite2D.scale = item_scale
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
