@@ -59,6 +59,42 @@ const CHARACTERS = {
 		name = "PASSENGER",
 		side = "right",
 		color = Color("5a555a")
+	},
+	npc3 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("392c31")
+	},
+	npc4 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("392c31")
+	},
+	npcs2 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("5a555a")
+	},
+	npc5 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("392c31")
+	},
+	npc6 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("392c31")
+	},
+	npcs3 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("5a555a")
 	}
 }
 

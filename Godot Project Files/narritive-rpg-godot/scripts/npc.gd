@@ -32,6 +32,9 @@ func setup_important() -> void:
 func setup_normal() -> void:
 	pass
 	
+# Dialogue calls the reveal, whcih passes through global and is called here to change the character's idemtity to the revealed form
+func reveal_identity() -> void:
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

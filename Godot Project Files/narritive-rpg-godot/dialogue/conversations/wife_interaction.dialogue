@@ -20,15 +20,25 @@ if Global.wife_dialogue_progress == 1 and Global.has_wedding_ring:
 	W: Are you-?
 	W: Drunk again, I see. 
 
-	PC: Do you want some?
-	PC: Hic.
+	PC: Do you want some? *Hic* 
 
-	W: Amy needs to write more dialogue for me. I have no agency without my writer overlord.
+	W: …do you remember what day it is today?
+
+	PC: Uh…monday. 
+
+	W: And?
+
+	PC: Bah, what are these questions?
+	PC: I don’t care. 
+
+	W: …
 
 	#End Flashback
 
+	W: It was our anniversary.
+	W: Did you remember? 
 
-	W: …
+	W: …or did you not care? 
 
 	PC: I…
 	PC: (What the hell was that?)
@@ -76,20 +86,33 @@ elif Global.wife_dialogue_progress == 3:
 
 	W: You thought you did. 
 	
-	# WIP
+	$> Global.reveal_charcter("Wife")
 	
-	W: I didn’t hate you. 
-	W: I loved you. 
+	PC: {{Global.wife_name}}! God, I didn’t recognize you!
+
+	W It’s been years since I last recognized you.
+	
+	W: If marriage is made of love, then what happens when there is none?
+	W: When you left me then, alone with the sickly smell, I wondered.
+
+	W: Perhaps this marriage is no longer one of love, but one of emptiness and one of hate. 
+
+	PC: Don’t say such ridiculous things. You’re my wife. You have your duties, and I have mine. That’s what holds the family together.
+
+	W: I can’t bear to see this side of you. It’s this side of you that tore us apart.
+	W: I didn’t used to hate you. 
+	W: I loved you once. 
 	W: But even that…has frosted over. 
 
-	W: And perhaps that’s why…I give you this.
+	PC So that’s how you feel, is it? Well, no that you’ve called down, I’m sure we can work something out. I know you will see things my way.
 
+	W: I’ve already made up my mind. I was just waiting for the chance to give you these.
+ 
 	$> Global.has_divorce_papers = true
 
-
 	PC: …
-	PC: The door is open. 
-	PC: I should go. 
+	W: The door is open. 
+	W: You should go. 
 
 	=> END
 elif Global.wife_dialogue_progress == 0:

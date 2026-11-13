@@ -26,6 +26,10 @@ signal response_selected(response: Variant)
 ## Hide any responses where [code]is_allowed[/code] is false
 @export var hide_failed_responses: bool = false
 
+# Button scene
+var button = preload("res://dialogue/components/button.tscn")
+var alternate: bool = true
+
 ## The list of dialogue responses.
 var responses: Array = []:
 	set(value):
@@ -40,9 +44,12 @@ var _previously_focused_item: Control = null
 
 func _ready() -> void:
 	visibility_changed.connect(func() -> void:
+		print("0")
 		if auto_focus_first_item and visible and get_menu_items().size() > 0:
 			var first_item: Control = get_menu_items()[0]
+			print("1")
 			if first_item.is_inside_tree():
+				print("2")
 				first_item.grab_focus()
 	)
 
@@ -94,7 +101,6 @@ func configure_focus() -> void:
 
 		item.mouse_entered.connect(_on_response_mouse_entered.bind(item))
 		item.gui_input.connect(_on_response_gui_input.bind(item, item.get_meta("response")))
-
 	_previously_focused_item = items[0]
 
 	if auto_focus_first_item:
@@ -125,11 +131,22 @@ func _apply_responses() -> void:
 				continue
 
 			var item: Control
+			var label: Label
+			var choice_button: Control
+			
 			if is_instance_valid(response_template):
 				item = response_template.duplicate(DUPLICATE_GROUPS | DUPLICATE_SCRIPTS | DUPLICATE_SIGNALS)
 				item.show()
 			else:
-				item = Button.new()
+				item = button.instantiate()
+				#Sets flip flop rotation
+				print(alternate)
+				if alternate:
+					item.offset_transform_rotation = 0.05
+					alternate = false
+				else:
+					item.offset_transform_rotation = -0.05
+					alternate = true
 			item.name = "Response%d" % get_child_count()
 			if not response.is_allowed:
 				item.name = item.name + &"Disallowed"
@@ -140,8 +157,8 @@ func _apply_responses() -> void:
 				item.response = response
 			# Otherwise assume we can just set the text
 			else:
-				item.text = response.text
-
+				label = item.find_child("Label")
+				label.text = response.text
 			item.set_meta("response", response)
 
 			add_child(item)
@@ -171,8 +188,10 @@ func _on_response_mouse_entered(item: Control) -> void:
 
 
 func _on_response_gui_input(event: InputEvent, item: Control, response: Variant) -> void:
+	print(item.name)
+	print(item.name)
 	if "Disallowed" in item.name: return
-
+	print("1")
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		get_viewport().set_input_as_handled()
 		response_selected.emit(response)
