@@ -8,7 +8,6 @@ var car_npc_state: String
 func _ready() -> void:
 	current_car = AudioGlobal.current_car
 	car_npc_state = AudioGlobal.current_car_npc
-	car_npc_state = "hidden"
 	
 
 
@@ -20,6 +19,18 @@ func _process(delta: float) -> void:
 		current_car = AudioGlobal.current_car
 		update_music()
 		
+	if current_car == 'car1' and AudioGlobal.current_car_npc != AudioGlobal.wife:
+		AudioGlobal.current_car_npc = AudioGlobal.wife
+	if current_car == 'car2' and AudioGlobal.current_car_npc != AudioGlobal.daughter:
+		AudioGlobal.current_car_npc = AudioGlobal.daughter
+	if current_car == 'car3' and AudioGlobal.current_car_npc != AudioGlobal.son:
+		AudioGlobal.current_car_npc = AudioGlobal.son
+		
+	if car_npc_state != AudioGlobal.current_car_npc:
+		car_npc_state = AudioGlobal.current_car_npc
+		update_music()
+		
+			
 func update_music():
 	var current_car_music: String = ""
 	
@@ -36,6 +47,5 @@ func update_music():
 	# Safely fetch the music track or trigger an error if the car/state doesn't exist
 	if pick_music.has(current_car) and pick_music[current_car].has(car_npc_state):
 		current_car_music = pick_music[current_car][car_npc_state]
-
 	bg_music_player.get_stream_playback().switch_to_clip_by_name(current_car_music)
 		

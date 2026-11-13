@@ -2,7 +2,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	AudioGlobal.current_car = "starter"
+	AudioGlobal.current_car = "starter"	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,10 +14,13 @@ func _update_car() -> void:
 		AudioGlobal.current_car = "starter"
 	elif str(get_node("..")).begins_with("car1"):
 		AudioGlobal.current_car = "car1"
+		AudioGlobal.current_car_npc = AudioGlobal.wife
 	elif str(get_node("..")).begins_with("car2"):
 		AudioGlobal.current_car = "car2"
+		AudioGlobal.current_car_npc = AudioGlobal.daughter
 	elif str(get_node("..")).begins_with("car3"):
 		AudioGlobal.current_car = "car3"
+		AudioGlobal.current_car_npc = AudioGlobal.son
 	elif str(get_node("..")).begins_with("front_car"):
 		AudioGlobal.current_car = "front_car"
 	elif str(get_node("..")).begins_with("back"):
@@ -26,4 +29,5 @@ func _update_car() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
 		_update_car()
+		print(AudioGlobal.current_car_npc)
 		
