@@ -60,6 +60,13 @@ func _ready() -> void:
 	is_pregame_dialogue = true
 	call_dialogue(autorun_dialogue.pregame.script, true, true, true)
 	
+	AudioGlobal.current_car_npc = 'hidden'
+	if AudioGlobal.wife == '':
+		AudioGlobal.wife = 'hidden'
+	if AudioGlobal.son == '':
+		AudioGlobal.son = 'hidden'
+	if AudioGlobal.daughter == '':
+		AudioGlobal.daughter = 'hidden'
 
 #rando stuff
 var INTERCOMTAUNTS1 = ["You suck", "do better", "I am the intercom Angel"]
@@ -126,3 +133,5 @@ func _on_dialogue_finished() -> void:
 
 func _on_finished_wife_car_recieved() -> void:
 	$Wife.scribble_turn_off()
+	AudioGlobal.wife = 'revealed'
+	AudioGlobal.current_car_npc = 'revealed'
