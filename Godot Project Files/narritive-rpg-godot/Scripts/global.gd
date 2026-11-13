@@ -31,6 +31,11 @@ func reveal_charcter(character: String) -> void:
 	var game = get_tree().current_scene
 	var char = game.find_child(character)
 	
+func show_memorabilia(memorabilia: String) -> void:
+	var game = get_tree().current_scene
+	var ui = get_tree().get_first_node_in_group("dialogue_layer")
+	var dialogue = ui.get_child(0)
+	dialogue.show_memorabilia(memorabilia)
 
 #func obtained_memorabilia(has_memorabilia: bool) -> void:
 	
