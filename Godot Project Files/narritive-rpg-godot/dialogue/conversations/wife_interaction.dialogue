@@ -114,7 +114,7 @@ elif Global.wife_dialogue_progress == 3:
 	W: I simply stayed sitting down, chewing upon the taste of lost catharsis…waiting for the courage to give you these.
 
 	$> Global.has_divorce_papers = true
-
+	$> Events.finished_wife_car.emit()
 	PC: …
 	W: The door is open. 
 	W: You should go. 
