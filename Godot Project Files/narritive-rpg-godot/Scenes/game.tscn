@@ -1,35 +1,37 @@
 [gd_scene format=4 uid="uid://flpjwrhuf2jt"]
 
-[ext_resource type="Script" uid="uid://br47ffimcneqi" path="res://scripts/game.gd" id="1_yqjtg"]
-[ext_resource type="Script" uid="uid://cdm5xj0mext56" path="res://scripts/world_audio_manager.gd" id="2_85qyi"]
-[ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://scenes/main_character.tscn" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://br47ffimcneqi" path="res://Scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://cdm5xj0mext56" path="res://Scripts/world_audio_manager.gd" id="2_85qyi"]
+[ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://Scenes/main_character.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://coo7t8hfg6oux" path="res://art/temporary_art/true exit.png" id="3_1l0tm"]
 [ext_resource type="AudioStream" uid="uid://dhavykc0vqhl5" path="res://Music/DaughterThemeHidden.wav" id="3_exi56"]
 [ext_resource type="Texture2D" uid="uid://b40fjdtw5song" path="res://art/SubwayBackgroundTemplate.png" id="3_rysoc"]
 [ext_resource type="AudioStream" uid="uid://c8h6fyejpn2kt" path="res://Music/DaughterThemeRevealed.wav" id="4_7t8sx"]
-[ext_resource type="Script" uid="uid://bnuisoccqvcit" path="res://scripts/music_trigger.gd" id="4_ldgsr"]
+[ext_resource type="Script" uid="uid://bnuisoccqvcit" path="res://Scripts/music_trigger.gd" id="4_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://ddxtk3dpae60q" path="res://art/temporary_art/subway.jpg" id="4_v158k"]
 [ext_resource type="Texture2D" uid="uid://bwrrq3fjwutny" path="res://art/temporary_art/gangway.jpg" id="5_h4fw4"]
 [ext_resource type="AudioStream" uid="uid://sn1c21iryukj" path="res://Music/ChildVoiced.wav" id="5_mg4q0"]
-[ext_resource type="Script" uid="uid://colu7hwbp1d6v" path="res://scripts/car_door.gd" id="5_v158k"]
+[ext_resource type="Script" uid="uid://colu7hwbp1d6v" path="res://Scripts/car_door.gd" id="5_v158k"]
 [ext_resource type="Texture2D" uid="uid://c4yaj6yqy4ftt" path="res://art/temporary_art/car door.jpg" id="6_ldgsr"]
 [ext_resource type="AudioStream" uid="uid://dcpwo7wjs4gca" path="res://Music/ChildInstrumental.wav" id="6_vm72l"]
 [ext_resource type="AudioStream" uid="uid://dr61pjokityyn" path="res://Music/NRPGAmbiance.wav" id="7_f3c8l"]
 [ext_resource type="AudioStream" uid="uid://dqnw3808cpry" path="res://Music/WifeThemeHidden.wav" id="8_6a4tp"]
 [ext_resource type="Texture2D" uid="uid://cwsdjr7pjckha" path="res://art/SubwayBackgroundTemplate_Wife.png" id="8_ssvqc"]
-[ext_resource type="PackedScene" uid="uid://h1gtmgwfpjuv" path="res://scenes/npc.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://h1gtmgwfpjuv" path="res://Scenes/npc.tscn" id="9_0tnpc"]
+[ext_resource type="AudioStream" uid="uid://bgvhn46lnpfy6" path="res://Music/WifeThemeRevealed.wav" id="9_631el"]
 [ext_resource type="Texture2D" uid="uid://c0ggr2kahn0jx" path="res://art/FinalCarBackground.png" id="10_ca42v"]
 [ext_resource type="AudioStream" uid="uid://dbeit30j24jy2" path="res://Music/glitch9_dialogue_sfx.wav" id="10_vs120"]
-[ext_resource type="PackedScene" uid="uid://canuk851uyopb" path="res://scenes/memory.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://canuk851uyopb" path="res://Scenes/memory.tscn" id="10_vtaks"]
 [ext_resource type="AudioStream" uid="uid://wk3a2chhyk4c" path="res://Music/glitch8_interaction_sfx.wav" id="11_v2cs8"]
 [ext_resource type="Texture2D" uid="uid://btjv8bkguwsol" path="res://art/SubwayBackgroundTemplate_Son.png" id="12_264po"]
-[ext_resource type="Script" uid="uid://dio0ybgpmir2e" path="res://scripts/main_camera.gd" id="15_ir15t"]
-[ext_resource type="PackedScene" uid="uid://cdb2ac6v36glf" path="res://scenes/inventory_menu.tscn" id="17_ewbju"]
-[ext_resource type="PackedScene" uid="uid://cmt0ocaxrh3jr" path="res://scenes/text_scroller_sign.tscn" id="20_1kice"]
+[ext_resource type="Script" uid="uid://dio0ybgpmir2e" path="res://Scripts/main_camera.gd" id="15_ir15t"]
+[ext_resource type="PackedScene" uid="uid://cdb2ac6v36glf" path="res://Scenes/inventory_menu.tscn" id="17_ewbju"]
+[ext_resource type="PackedScene" uid="uid://cmt0ocaxrh3jr" path="res://Scenes/text_scroller_sign.tscn" id="20_1kice"]
 [ext_resource type="Resource" uid="uid://brhnaeaeo3w2u" path="res://dialogue/conversations/npc1_wife_car.dialogue" id="20_mucmn"]
-[ext_resource type="Script" uid="uid://cwxeat2qq788h" path="res://scripts/pause_menu.gd" id="21_7t8sx"]
+[ext_resource type="Script" uid="uid://cwxeat2qq788h" path="res://Scripts/pause_menu.gd" id="21_7t8sx"]
 [ext_resource type="Resource" uid="uid://dj7ec8t4e6mg8" path="res://dialogue/conversations/npc2_wife_car.dialogue" id="21_8m3t6"]
 [ext_resource type="Resource" uid="uid://qyqpmy715n6r" path="res://dialogue/conversations/npcs_wife_car.dialogue" id="22_ese38"]
-[ext_resource type="Shader" uid="uid://dr3rjw6uvakq3" path="res://scenes/game.gdshader" id="22_mg4q0"]
+[ext_resource type="Shader" uid="uid://dr3rjw6uvakq3" path="res://Scenes/game.gdshader" id="22_mg4q0"]
 [ext_resource type="Resource" uid="uid://dc20rfyqbqafk" path="res://dialogue/conversations/pick_up_wedding_ring.dialogue" id="24_8m3t6"]
 [ext_resource type="Resource" uid="uid://dnmdvkbo37t8k" path="res://dialogue/conversations/wife_interaction.dialogue" id="24_oeip8"]
 [ext_resource type="Texture2D" uid="uid://xymjef7g4isc" path="res://art/RingWife.png" id="26_0sl42"]
@@ -70,6 +72,8 @@ stream_count = 1
 stream_0 = ExtResource("8_6a4tp")
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_g24l8"]
+stream_count = 1
+stream_0 = ExtResource("9_631el")
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_vm72l"]
 clip_count = 7
@@ -739,7 +743,7 @@ script = ExtResource("4_ldgsr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car1/music_trigger" unique_id=231212239]
 position = Vector2(-150, -15.714)
-scale = Vector2(2.54, 1)
+scale = Vector2(3.06, 1)
 shape = SubResource("RectangleShape2D_vurmi")
 debug_color = Color(0.65138775, 0.519554, 0, 0.41960785)
 
@@ -824,7 +828,7 @@ script = ExtResource("4_ldgsr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car2/music_trigger" unique_id=1819318810]
 position = Vector2(3.7, -15.714)
-scale = Vector2(0.965, 1)
+scale = Vector2(1.245, 1)
 shape = SubResource("RectangleShape2D_vurmi")
 debug_color = Color(0.65138775, 0.519554, 0, 0.41960785)
 
@@ -911,7 +915,7 @@ script = ExtResource("4_ldgsr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car3/music_trigger" unique_id=1479690213]
 position = Vector2(-300, 18.571)
-scale = Vector2(3.03, 1)
+scale = Vector2(3.39, 1)
 shape = SubResource("RectangleShape2D_vurmi")
 debug_color = Color(0.65138775, 0.519554, 0, 0.41960785)
 
