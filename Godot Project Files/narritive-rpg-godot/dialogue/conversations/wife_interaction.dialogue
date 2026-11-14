@@ -110,5 +110,7 @@ elif Global.wife_dialogue_progress == 0:
 elif Global.wife_dialogue_progress == 1:
 	W: …welcome home, {{Global.father_name}}.
 	PC: (This is disturbing to look at.)
+elif Global.wife_dialogue_progress == 2:
+	PC: (Maybe I should ask around...)
 else:
 	PC: (I’m missing something…but what?)

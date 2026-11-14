@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://ctbwwpa1v6vg2"]
 
 [ext_resource type="Script" uid="uid://camrjnxgqaens" path="res://scripts/main_character.gd" id="1_nrcqd"]
-[ext_resource type="Texture2D" uid="uid://d0er7srt2swwn" path="res://art/temporary_art/backgroundremoved_main_character_concept.png" id="2_ig48j"]
+[ext_resource type="Texture2D" uid="uid://b3ocjqq5cd0sm" path="res://art/image (1).png" id="2_d3a2h"]
+[ext_resource type="Texture2D" uid="uid://dnyajby2us8c1" path="res://art/player_animations/HEIF图像.png" id="3_d3a2h"]
+[ext_resource type="Texture2D" uid="uid://8u76ylqpr33r" path="res://art/player_animations/HEIF图像 2.png" id="4_0ltrl"]
+[ext_resource type="Texture2D" uid="uid://bclno7ba2ryds" path="res://art/player_animations/HEIF图像 3.png" id="5_kvjf6"]
+[ext_resource type="Texture2D" uid="uid://m1btn3gx1427" path="res://art/player_animations/HEIF图像 4.png" id="6_hj3w6"]
+[ext_resource type="Texture2D" uid="uid://b7atrno88txf8" path="res://art/player_animations/HEIF图像 5.png" id="7_hodpe"]
+[ext_resource type="Texture2D" uid="uid://ci62ewbhj4oj" path="res://art/player_animations/HEIF图像 6.png" id="8_qoi8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]
 size = Vector2(13.099998, 19.675)
@@ -10,7 +16,7 @@ size = Vector2(13.099998, 19.675)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ig48j")
+"texture": ExtResource("2_d3a2h")
 }],
 "loop": 1,
 "name": &"Stand",
@@ -18,7 +24,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ig48j")
+"texture": ExtResource("3_d3a2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0ltrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kvjf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hj3w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hodpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qoi8n")
 }],
 "loop": 1,
 "name": &"Walk",
@@ -27,6 +48,7 @@ animations = [{
 
 [node name="MainCharacter" type="CharacterBody2D" unique_id=658210933 groups=["player"]]
 script = ExtResource("1_nrcqd")
+SPEED = 700
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839244148]
 position = Vector2(1.500001, 196.25002)
@@ -34,7 +56,9 @@ scale = Vector2(10, 20)
 shape = SubResource("RectangleShape2D_e3e5j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1899441167]
-position = Vector2(2.0000002, 192.00003)
+position = Vector2(2.0000002, 197.00003)
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_e3e5j")
-animation = &"Walk"
+animation = &"Stand"
+autoplay = "Stand"
+flip_h = true
