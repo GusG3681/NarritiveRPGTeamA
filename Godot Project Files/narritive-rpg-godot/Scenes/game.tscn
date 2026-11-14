@@ -412,7 +412,7 @@ data = PackedByteArray("SUQzBAAAAAACEVRYWFgAAAASAAADbWFqb3JfYnJhbmQAaXNvbQBUWFhY
 loop = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukjcv"]
-size = Vector2(473.5, 611)
+size = Vector2(361.33496, 611)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6rvp"]
 size = Vector2(238, 610)
@@ -867,7 +867,7 @@ libraries/ = SubResource("AnimationLibrary_nnt18")
 [node name="door_trigger2" type="Area2D" parent="car_door2" unique_id=1671437806]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car_door2/door_trigger2" unique_id=538844438]
-position = Vector2(-1011, 141.5)
+position = Vector2(-954.9175, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
 
 [node name="car_door3" type="Node2D" parent="." unique_id=1124643732]
