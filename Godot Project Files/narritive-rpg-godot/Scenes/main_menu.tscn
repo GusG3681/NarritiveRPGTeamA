@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dy210x7tdcryu"]
 
-[ext_resource type="Script" uid="uid://bkbsstjekhp74" path="res://scripts/main_menu.gd" id="1_48xlc"]
+[ext_resource type="Script" uid="uid://bkbsstjekhp74" path="res://Scripts/main_menu.gd" id="1_48xlc"]
 [ext_resource type="Texture2D" uid="uid://rq1n175dlgat" path="res://art/temporary_art/service_tunnel.png" id="2_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://dk6cppe82o7n1" path="res://art/temporary_art/eitooptions.jpg" id="3_1ehe0"]
-[ext_resource type="Script" uid="uid://ckk4rjr1eg0j0" path="res://scripts/audio_control.gd" id="4_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://nbvivh2ubpct" path="res://art/temporary_art/train_title.png" id="3_cp0ys"]
+[ext_resource type="Script" uid="uid://ckk4rjr1eg0j0" path="res://Scripts/audio_control.gd" id="4_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://d4bj6w8ek7v5n" path="res://art/temporary_art/musicplaceholder.png" id="5_opfnp"]
 [ext_resource type="Texture2D" uid="uid://dyx2yn2aysc8" path="res://art/temporary_art/soundplaceholder.svg" id="6_cp0ys"]
 
@@ -53,12 +54,24 @@ grow_vertical = 2
 script = ExtResource("1_48xlc")
 
 [node name="bg_placeholder" type="Panel" parent="." unique_id=1739400076]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = -328.0
 offset_top = -20.0
 offset_right = 1295.0
 offset_bottom = 682.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_jb3kc")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1822542448]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 120.0
+offset_right = 896.0
+offset_bottom = 209.0
+pivot_offset = Vector2(311, 0)
+texture = ExtResource("3_cp0ys")
+expand_mode = 2
+stretch_mode = 3
 
 [node name="title_placeholder" type="Label" parent="." unique_id=1203660896]
 layout_mode = 1
@@ -69,14 +82,13 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/shadow_outline_size = 16
 theme_override_fonts/font = SubResource("FontVariation_jb3kc")
 theme_override_font_sizes/font_size = 65
-text = "Narritivie"
+text = "Death's Transit"
 
 [node name="MainButtons" type="VBoxContainer" parent="." unique_id=1042668839]
 layout_mode = 1
@@ -86,9 +98,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -243.625
-offset_top = -184.5
+offset_top = -74.0
 offset_right = 243.625
-offset_bottom = 184.5
+offset_bottom = 295.00043
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 48
@@ -99,7 +111,7 @@ self_modulate = Color(0.31044284, 0.9999998, 0.8948056, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 60
-text = "Starbt"
+text = "Begin"
 
 [node name="options_btn" type="Button" parent="MainButtons" unique_id=1516990328]
 modulate = Color(0.9949692, 0.8571118, 0, 1)
@@ -107,7 +119,7 @@ self_modulate = Color(1, 0.96939284, 0.40240803, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 60
-text = "Opti ons"
+text = "Options"
 
 [node name="quit_btn" type="Button" parent="MainButtons" unique_id=344619179]
 modulate = Color(1, 0.35053936, 0.3439357, 1)
@@ -119,6 +131,7 @@ theme_override_font_sizes/font_size = 60
 text = "Die"
 
 [node name="OptionsMenu" type="Panel" parent="." unique_id=81722360]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
