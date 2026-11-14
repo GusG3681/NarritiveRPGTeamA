@@ -24,6 +24,7 @@ func play_sfx() -> void:
 	dialogue_player =$/root/Game/WorldAudioManager/dialogueSFX
 	
 	dialogue_player.volume_db = -5
+	interaction_player.volume_db = -5
 
 	if dialogue:
 		dialogue_player.play()

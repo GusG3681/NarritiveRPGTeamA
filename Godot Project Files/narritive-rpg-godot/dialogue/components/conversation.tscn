@@ -45,6 +45,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(22.04, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MemorabiliaTex:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_fx27g"]
 resource_name = "fade_to_black"
@@ -116,6 +128,21 @@ tracks/2/keys = {
 "values": [Vector2(22.04, 0), Vector2(600, 0), Vector2(600, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_v2r2h"]
+resource_name = "hide_mem"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MemorabiliaTex:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ynwe8"]
 resource_name = "hide_text"
 length = 0.2
@@ -148,6 +175,21 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_1m2gb"]
+resource_name = "show_mem"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MemorabiliaTex:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_bo3k2"]
 resource_name = "show_text"
 length = 0.2
@@ -170,8 +212,10 @@ _data = {
 &"fade_to_black": SubResource("Animation_fx27g"),
 &"fade_to_normal": SubResource("Animation_ryw6g"),
 &"fade_to_normal_long": SubResource("Animation_ymf13"),
+&"hide_mem": SubResource("Animation_v2r2h"),
 &"hide_text": SubResource("Animation_ynwe8"),
 &"set_to_black": SubResource("Animation_4o4hp"),
+&"show_mem": SubResource("Animation_1m2gb"),
 &"show_text": SubResource("Animation_bo3k2")
 }
 
@@ -182,6 +226,8 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -500.0
+offset_bottom = -35.0
 grow_horizontal = 0
 grow_vertical = 2
 focus_mode = 2
@@ -310,6 +356,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
@@ -333,6 +380,27 @@ script = ExtResource("5_qnsjq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=866321423]
 libraries/ = SubResource("AnimationLibrary_4o4hp")
+
+[node name="MemorabiliaTex" type="TextureRect" parent="." unique_id=921053093]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = -250.0
+offset_top = 250.0
+offset_right = -49.999634
+offset_bottom = 450.00037
+pivot_offset = Vector2(100, 100)
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="." unique_id=2050459401]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 615.0
+offset_right = 410.0
+offset_bottom = 638.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "[Z], [Space], [L Click] to Continue"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="Margin/HBoxContainer/Scroll/Content/DialogueBox" to="." method="_on_dialogue_box_gui_input"]

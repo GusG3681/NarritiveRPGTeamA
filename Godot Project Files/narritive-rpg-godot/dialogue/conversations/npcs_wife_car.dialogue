@@ -1,4 +1,7 @@
 ~ start
+if Global.has_alcohol_bottle == true:
+	NPCS: Didn't expect to see you again so soon. Downed the whole bottle already?
+	=> END
 NPCS: What will you buy today?
 if Global.wife_dialogue_progress < 1:
 	PC: What?

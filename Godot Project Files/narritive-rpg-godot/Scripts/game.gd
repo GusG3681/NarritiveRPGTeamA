@@ -135,3 +135,6 @@ func _on_finished_wife_car_recieved() -> void:
 	$Wife.scribble_turn_off()
 	AudioGlobal.wife = 'revealed'
 	AudioGlobal.current_car_npc = 'revealed'
+	CarDoor.door_locks['car_door2'] = true
+	#print('unlock:' + str(CarDoor.door_locks['car_door2']))
+	

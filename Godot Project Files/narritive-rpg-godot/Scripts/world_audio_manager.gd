@@ -43,7 +43,7 @@ func update_music():
 		"front_car": {"revealed": "Ambience", "hidden": "Ambience"}
 	}
 	
-	print(current_car)
+	#print(current_car)
 	# Safely fetch the music track or trigger an error if the car/state doesn't exist
 	if pick_music.has(current_car) and pick_music[current_car].has(car_npc_state):
 		current_car_music = pick_music[current_car][car_npc_state]
