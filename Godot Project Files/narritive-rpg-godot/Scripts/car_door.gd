@@ -1,6 +1,6 @@
 extends Node2D
 
-var door_locks: Dictionary
+static var door_locks: Dictionary
 var wanted_door: String
 
 # Called when the node enters the scene tree for the first time.
