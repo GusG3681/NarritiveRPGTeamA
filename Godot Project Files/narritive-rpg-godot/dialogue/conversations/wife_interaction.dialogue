@@ -12,6 +12,8 @@ if Global.wife_dialogue_progress == 1 and Global.has_wedding_ring:
 	W: When did we lose what once was?
 
 	#Flashback
+	$> Global.fade_in()
+	$> Global.show_memorabilia("wedding_ring")
 
 	W: Welcome home, {{Global.father_name}}.
 
@@ -33,6 +35,8 @@ if Global.wife_dialogue_progress == 1 and Global.has_wedding_ring:
 
 	W: …
 
+	$> Global.hide_memorabilia()
+	$> Global.fade_out()
 	#End Flashback
 
 	W: It was our anniversary.
@@ -56,7 +60,9 @@ elif Global.wife_dialogue_progress == 2 and Global.has_alcohol_bottle:
 	W: Though that isn’t saying much at all, isn’t it?
 
 	#Flashback 
-	$> Global.show_memorabilia("wedding_ring")
+	$> Global.fade_in()
+	$> Global.show_memorabilia("alcohol_bottle")
+	
 	W: When would you stop drinking?
 	W: It certainly isn’t making your liver any better. 
 
@@ -71,6 +77,8 @@ elif Global.wife_dialogue_progress == 2 and Global.has_alcohol_bottle:
 
 	PC: I said leave me alone!
 
+	$> Global.hide_memorabilia()
+	$> Global.fade_out()
 	#End Flashback
 
 	$> Global.wife_dialogue_progress = 3
@@ -91,7 +99,9 @@ elif Global.wife_dialogue_progress == 3:
 	
 	W: Perhaps this marriage is no longer one of love, but one of emptiness and one of hate. 
 	
+	$> Global.wife_identity_revealed = true
 	$> Global.reveal_charcter("Wife")
+	$> Events.finished_wife_car.emit()
 	
 	PC: {{Global.wife_name}}…it’s…you. 
 	PC: I didn’t recognize you.
@@ -114,7 +124,7 @@ elif Global.wife_dialogue_progress == 3:
 	W: I simply stayed sitting down, chewing upon the taste of lost catharsis…waiting for the courage to give you these.
 
 	$> Global.has_divorce_papers = true
-	$> Events.finished_wife_car.emit()
+
 	PC: …
 	W: The door is open. 
 	W: You should go. 

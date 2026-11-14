@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://h1gtmgwfpjuv"]
 
-[ext_resource type="Script" uid="uid://cwoqvr07g40ln" path="res://scripts/npc.gd" id="1_nh2m4"]
-[ext_resource type="Texture2D" uid="uid://gwoxytlufvqa" path="res://art/temporary_art/Ghost Png.png" id="2_abqhh"]
+[ext_resource type="Script" uid="uid://cwoqvr07g40ln" path="res://Scripts/npc.gd" id="1_nh2m4"]
+[ext_resource type="Texture2D" uid="uid://dijk1fnbbbujy" path="res://art/temporary_art/shadow.png" id="2_6atyd"]
 [ext_resource type="Texture2D" uid="uid://oprnd4qd1blp" path="res://art/Scribble2.png" id="3_tl2vt"]
 [ext_resource type="Texture2D" uid="uid://c853qw8jom56t" path="res://art/Scribble4.png" id="4_hwkja"]
 [ext_resource type="Texture2D" uid="uid://clpftdfogishj" path="res://art/Scribble1.png" id="5_0tygy"]
@@ -37,7 +37,7 @@ script = ExtResource("1_nh2m4")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1346419299]
 position = Vector2(150.00002, 110.000015)
 scale = Vector2(0.52109706, 0.47093022)
-texture = ExtResource("2_abqhh")
+texture = ExtResource("2_6atyd")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=616734323]
 
@@ -52,12 +52,12 @@ theme_override_font_sizes/font_size = 30
 text = "asdfadfasdfasdf"
 
 [node name="InteractText" type="Label" parent="." unique_id=244526343]
-offset_left = 40.0
-offset_top = -50.0
-offset_right = 250.0
-offset_bottom = 5.0
+offset_left = 35.0
+offset_top = -67.0
+offset_right = 247.0
+offset_bottom = -12.0
 theme_override_font_sizes/font_size = 40
-text = "Interact"
+text = "[Z] Interact"
 horizontal_alignment = 1
 
 [node name="ScribbleImage" type="AnimatedSprite2D" parent="." unique_id=1588810697]

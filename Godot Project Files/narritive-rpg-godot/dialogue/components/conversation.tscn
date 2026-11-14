@@ -226,6 +226,8 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -500.0
+offset_bottom = -35.0
 grow_horizontal = 0
 grow_vertical = 2
 focus_mode = 2
@@ -354,6 +356,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
@@ -389,6 +392,15 @@ offset_bottom = 450.00037
 pivot_offset = Vector2(100, 100)
 expand_mode = 2
 stretch_mode = 4
+
+[node name="Label" type="Label" parent="." unique_id=2050459401]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 615.0
+offset_right = 410.0
+offset_bottom = 638.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "[Z], [Space], [L Click] to Continue"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="Margin/HBoxContainer/Scroll/Content/DialogueBox" to="." method="_on_dialogue_box_gui_input"]

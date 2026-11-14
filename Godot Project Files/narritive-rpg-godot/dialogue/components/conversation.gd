@@ -33,11 +33,11 @@ signal on_transition_finished
 #Memorabilia images
 const MEMORABILIA = {
 	wedding_ring = {
-		portrait = preload("res://art/temporary_art/Polarid-Photo-Print.jpg"),
+		portrait = preload("res://art/RingWife.png"),
 		name = "Wedding Ring",
 	},
 	alcohol_bottle = {
-		portrait = preload("res://art/temporary_art/Polarid-Photo-Print.jpg"),
+		portrait = preload("res://art/AlcoholBottleWife.png"),
 		name = "Alcohol_Bottle",
 	}
 }

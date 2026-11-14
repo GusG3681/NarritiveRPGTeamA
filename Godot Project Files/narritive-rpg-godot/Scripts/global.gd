@@ -1,10 +1,10 @@
 extends Node
 
 # character names
-var father_name: String = "Deadbeat Loser Husband"
-var wife_name: String = "Wife"
-var daughter_name: String = "Daughter"
-var son_name: String = "Son"
+var father_name: String = "Isko"
+var wife_name: String = "Maricela"
+var daughter_name: String = "Arlene"
+var son_name: String = "Ronny"
 var intercom_name: String = "Intercom"
 
 # wife prgress checks
@@ -32,10 +32,24 @@ func reveal_charcter(character: String) -> void:
 	var char = game.find_child(character)
 	
 func show_memorabilia(memorabilia: String) -> void:
-	var game = get_tree().current_scene
 	var ui = get_tree().get_first_node_in_group("dialogue_layer")
 	var dialogue = ui.get_child(0)
 	dialogue.show_memorabilia(memorabilia)
+	
+func hide_memorabilia() -> void:
+	var ui = get_tree().get_first_node_in_group("dialogue_layer")
+	var dialogue = ui.get_child(0)
+	dialogue.hide_memorabilia()
+	
+func fade_in() -> void:
+	var ui = get_tree().get_first_node_in_group("dialogue_layer")
+	var dialogue = ui.get_child(0)
+	dialogue.fade_in()
+	
+func fade_out() -> void:
+	var ui = get_tree().get_first_node_in_group("dialogue_layer")
+	var dialogue = ui.get_child(0)
+	dialogue.fade_out()
 
 #func obtained_memorabilia(has_memorabilia: bool) -> void:
 	
