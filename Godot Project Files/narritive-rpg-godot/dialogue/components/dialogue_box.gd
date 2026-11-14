@@ -20,7 +20,7 @@ signal finished_typing()
 const CHARACTERS = {
 	pc = {
 	#	portrait = preload("res://portraits/nathan.svg"),
-		name = "FATHER",
+		name = "ISKO",
 		side = "left",
 		color = Color("83898b")
 	},
@@ -38,7 +38,7 @@ const CHARACTERS = {
 	},
 	w = {
 	#	portrait = preload("res://portraits/nathan.svg"),
-		name = "WIFE",
+		name = "MARICELA",
 		side = "right",
 		color = Color("73817b")
 	},
@@ -55,6 +55,42 @@ const CHARACTERS = {
 		color = Color("392c31")
 	},
 	npcs = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("5a555a")
+	},
+	npc3 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("392c31")
+	},
+	npc4 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("392c31")
+	},
+	npcs2 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("5a555a")
+	},
+	npc5 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("392c31")
+	},
+	npc6 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("392c31")
+	},
+	npcs3 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
@@ -106,7 +142,10 @@ func update_dialogue() -> void:
 		character_name.text = "???" #dialogue_line.character
 
 		var character: Dictionary = CHARACTERS[dialogue_line.character.to_lower()]
-		character_name.text = character.name
+		if character.name == "MARICELA" and not Global.wife_identity_revealed:
+			character_name.text = "UNKNOWN"
+		else:
+			character_name.text = character.name
 		if character.side == "left":
 			offset_transform_rotation = 0.05
 			#left_character.texture = character.portrait

@@ -12,6 +12,8 @@ if Global.wife_dialogue_progress == 1 and Global.has_wedding_ring:
 	W: When did we lose what once was?
 
 	#Flashback
+	$> Global.fade_in()
+	$> Global.show_memorabilia("wedding_ring")
 
 	W: Welcome home, {{Global.father_name}}.
 
@@ -20,15 +22,27 @@ if Global.wife_dialogue_progress == 1 and Global.has_wedding_ring:
 	W: Are you-?
 	W: Drunk again, I see. 
 
-	PC: Do you want some?
-	PC: Hic.
+	PC: Do you want some? *Hic* 
 
-	W: Amy needs to write more dialogue for me. I have no agency without my writer overlord.
+	W: …do you remember what day it is today?
 
-	#End Flashback
+	PC: Uh…monday. 
 
+	W: And?
+
+	PC: Bah, what are these questions?
+	PC: I don’t care. 
 
 	W: …
+
+	$> Global.hide_memorabilia()
+	$> Global.fade_out()
+	#End Flashback
+
+	W: It was our anniversary.
+	W: Did you remember? 
+
+	W: …or did you not care? 
 
 	PC: I…
 	PC: (What the hell was that?)
@@ -46,7 +60,9 @@ elif Global.wife_dialogue_progress == 2 and Global.has_alcohol_bottle:
 	W: Though that isn’t saying much at all, isn’t it?
 
 	#Flashback 
-
+	$> Global.fade_in()
+	$> Global.show_memorabilia("alcohol_bottle")
+	
 	W: When would you stop drinking?
 	W: It certainly isn’t making your liver any better. 
 
@@ -61,6 +77,8 @@ elif Global.wife_dialogue_progress == 2 and Global.has_alcohol_bottle:
 
 	PC: I said leave me alone!
 
+	$> Global.hide_memorabilia()
+	$> Global.fade_out()
 	#End Flashback
 
 	$> Global.wife_dialogue_progress = 3
@@ -76,22 +94,46 @@ elif Global.wife_dialogue_progress == 3:
 
 	W: You thought you did. 
 	
-	# WIP
+	W: If marriage is made of love, then what happens when there is none?
+	W: When you left me then, alone with the sickly smell, I wondered.
 	
-	W: I didn’t hate you. 
-	W: I loved you. 
-	W: But even that…has frosted over. 
+	W: Perhaps this marriage is no longer one of love, but one of emptiness and one of hate. 
+	
+	$> Global.wife_identity_revealed = true
+	$> Global.reveal_charcter("Wife")
+	$> Events.finished_wife_car.emit()
+	
+	PC: {{Global.wife_name}}…it’s…you. 
+	PC: I didn’t recognize you.
 
-	W: And perhaps that’s why…I give you this.
+	W: Neither do I
+		
+	PC: Listen, if this is about how I acted…I’m sorry, okay?
+	PC: But, it’s going to be okay! I’ll change! 
+
+	W: And how many times have you said those same lines before? 
+	W: But it always ends with you, a bottle, and this goddamn wedding ring.
+
+	W: I didn’t used to hate you. 
+	W: I loved you once. 
+	W: But even that…has frosted over. 
+	
+	PC: Please! I’m sure we can work something out. I know you will see things my way. You always do!
+
+	W: You misunderstand. I never did. 
+	W: I simply stayed sitting down, chewing upon the taste of lost catharsis…waiting for the courage to give you these.
 
 	$> Global.has_divorce_papers = true
-	$> Events.finished_wife_car.emit()
-
 
 	PC: …
-	PC: The door is open. 
-	PC: I should go. 
-
+	W: The door is open. 
+	W: You should go. 
+	$> Global.wife_dialogue_progress = 4
+	=> END
+elif Global.wife_dialogue_progress == 4:
+	PC: …
+	W: The door is open. 
+	W: You should go. 
 	=> END
 elif Global.wife_dialogue_progress == 0:
 	W: …welcome home, {{Global.father_name}}.

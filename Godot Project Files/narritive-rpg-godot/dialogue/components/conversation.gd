@@ -13,7 +13,7 @@ extends Control
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 @onready var black_screen = %BlackScreen
 @onready var animation_player = $AnimationPlayer
-
+@onready var memorabilia_tex = %MemorabiliaTex
 
 var favourite_food: String = ""
 var correct_answer: int = 0
@@ -29,6 +29,18 @@ var dialogue_has_ended: bool = false
 
 signal dialogue_finished
 signal on_transition_finished
+
+#Memorabilia images
+const MEMORABILIA = {
+	wedding_ring = {
+		portrait = preload("res://art/RingWife.png"),
+		name = "Wedding Ring",
+	},
+	alcohol_bottle = {
+		portrait = preload("res://art/AlcoholBottleWife.png"),
+		name = "Alcohol_Bottle",
+	}
+}
 
 #region Hooks
 
@@ -164,6 +176,17 @@ func show_text() -> void:
 	
 func hide_text() -> void:
 	animation_player.play("hide_text")
+
+func show_memorabilia(memorabilia_to_show: String) -> void:
+	var memory: Dictionary = MEMORABILIA[memorabilia_to_show]
+	memorabilia_tex.texture = memory.portrait
+	print(memory.portrait)
+	animation_player.play("show_mem")
+	
+func hide_memorabilia() -> void:
+	animation_player.play("show_mem")
+	await on_transition_finished
+	memorabilia_tex = null
 
 
 #endregion

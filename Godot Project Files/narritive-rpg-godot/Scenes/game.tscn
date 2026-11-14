@@ -1059,7 +1059,6 @@ dialogue_resource = ExtResource("22_ese38")
 [node name="Memory" parent="." unique_id=1269942407 instance=ExtResource("10_vtaks")]
 position = Vector2(-472, 360)
 item_icon = ExtResource("26_0sl42")
-item_scale = Vector2(0.25, 0.25)
 dialogue_resource = ExtResource("24_8m3t6")
 
 [node name="Wife" parent="." unique_id=2086425241 instance=ExtResource("9_0tnpc")]

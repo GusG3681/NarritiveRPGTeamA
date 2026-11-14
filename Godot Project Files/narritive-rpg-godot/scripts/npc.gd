@@ -47,6 +47,9 @@ func setup_important() -> void:
 func setup_normal() -> void:
 	scribble_image.visible = false
 	
+# Dialogue calls the reveal, whcih passes through global and is called here to change the character's idemtity to the revealed form
+func reveal_identity() -> void:
+	pass
 
 func scribble_turn_off() -> void:
 	for i in range(100):
