@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 func _on_door_trigger_1_body_entered(body: Node2D) -> void:
 	wanted_door = str(get_path()).substr(11)
 	print(wanted_door)
+	print(door_locks[wanted_door])
 	if door_locks[wanted_door] == true:
 		if body.is_in_group('player') and $door/AnimationPlayer.is_playing() == false:
 			$door/AnimationPlayer.play('open')
@@ -33,6 +34,7 @@ func _on_door_trigger_1_body_entered(body: Node2D) -> void:
 func _on_door_trigger_2_body_entered(body: Node2D) -> void:
 	wanted_door = str(get_path()).substr(11)
 	print(wanted_door)
+	print(door_locks[wanted_door])
 	if door_locks[wanted_door] == true:
 		if body.is_in_group('player') and $door/AnimationPlayer.is_playing() == false:
 			$door/AnimationPlayer.play('open')
