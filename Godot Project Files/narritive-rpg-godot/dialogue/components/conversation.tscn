@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://4cyajmpvya0t" path="res://dialogue/components/dialogue_box.tscn" id="4_fcybp"]
 [ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="5_qnsjq"]
+[ext_resource type="FontFile" uid="uid://bu52gijuv772s" path="res://fonts/prompt_lavinia.otf" id="7_fx27g"]
+[ext_resource type="Texture2D" uid="uid://bvjjnxywksaav" path="res://art/ui_art/prompt_ticket.png" id="7_ryw6g"]
 
 [sub_resource type="Animation" id="Animation_55vex"]
 length = 0.001
@@ -227,7 +229,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -500.0
-offset_bottom = -35.0
+offset_bottom = -59.0
 grow_horizontal = 0
 grow_vertical = 2
 focus_mode = 2
@@ -237,6 +239,7 @@ dialogue_resource = ExtResource("2_rpa03")
 
 [node name="BlackScreen" type="ColorRect" parent="." unique_id=1572764860]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -393,14 +396,27 @@ pivot_offset = Vector2(100, 100)
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="." unique_id=2050459401]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=627877193]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 615.0
-offset_right = 410.0
-offset_bottom = 638.0
+offset_left = 173.99998
+offset_top = 593.0
+offset_right = 377.10498
+offset_bottom = 642.0
+offset_transform_scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_ryw6g")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=2050459401]
+layout_mode = 0
+offset_left = 4.1049805
+offset_right = 199.10498
+offset_bottom = 41.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "[Z], [Space], [L Click] to Continue"
+theme_override_fonts/font = ExtResource("7_fx27g")
+text = "[Space] to Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="Margin/HBoxContainer/Scroll/Content/DialogueBox" to="." method="_on_dialogue_box_gui_input"]

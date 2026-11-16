@@ -111,7 +111,7 @@ func ask_for_number() -> int:
 
 
 func next_line(next_id: String) -> void:
-	AudioGlobal.play_sfx()
+	
 	var next_dialogue_line: DialogueLine = await dialogue_resource.get_next_dialogue_line(next_id)
 	if not is_instance_valid(next_dialogue_line): 
 		if dialogue_has_ended == false:
@@ -127,6 +127,8 @@ func next_line(next_id: String) -> void:
 				await on_transition_finished
 			dialogue_finished.emit()
 		return
+
+	AudioGlobal.play_sfx("Dialogue")
 
 	if next_dialogue_line.type == DMConstants.TYPE_RESPONSE:
 		responses_overlay.show()
@@ -145,9 +147,10 @@ func next_line(next_id: String) -> void:
 
 
 func handle_click(event: InputEvent) -> void:
-	var is_left_click: bool = event.is_pressed() and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
+	#var is_left_click: bool = event.is_pressed() and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
 	var is_accept_key: bool = event.is_action_pressed("ui_accept")
-	if is_left_click or is_accept_key:
+	#if is_left_click or is_accept_key:
+	if is_accept_key:
 		get_viewport().set_input_as_handled()
 		if dialogue_box.is_typing:
 			dialogue_box.skip_typing()

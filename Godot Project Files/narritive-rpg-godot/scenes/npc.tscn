@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cwoqvr07g40ln" path="res://Scripts/npc.gd" id="1_nh2m4"]
 [ext_resource type="Texture2D" uid="uid://dijk1fnbbbujy" path="res://art/temporary_art/shadow.png" id="2_6atyd"]
+[ext_resource type="FontFile" uid="uid://bu52gijuv772s" path="res://fonts/prompt_lavinia.otf" id="3_2xkex"]
+[ext_resource type="Texture2D" uid="uid://bvjjnxywksaav" path="res://art/ui_art/prompt_ticket.png" id="3_8gudg"]
 [ext_resource type="Texture2D" uid="uid://oprnd4qd1blp" path="res://art/Scribble2.png" id="3_tl2vt"]
 [ext_resource type="Texture2D" uid="uid://c853qw8jom56t" path="res://art/Scribble4.png" id="4_hwkja"]
 [ext_resource type="Texture2D" uid="uid://clpftdfogishj" path="res://art/Scribble1.png" id="5_0tygy"]
@@ -51,14 +53,26 @@ offset_bottom = 70.0
 theme_override_font_sizes/font_size = 30
 text = "asdfadfasdfasdf"
 
-[node name="InteractText" type="Label" parent="." unique_id=244526343]
-offset_left = 35.0
-offset_top = -67.0
-offset_right = 247.0
-offset_bottom = -12.0
-theme_override_font_sizes/font_size = 40
-text = "[Z] Interact"
+[node name="TextureRect" type="TextureRect" parent="." unique_id=728143983]
+offset_left = 55.0
+offset_top = -95.795
+offset_right = 233.0
+offset_bottom = -55.795
+texture = ExtResource("3_8gudg")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="InteractText" type="Label" parent="TextureRect" unique_id=244526343]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 175.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("3_2xkex")
+theme_override_font_sizes/font_size = 16
+text = "[Space] Interact"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScribbleImage" type="AnimatedSprite2D" parent="." unique_id=1588810697]
 position = Vector2(150, 84)

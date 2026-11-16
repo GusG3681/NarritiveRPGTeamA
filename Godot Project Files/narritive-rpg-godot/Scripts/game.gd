@@ -19,6 +19,7 @@ var dialogue_layer: CanvasLayer
 var dialogue: Control
 var player
 var is_pregame_dialogue = false
+var is_intro_dialogue = false
 
 # sets up all of the dialogue that is called via the game root and not by NPCs
 var autorun_dialogue = {
@@ -92,7 +93,11 @@ func intercom_speak(speech) -> void:
 		item.text = ""
 
 func call_dialogue(dialogue_resource, blackscreen: bool = false, skip_fade: bool = false, fade_long: bool = false) -> void:
-	player_talking = true
+	if player_talking == true and is_intro_dialogue == false:
+		return
+	if is_intro_dialogue:
+		is_intro_dialogue = false
+	player_talking = true	
 	player = get_tree().get_first_node_in_group("player")
 	player.can_move = false
 	dialogue = dialogue_scene.instantiate()
@@ -119,14 +124,15 @@ func _on_dialogue_finished() -> void:
 		is_pregame_dialogue = false
 		dialogue.queue_free()
 		await get_tree().process_frame
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(.3).timeout
+		is_intro_dialogue = true
 		call_dialogue(autorun_dialogue.introduction.script)
 	else:
 		dialogue.queue_free()
 		await get_tree().process_frame
 		player = get_tree().get_first_node_in_group("player")
 		player.can_move = true
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(.3).timeout
 		player_talking = false
 	
 

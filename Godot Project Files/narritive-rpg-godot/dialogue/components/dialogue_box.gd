@@ -28,7 +28,7 @@ const CHARACTERS = {
 	#	portrait = preload("res://portraits/coco.svg"),
 		name = "UNKNOWN",
 		side = "right",
-		color = Color("5a555a"),
+		color = Color("82777bff")
 	},
 	ia = {
 	#	portrait = preload("res://portraits/nathan.svg"),
@@ -40,61 +40,61 @@ const CHARACTERS = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "MARICELA",
 		side = "right",
-		color = Color("73817b")
+		color = Color("80b7b8ff")
 	},
 	npc1 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("392c31")
+		color = Color("82777bff")
 	},
 	npc2 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("392c31")
+		color = Color("82777bff")
 	},
 	npcs = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("5a555a")
+		color = Color("668071ff")
 	},
 	npc3 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("392c31")
+		color = Color("82777bff")
 	},
 	npc4 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("392c31")
+		color = Color("82777bff")
 	},
 	npcs2 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("5a555a")
+		color = Color("668071ff")
 	},
 	npc5 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("392c31")
+		color = Color("82777bff")
 	},
 	npc6 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("392c31")
+		color = Color("82777bff")
 	},
 	npcs3 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("5a555a")
+		color = Color("668071ff")
 	}
 }
 
