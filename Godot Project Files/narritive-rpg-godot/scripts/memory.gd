@@ -8,7 +8,7 @@ extends Node2D
 @export var dialogue_resource: DialogueResource = preload("res://dialogue/conversations/dialogue.dialogue")
 
 @onready var interaction_area: Area2D = $Area2D
-@onready var text: Label = $Label
+@onready var text: TextureRect = $TextureRect
 var player_in_range = false
 
 var game: Node2D
@@ -25,15 +25,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact") and player_in_range:
-		AudioGlobal.interaction = true
 		pick_up()
-	else:
-		AudioGlobal.interaction = false
 	
 
 func pick_up() -> void:
-	AudioGlobal.play_sfx()
-	AudioGlobal.interaction = false
+	AudioGlobal.play_sfx("Interact")
 	if get_game().player_talking:
 		return
 	

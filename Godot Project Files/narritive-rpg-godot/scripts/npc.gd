@@ -15,7 +15,7 @@ extends Node2D
 @onready var npc_image = $Sprite2D
 @onready var interaction_area: Area2D = $Area2D
 @onready var random_text: Label = $RandomSpeech
-@onready var interaction_text: Label = $InteractText
+@onready var interaction_text: TextureRect = $TextureRect
 @onready var scribble_image = $ScribbleImage
 
 
@@ -59,17 +59,18 @@ func scribble_turn_off() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact") and player_in_range:
-		AudioGlobal.interaction = true
-		AudioGlobal.play_sfx()
 		interact()
-		AudioGlobal.interaction = false
+
 
 func interact() -> void:
 	if get_game().player_talking:
 		return
 	
+	AudioGlobal.play_sfx("Interact")
+	await get_tree().create_timer(.1).timeout
 	if game.has_method("call_dialogue"):
 		game.call_dialogue(dialogue_resource)
+		
 	
 
 func get_game() -> Node2D:

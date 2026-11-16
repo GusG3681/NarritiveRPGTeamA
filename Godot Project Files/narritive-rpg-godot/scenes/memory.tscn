@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://canuk851uyopb"]
 
-[ext_resource type="Script" uid="uid://b20ro0grgsol8" path="res://scripts/memory.gd" id="1_c5y6f"]
+[ext_resource type="Script" uid="uid://b20ro0grgsol8" path="res://Scripts/memory.gd" id="1_c5y6f"]
 [ext_resource type="Texture2D" uid="uid://f87wpyynwv7t" path="res://art/temporary_art/Polarid-Photo-Print.jpg" id="2_au0oe"]
+[ext_resource type="Texture2D" uid="uid://bvjjnxywksaav" path="res://art/ui_art/prompt_ticket.png" id="3_ajd4s"]
+[ext_resource type="FontFile" uid="uid://bu52gijuv772s" path="res://fonts/prompt_lavinia.otf" id="3_wphb8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3e5j"]
 size = Vector2(250, 260)
@@ -21,10 +23,23 @@ texture = ExtResource("2_au0oe")
 position = Vector2(40, 40)
 shape = SubResource("RectangleShape2D_e3e5j")
 
-[node name="Label" type="Label" parent="." unique_id=669796780]
-offset_left = -30.0
-offset_top = -40.0
-offset_right = 110.0
-theme_override_font_sizes/font_size = 24
-text = "Interact"
+[node name="TextureRect" type="TextureRect" parent="." unique_id=309431082]
+offset_left = -38.0
+offset_top = -137.0
+offset_right = 140.0
+offset_bottom = -97.0
+texture = ExtResource("3_ajd4s")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=669796780]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 0.79499817
+offset_right = 175.0
+offset_bottom = 35.795
+theme_override_fonts/font = ExtResource("3_wphb8")
+theme_override_font_sizes/font_size = 16
+text = "[Space] Interact"
 horizontal_alignment = 1
+vertical_alignment = 1

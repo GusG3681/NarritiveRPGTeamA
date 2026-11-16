@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://ciui7xknwa1aw" path="res://art/ui_art/new_ticket.png" id="2_58j32"]
 [ext_resource type="Script" uid="uid://ccava50u55qgg" path="res://dialogue/components/dialogue_box.gd" id="2_l304u"]
 [ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.gd" id="2_qkucv"]
+[ext_resource type="FontFile" uid="uid://gak25xvnj4el" path="res://fonts/header_blockletter.otf" id="4_ag01n"]
 [ext_resource type="Texture2D" uid="uid://b54am8hemlke" path="res://art/ui_art/subway_ticket.png" id="5_22oqy"]
 [ext_resource type="Texture2D" uid="uid://brdrsccdy01vr" path="res://art/temporary_art/icon.svg" id="5_dhpuu"]
+[ext_resource type="FontFile" uid="uid://ed4ppyfggvwq" path="res://fonts/text_Nexa-Heavy.ttf" id="5_mgyyb"]
+[ext_resource type="FontFile" uid="uid://bu52gijuv772s" path="res://fonts/prompt_lavinia.otf" id="7_ag01n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cs1qt"]
 font_color = Color(1, 0.512959, 0, 1)
@@ -77,6 +80,7 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03529412, 0.08235294, 0, 1)
+theme_override_fonts/font = ExtResource("4_ag01n")
 theme_override_font_sizes/font_size = 32
 text = "Character"
 
@@ -86,6 +90,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_mgyyb")
 bbcode_enabled = true
 text = "Dialogue
 Dialogue
@@ -119,6 +124,7 @@ offset_left = 3.0
 offset_top = 129.0
 offset_right = 232.0
 offset_bottom = 152.0
+theme_override_fonts/font = ExtResource("7_ag01n")
 theme_override_font_sizes/font_size = 8
 text = "Ticket No. 666"
 vertical_alignment = 2

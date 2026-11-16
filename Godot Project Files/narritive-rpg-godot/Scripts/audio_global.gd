@@ -19,16 +19,16 @@ var daughter: String
 var son: String
 
 
-func play_sfx() -> void:
+func play_sfx(sfx_name: String = "Dialogue") -> void:
 	interaction_player = $/root/Game/WorldAudioManager/interactionSFX
 	dialogue_player =$/root/Game/WorldAudioManager/dialogueSFX
 	
 	dialogue_player.volume_db = -5
 	interaction_player.volume_db = -5
 
-	if dialogue:
+	if sfx_name == "Dialogue":
 		dialogue_player.play()
-	if interaction:
+	if sfx_name == "Interact":
 		interaction_player.play()
 		
 	if interaction_player.playing and dialogue_player.playing:
