@@ -1,15 +1,42 @@
 extends Node2D
 
 
+<<<<<<< Updated upstream
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+=======
+static var door_locks: Dictionary = {
+		'locked_door' : false,
+		'car_door0': true,
+		'car_door1' : true,
+		'car_door2' : false,
+		'car_door3': false,
+		'car_door4' : false,
+		'car_door5' : false,
+		'car_door6' : false,
+	}
+	
+var wanted_door: String
+>>>>>>> Stashed changes
 
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	add_to_group("doors")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
+	
+func is_locked() -> bool:
+	if not door_locks.has(name):
+		return false
+	return not door_locks[name]
+	
+func camera_stop_x() -> float:
+	if has_node("CameraStop"):
+		return $CameraStop.global_position.x
+	return global_position.x
 
 func _on_door_trigger_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player') and $door/AnimationPlayer.is_playing() == false:
