@@ -20,7 +20,7 @@ signal finished_typing()
 const CHARACTERS = {
 	pc = {
 	#	portrait = preload("res://portraits/nathan.svg"),
-		name = "FATHER",
+		name = "ISKO",
 		side = "left",
 		color = Color("83898b")
 	},
@@ -28,7 +28,7 @@ const CHARACTERS = {
 	#	portrait = preload("res://portraits/coco.svg"),
 		name = "UNKNOWN",
 		side = "right",
-		color = Color("5a555a"),
+		color = Color("82777bff")
 	},
 	ia = {
 	#	portrait = preload("res://portraits/nathan.svg"),
@@ -38,21 +38,63 @@ const CHARACTERS = {
 	},
 	w = {
 	#	portrait = preload("res://portraits/nathan.svg"),
-		name = "WIFE",
+		name = "MARICELA",
 		side = "right",
-		color = Color("73817b")
+		color = Color("80b7b8ff")
 	},
 	npc1 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("392c31")
+		color = Color("82777bff")
 	},
 	npc2 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
 		side = "right",
-		color = Color("392c31")
+		color = Color("82777bff")
+	},
+	npcs = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("668071ff")
+	},
+	npc3 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("82777bff")
+	},
+	npc4 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("82777bff")
+	},
+	npcs2 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("668071ff")
+	},
+	npc5 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("82777bff")
+	},
+	npc6 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("82777bff")
+	},
+	npcs3 = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "PASSENGER",
+		side = "right",
+		color = Color("668071ff")
 	}
 }
 
@@ -100,7 +142,10 @@ func update_dialogue() -> void:
 		character_name.text = "???" #dialogue_line.character
 
 		var character: Dictionary = CHARACTERS[dialogue_line.character.to_lower()]
-		character_name.text = character.name
+		if character.name == "MARICELA" and not Global.wife_identity_revealed:
+			character_name.text = "UNKNOWN"
+		else:
+			character_name.text = character.name
 		if character.side == "left":
 			offset_transform_rotation = 0.05
 			#left_character.texture = character.portrait

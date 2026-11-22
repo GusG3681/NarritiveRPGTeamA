@@ -14,6 +14,8 @@ func _ready() -> void:
 	width = text1.get_rect().size.x * abs(scale.x)
 	text2.global_position.y = text1.global_position.y
 	text2.global_position.x = text1.global_position.x - width
+	text1.scale.x *= 1.01
+	text2.scale.x *= 1.01
 	maxTeleport = width
 
 

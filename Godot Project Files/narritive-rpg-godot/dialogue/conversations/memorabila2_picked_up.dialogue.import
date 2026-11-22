@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://cn8v14o70bdus"
+path="res://.godot/imported/memorabila2_picked_up.dialogue-e9631d9a907c236136eaf55e6c1cb43b.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/memorabila2_picked_up.dialogue"
+dest_files=["res://.godot/imported/memorabila2_picked_up.dialogue-e9631d9a907c236136eaf55e6c1cb43b.tres"]
+
+[params]
+
+defaults=true

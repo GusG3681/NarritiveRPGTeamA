@@ -22,6 +22,7 @@ var dialogue_layer: CanvasLayer
 var dialogue: Control
 var player
 var is_pregame_dialogue = false
+var is_intro_dialogue = false
 
 # sets up all of the dialogue that is called via the game root and not by NPCs
 var autorun_dialogue = {
@@ -58,20 +59,25 @@ func _ready() -> void:
 	Events.bad_ending.connect(_on_bad_ending)
 	Events.settings_request.connect(_on_settings_request)
 	Events.exit_request.connect(_on_exit_request)
+	Events.finished_wife_car.connect(_on_finished_wife_car_recieved)
 	
 	is_pregame_dialogue = true
 	call_dialogue(autorun_dialogue.pregame.script, true, true, true)
 	
+	AudioGlobal.current_car_npc = 'hidden'
+	if AudioGlobal.wife == '':
+		AudioGlobal.wife = 'hidden'
+	if AudioGlobal.son == '':
+		AudioGlobal.son = 'hidden'
+	if AudioGlobal.daughter == '':
+		AudioGlobal.daughter = 'hidden'
 
 #rando stuff
 var INTERCOMTAUNTS1 = ["You suck", "do better", "I am the intercom Angel"]
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if countdown > 0:
-		countdown -=1
-	else:
-		intercom_speak(INTERCOMTAUNTS1[randi() % INTERCOMTAUNTS1.size()])
-		countdown = countReset
+	pass
 
 func intercom_speak(speech) -> void:
 	var current = ""
@@ -90,7 +96,11 @@ func intercom_speak(speech) -> void:
 		item.text = ""
 
 func call_dialogue(dialogue_resource, blackscreen: bool = false, skip_fade: bool = false, fade_long: bool = false) -> void:
-	player_talking = true
+	if player_talking == true and is_intro_dialogue == false:
+		return
+	if is_intro_dialogue:
+		is_intro_dialogue = false
+	player_talking = true	
 	player = get_tree().get_first_node_in_group("player")
 	player.can_move = false
 	dialogue = dialogue_scene.instantiate()
@@ -117,7 +127,8 @@ func _on_dialogue_finished() -> void:
 		is_pregame_dialogue = false
 		dialogue.queue_free()
 		await get_tree().process_frame
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(.3).timeout
+		is_intro_dialogue = true
 		call_dialogue(autorun_dialogue.introduction.script)
 	else:
 		dialogue.queue_free()
@@ -130,11 +141,9 @@ func _on_dialogue_finished() -> void:
 		await get_tree().process_frame
 		player = get_tree().get_first_node_in_group("player")
 		player.can_move = true
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(.3).timeout
 		player_talking = false
 	
-<<<<<<< Updated upstream
-=======
 
 
 func _on_finished_wife_car_recieved() -> void:
@@ -143,4 +152,7 @@ func _on_finished_wife_car_recieved() -> void:
 	AudioGlobal.current_car_npc = 'revealed'
 	pending_wife_unlock = true # doesn't immediately unlock the doors, waits for wife dialogue to be freed from queue
 	
->>>>>>> Stashed changes
+=======
+	CarDoor.door_locks['car_door2'] = true
+	print('unlock:' + str(CarDoor.door_locks['car_door2']))
+	

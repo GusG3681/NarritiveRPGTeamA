@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://cu5ti5js4gh6n"
+path="res://.godot/imported/memorabilia3_picked_up.dialogue-89fb11f83d9303900f90a7c8e2656469.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/memorabilia3_picked_up.dialogue"
+dest_files=["res://.godot/imported/memorabilia3_picked_up.dialogue-89fb11f83d9303900f90a7c8e2656469.tres"]
+
+[params]
+
+defaults=true

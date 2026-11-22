@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Death's Transit"
-run/main_scene="uid://flpjwrhuf2jt"
+run/main_scene="uid://dy210x7tdcryu"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://art/temporary_art/icon.svg"
 
@@ -26,6 +26,7 @@ Events="*uid://ci05chcpbma1b"
 Inventory="*uid://dgtd0pequmw62"
 AudioGlobal="*uid://donst5oltdy1n"
 Global="*uid://drwjoiedygy27"
+CarDoor="*uid://colu7hwbp1d6v"
 
 [display]
 
@@ -44,6 +45,11 @@ dialogue_layer=""
 
 [input]
 
+ui_accept={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":16,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
 Left={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194319,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
@@ -58,9 +64,7 @@ Right={
 }
 Interact={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
 Back={
@@ -85,10 +89,15 @@ escape={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+Skip={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194308,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/conversations/dialogue.dialogue", "res://dialogue/conversations/enter_wife_car.dialogue", "res://dialogue/conversations/introduction.dialogue", "res://dialogue/conversations/locked_door.dialogue", "res://dialogue/conversations/npc1_wife_car.dialogue", "res://dialogue/conversations/npc2_wife_car.dialogue", "res://dialogue/conversations/npcs_wife_car.dialogue", "res://dialogue/conversations/pick_up_wedding_ring.dialogue", "res://dialogue/conversations/pregame.dialogue", "res://dialogue/conversations/wife_interaction.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/conversations/dialogue.dialogue", "res://dialogue/conversations/enter_wife_car.dialogue", "res://dialogue/conversations/introduction.dialogue", "res://dialogue/conversations/locked_door.dialogue", "res://dialogue/conversations/npc1_wife_car.dialogue", "res://dialogue/conversations/npc2_wife_car.dialogue", "res://dialogue/conversations/npcs_wife_car.dialogue", "res://dialogue/conversations/pick_up_wedding_ring.dialogue", "res://dialogue/conversations/pregame.dialogue", "res://dialogue/conversations/wife_interaction.dialogue", "res://dialogue/conversations/npc3_daughter_car.dialogue", "res://dialogue/conversations/npc4_daughter_car.dialogue", "res://dialogue/conversations/npc5_son_car.dialogue", "res://dialogue/conversations/npc6_son_car.dialogue", "res://dialogue/conversations/npcs2_daughter_car.dialogue", "res://dialogue/conversations/npcs3_son_car.dialogue", "res://dialogue/conversations/memorabila2_picked_up.dialogue", "res://dialogue/conversations/memorabilia3_picked_up.dialogue", "res://dialogue/conversations/daughter_interaction.dialogue", "res://dialogue/conversations/son_interaction.dialogue")
 
 [physics]
 
