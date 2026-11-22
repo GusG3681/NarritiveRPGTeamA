@@ -1,11 +1,10 @@
 extends Node2D
 
 
-<<<<<<< Updated upstream
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-=======
+
 static var door_locks: Dictionary = {
 		'locked_door' : false,
 		'car_door0': true,
@@ -18,7 +17,6 @@ static var door_locks: Dictionary = {
 	}
 	
 var wanted_door: String
->>>>>>> Stashed changes
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
