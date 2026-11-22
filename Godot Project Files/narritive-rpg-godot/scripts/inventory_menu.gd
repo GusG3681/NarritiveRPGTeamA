@@ -27,10 +27,11 @@ func _ready() -> void:
 		slot.add_child(icon)
 		slot_box.add_child(slot)
 		slot_icons.append(icon)
-		
+
 	Inventory.inventory_changed.connect(refresh)
 	refresh()
 	panel.visible = false
+	add_to_group("inventory_menu")
 	
 func refresh() -> void:
 	for i in slot_icons.size():
@@ -40,10 +41,9 @@ func refresh() -> void:
 			slot_icons[i].texture = icon if icon != null else placeholder_texture
 		else:
 			slot_icons[i].texture = null;
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Inventory Toggle"):
-		panel.visible = not panel.visible
+	
+func set_panel_visible(value: bool) -> void:
+	panel.visible = value
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

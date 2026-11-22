@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://ctbwwpa1v6vg2" path="res://Scenes/main_character.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://coo7t8hfg6oux" path="res://art/temporary_art/true exit.png" id="3_1l0tm"]
 [ext_resource type="AudioStream" uid="uid://dhavykc0vqhl5" path="res://Music/DaughterThemeHidden.wav" id="3_exi56"]
-[ext_resource type="Texture2D" uid="uid://b40fjdtw5song" path="res://art/SubwayBackgroundTemplate.png" id="3_rysoc"]
 [ext_resource type="AudioStream" uid="uid://c8h6fyejpn2kt" path="res://Music/DaughterThemeRevealed.wav" id="4_7t8sx"]
 [ext_resource type="Script" uid="uid://bnuisoccqvcit" path="res://Scripts/music_trigger.gd" id="4_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://bwrrq3fjwutny" path="res://art/temporary_art/gangway.jpg" id="5_h4fw4"]
@@ -686,7 +685,7 @@ debug_color = Color(0.65138775, 0.519554, 0, 0.41960785)
 z_index = -2
 position = Vector2(-2900, 122)
 scale = Vector2(0.555, 0.6)
-texture = ExtResource("3_rysoc")
+texture = ExtResource("8_ssvqc")
 
 [node name="music_trigger" type="Area2D" parent="car_starter" unique_id=424767578]
 script = ExtResource("4_ldgsr")
@@ -701,6 +700,7 @@ debug_color = Color(0.65138775, 0.519554, 0, 0.41960785)
 stream = SubResource("AudioStreamMP3_631el")
 
 [node name="locked_door" type="Node2D" parent="." unique_id=1675232276]
+visible = false
 z_index = -2
 position = Vector2(-3000, 4)
 script = ExtResource("5_v158k")
@@ -757,6 +757,7 @@ scale = Vector2(1.4934638, 2.3343024)
 texture = ExtResource("5_h4fw4")
 
 [node name="car_door0" type="Node2D" parent="." unique_id=1666353116]
+visible = false
 z_index = -2
 position = Vector2(-904.34, 4)
 script = ExtResource("5_v158k")
@@ -842,9 +843,9 @@ shape = SubResource("RectangleShape2D_vurmi")
 debug_color = Color(0.65138775, 0.519554, 0, 0.41960785)
 
 [node name="gangway2" type="Sprite2D" parent="." unique_id=2127040717]
-z_index = -2
-position = Vector2(1348, 47.5)
-scale = Vector2(1.182, 2.334)
+z_index = 2
+position = Vector2(1352.0001, 47.5)
+scale = Vector2(0.5228755, 2.334)
 texture = ExtResource("5_h4fw4")
 
 [node name="car_door2" type="Node2D" parent="." unique_id=1365764684]
@@ -935,7 +936,7 @@ shape = SubResource("RectangleShape2D_vurmi")
 debug_color = Color(0.65138775, 0.519554, 0, 0.41960785)
 
 [node name="gangway3" type="Sprite2D" parent="." unique_id=1903164641]
-z_index = -2
+z_index = 2
 position = Vector2(3820.8, 47.5)
 scale = Vector2(1.182, 2.334)
 texture = ExtResource("5_h4fw4")
@@ -1011,7 +1012,7 @@ shape = SubResource("RectangleShape2D_ukjcv")
 position = Vector2(1082.98, 100)
 
 [node name="backcar" type="Sprite2D" parent="." unique_id=1540966209]
-z_index = -2
+z_index = 2
 position = Vector2(6930, 36.000004)
 scale = Vector2(1.1, 0.89)
 texture = ExtResource("10_ca42v")
@@ -1144,6 +1145,8 @@ script = ExtResource("15_ir15t")
 SPEED = 0.7
 
 [node name="InventoryMenu" parent="." unique_id=1181407074 instance=ExtResource("17_ewbju")]
+process_mode = 3
+layer = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2113653619]
 

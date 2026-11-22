@@ -8,12 +8,14 @@ func resume() -> void:
 	print("Resumed")
 	get_tree().paused = false
 	$PauseAnimationPlayer.play_backwards("blur")
+	get_tree().call_group("inventory_menu", "set_panel_visible", false)
 	
 func pause() -> void:
 	print("Paused")
 	show()
 	get_tree().paused = true
 	$PauseAnimationPlayer.play("blur")
+	get_tree().call_group("inventory_menu", "set_panel_visible", true)
 
 func testEsc() -> void:
 	if Input.is_action_just_pressed("escape") and get_tree().paused == false:
