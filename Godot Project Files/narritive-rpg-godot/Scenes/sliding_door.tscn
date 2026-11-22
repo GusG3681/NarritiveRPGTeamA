@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://5g6p1q5rke1p"]
+
+[ext_resource type="Script" uid="uid://bjtrqrhjvd12g" path="res://Scenes/sliding_door.gd" id="1_c0sr0"]
+[ext_resource type="Texture2D" uid="uid://dbl88qimwjuk8" path="res://art/SubwayBackground_Wife_rightdoor.png" id="2_nm6k2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqict"]
+size = Vector2(403.5, 651.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0sr0"]
+size = Vector2(482, 691.5)
+
+[node name="SlidingDoor" type="Node2D" unique_id=1325885899]
+script = ExtResource("1_c0sr0")
+
+[node name="Panel" type="Sprite2D" parent="." unique_id=1215077590]
+z_index = 5
+texture = ExtResource("2_nm6k2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=175585142]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1425743026]
+shape = SubResource("RectangleShape2D_bqict")
+
+[node name="Trigger" type="Area2D" parent="." unique_id=1756407003]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1047838803]
+shape = SubResource("RectangleShape2D_c0sr0")

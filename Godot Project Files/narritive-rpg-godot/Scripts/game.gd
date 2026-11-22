@@ -151,8 +151,7 @@ func _on_finished_wife_car_recieved() -> void:
 	AudioGlobal.wife = 'revealed'
 	AudioGlobal.current_car_npc = 'revealed'
 	pending_wife_unlock = true # doesn't immediately unlock the doors, waits for wife dialogue to be freed from queue
-	
-=======
+
 	CarDoor.door_locks['car_door2'] = true
 	print('unlock:' + str(CarDoor.door_locks['car_door2']))
 	

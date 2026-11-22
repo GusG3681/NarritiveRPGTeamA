@@ -1,14 +1,9 @@
 extends Node2D
 
-static var door_locks: Dictionary
 var wanted_door: String
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 static var door_locks: Dictionary = {
-	door_locks = {
 		'locked_door' : false,
 		'car_door0': true,
 		'car_door1' : true,
@@ -17,10 +12,7 @@ static var door_locks: Dictionary = {
 		'car_door4' : false,
 		'car_door5' : false,
 		'car_door6' : false,
-	}
 }
-	
-var wanted_door: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,6 +35,7 @@ func camera_stop_x() -> float:
 func _on_door_trigger_1_body_entered(body: Node2D) -> void:
 	wanted_door = str(get_path()).substr(11)
 	print(wanted_door)
+	print("wanted: ", wanted_door, " keys: ", door_locks.keys())
 	print(door_locks[wanted_door])
 	if door_locks[wanted_door] == true:
 		if body.is_in_group('player') and $door/AnimationPlayer.is_playing() == false:
