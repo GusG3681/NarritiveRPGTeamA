@@ -732,6 +732,9 @@ libraries/ = SubResource("AnimationLibrary_nnt18")
 position = Vector2(-1011, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
 
+[node name="CameraStop" type="Marker2D" parent="locked_door" unique_id=343905873]
+position = Vector2(9187, 102)
+
 [node name="car1" type="Sprite2D" parent="." unique_id=23052179]
 z_index = -2
 position = Vector2(127, 122)
@@ -785,6 +788,9 @@ libraries/ = SubResource("AnimationLibrary_nnt18")
 position = Vector2(-1011, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
 
+[node name="CameraStop" type="Marker2D" parent="car_door0" unique_id=1480120342]
+position = Vector2(2007.3401, 77)
+
 [node name="car_door1" type="Node2D" parent="." unique_id=944982058]
 z_index = -2
 position = Vector2(0, 4)
@@ -816,6 +822,9 @@ libraries/ = SubResource("AnimationLibrary_nnt18")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car_door1/door_trigger2" unique_id=274651054]
 position = Vector2(-1011, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="CameraStop" type="Marker2D" parent="car_door1" unique_id=496018784]
+position = Vector2(1102, 78)
 
 [node name="car2" type="Sprite2D" parent="." unique_id=1580473790]
 z_index = -2
@@ -870,6 +879,9 @@ libraries/ = SubResource("AnimationLibrary_nnt18")
 position = Vector2(-954.9175, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
 
+[node name="CameraStop" type="Marker2D" parent="car_door2" unique_id=1883050032]
+position = Vector2(-814.58496, 79)
+
 [node name="car_door3" type="Node2D" parent="." unique_id=1124643732]
 z_index = -2
 position = Vector2(2638.425, 4)
@@ -901,6 +913,9 @@ libraries/ = SubResource("AnimationLibrary_nnt18")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car_door3/door_trigger2" unique_id=165352926]
 position = Vector2(-1011, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="CameraStop" type="Marker2D" parent="car_door3" unique_id=1133064160]
+position = Vector2(922.57495, 80)
 
 [node name="car3" type="Sprite2D" parent="." unique_id=891562407]
 z_index = -2
@@ -957,6 +972,9 @@ libraries/ = SubResource("AnimationLibrary_nnt18")
 position = Vector2(-1011, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
 
+[node name="CameraStop" type="Marker2D" parent="car_door4" unique_id=907974857]
+position = Vector2(-829.645, 81)
+
 [node name="car_door5" type="Node2D" parent="." unique_id=2094346641]
 z_index = -2
 position = Vector2(5112.02, 4)
@@ -988,6 +1006,9 @@ libraries/ = SubResource("AnimationLibrary_nnt18")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car_door5/door_trigger2" unique_id=545371559]
 position = Vector2(-1011, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="CameraStop" type="Marker2D" parent="car_door5" unique_id=1034813374]
+position = Vector2(1082.98, 100)
 
 [node name="backcar" type="Sprite2D" parent="." unique_id=1540966209]
 z_index = -2
@@ -1039,6 +1060,9 @@ libraries/ = SubResource("AnimationLibrary_nnt18")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car_door6/door_trigger2" unique_id=1239373928]
 position = Vector2(-1011, 141.5)
 shape = SubResource("RectangleShape2D_ukjcv")
+
+[node name="CameraStop" type="Marker2D" parent="car_door6" unique_id=1263913629]
+position = Vector2(-828.5298, 100)
 
 [node name="MainCharacter" parent="." unique_id=1801353458 instance=ExtResource("2_lnu2h")]
 position = Vector2(-3319, 2)
@@ -1114,9 +1138,7 @@ important = true
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1117652108]
 position = Vector2(68, 124)
-limit_left = -5300
 limit_top = -200
-limit_right = 7000
 limit_bottom = 445
 script = ExtResource("15_ir15t")
 SPEED = 0.7

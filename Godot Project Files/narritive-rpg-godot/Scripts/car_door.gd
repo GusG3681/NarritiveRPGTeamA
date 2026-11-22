@@ -5,6 +5,9 @@ var wanted_door: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass # Replace with function body.
+
+static var door_locks: Dictionary = {
 	door_locks = {
 		'locked_door' : false,
 		'car_door0': true,
@@ -15,12 +18,27 @@ func _ready() -> void:
 		'car_door5' : false,
 		'car_door6' : false,
 	}
+}
+	
+var wanted_door: String
 
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	add_to_group("doors")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
+	
+func is_locked() -> bool:
+	if not door_locks.has(name):
+		return false
+	return not door_locks[name]
+	
+func camera_stop_x() -> float:
+	if has_node("CameraStop"):
+		return $CameraStop.global_position.x
+	return global_position.x
 
 func _on_door_trigger_1_body_entered(body: Node2D) -> void:
 	wanted_door = str(get_path()).substr(11)

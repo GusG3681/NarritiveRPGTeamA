@@ -10,6 +10,9 @@ var intercomList = []
 # variable to create a canvas layer in the scene if there isn't one already (this is for dialogue ui to be anchored to)
 var ui_layer: CanvasLayer
 
+# variable to wait until the wife dialogue is complete so that the door unlocks afterwards
+var pending_wife_unlock = false
+
 #list of onready calls for objects
 
 # variables needed for handling dialogue
@@ -129,6 +132,12 @@ func _on_dialogue_finished() -> void:
 		call_dialogue(autorun_dialogue.introduction.script)
 	else:
 		dialogue.queue_free()
+		if pending_wife_unlock: # unlocks the car doors after dialogue is done
+			pending_wife_unlock = false
+			CarDoor.door_locks['car_door2'] = true
+			CarDoor.door_locks['car_door3'] = true
+			print('unlock:' + str(CarDoor.door_locks['car_door2']))
+			print('unlock:' + str(CarDoor.door_locks['car_door3']))
 		await get_tree().process_frame
 		player = get_tree().get_first_node_in_group("player")
 		player.can_move = true
@@ -141,6 +150,9 @@ func _on_finished_wife_car_recieved() -> void:
 	$Wife.scribble_turn_off()
 	AudioGlobal.wife = 'revealed'
 	AudioGlobal.current_car_npc = 'revealed'
+	pending_wife_unlock = true # doesn't immediately unlock the doors, waits for wife dialogue to be freed from queue
+	
+=======
 	CarDoor.door_locks['car_door2'] = true
 	print('unlock:' + str(CarDoor.door_locks['car_door2']))
 	
