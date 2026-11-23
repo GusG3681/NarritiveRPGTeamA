@@ -1,11 +1,26 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+if Global.son_dialogue_progress < 2:
+	NPCS3: “Aren’t you a little old for this xylophone?”
+
+	PC: “Aren’t you a little daft to see that I couldn’t care less about it?”
+	=> END
+elif: Global.has_xylophone == false:
+	NPCS3: “You’ve been eyeing me for a while. I presume it’s for this xylophone, right?”
+
+	PC: “I don’t know, what do you think? Of course I want it! It’s for this boy who won’t shut his trap.”
+
+	NPCS3: “Ha, a family man at heart, aren’t you?”
+
+	PC: “...” 
+	PC: “Just give me the toy.”
+
+	NPCS3: “With pleasure! My kids outgrew it anyway, so this dusty ol’ thing is dead weight to me. Plus, I’d like to hear what the boy’s got in him. Even if it ain’t pretty, no feeling can replace the wonder of seeing your kid take the stage, however small it may be.”
+
+	PC: “And nothing can replace the tranquility of the silence that follows. Thank you and goodbye.”
+
+	Game: {{Global.obtain_line}} Xylophone.
+	$> Global.has_xylophone = true
+else:
+	NPCS3: I hope that xylophone has found a good owner.
+
 => END

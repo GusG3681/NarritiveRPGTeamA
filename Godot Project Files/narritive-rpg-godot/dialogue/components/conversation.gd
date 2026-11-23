@@ -39,6 +39,34 @@ const MEMORABILIA = {
 	alcohol_bottle = {
 		portrait = preload("res://art/AlcoholBottleWife.png"),
 		name = "Alcohol_Bottle",
+	},
+	divorce_papers = {
+		portrait = preload("res://art/DivorcePapersWife.png"),
+		name = "Divorce Papers",
+	},
+	teddy_bear = {
+		portrait = preload("res://art/RingWife.png"),
+		name = "Teddy Bear",
+	},
+	worn_story_book = {
+		portrait = preload("res://art/RingWife.png"),
+		name = "Worn Story Book",
+	},
+	dont_know_1 = {
+		portrait = preload("res://art/RingWife.png"),
+		name = "???",
+	},
+	messy_music_sheet = {
+		portrait = preload("res://art/RingWife.png"),
+		name = "Messy Music Sheet",
+	},
+	xylophone = {
+		portrait = preload("res://art/RingWife.png"),
+		name = "Xylophone",
+	},
+	dont_know_2 = {
+		portrait = preload("res://art/RingWife.png"),
+		name = "???",
 	}
 }
 

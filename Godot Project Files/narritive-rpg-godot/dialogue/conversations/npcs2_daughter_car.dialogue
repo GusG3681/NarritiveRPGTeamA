@@ -1,11 +1,16 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+NPCS2: Are you here to return your book? It’s about three days overdue, but I make exceptions.
+- I’m here to return it
+	NPCS2: I would check it back in if you even had it in the first place. But right now, standing in front of me, it looks like you…
+	NPCS2: Don’t.
+	=> END
+- I’m here to renew it
+	NPCS2: If that’s the case, make sure to return it on time next time. 
+	NPCS2: And don’t dog-ear the pages, hm?
+	
+	GAME: {{Global.obtain_line}} Worn Story Book.
+	$> Global.has_worn_story_book = true
+	=> END
+- Say nothing
+
 => END

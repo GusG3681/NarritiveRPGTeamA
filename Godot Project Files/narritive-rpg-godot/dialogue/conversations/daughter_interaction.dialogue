@@ -1,11 +1,73 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+if Global.daughter_dialogue_progress == 0:
+	D: Oh?
+	D: So the unsung hero comes crawling back to his cave unprepared to face the demons he left behind. 
+
+	PC: (Oh crap, do I know this guy too???)
+
+	D: Why are you here?
+
+	PC: (Is this my sister? My mother? My twice removed cousin?)
+	PC: Uh, nothing much. Cuz. 
+
+	D: …
+
+	PC: Uh, mum. Sis. 
+
+	D: GTFO of my sight. 
+
+	PC: (Can’t see her face but even I can tell she’s glaring at me.)
+	$> Global.daughter_dialogue_progress = 1
+	=> END
+if Global.daughter_dialogue_progress == 1:
+	if Global.has_teddy_bear == true:
+		PC: Is this yours?
+
+		D: What!? Where did you get that??
+		D: I mean- 
+		D: No! Who would want that piece of trash! 
+		D: You think I’m a baby who sucks on their thumbs?
+
+		PC: Uh…
+
+		D: You do!
+
+		#Flashback
+		$> Global.fade_in()
+		$> Global.show_memorabilia("teddy_bear")
+
+		PC: And that’s how Sir Woodsworth slew the great beast of Quagshire and saved his hometown. 
+		PC: The end. 
+
+		D: That’s it? But what about Sir Woodsworth’s squire who got lost in the swamp? 
+		D: Also, what’s a squire? 
+
+		PC: Well, some questions will have to be left unanswered sometimes. 
+		PC: I’m sure Sir Woodsworth’s squire made it out of the swamp safe and sound. 
+
+		D: And if he didn’t?
+
+		PC: That…sure is a possibility…?
+		PC: Anyways, it’s past your bedtime. 
+		PC: I’ll tuck you in, okay?
+
+		D: Can you give me {{Global.teddy_bear_name}}? 
+
+		PC: Of course. 
+
+		PC: Goodnight sweetie.
+
+		$> Global.hide_memorabilia()
+		$> Global.fade_out()
+		#Flashback end
+		
+		$> Global.daughter_dialogue_progress = 2
+		=> END
+	else:
+		D: GTFO of my sight. 
+
+		PC: (Can’t see her face but even I can tell she’s glaring at me.)
+		=> END
+if Global.daughter_dialogue_progress == 2:
+	IA: You can't talk to her! Her dialogue isn't finished being written yet!
 => END
