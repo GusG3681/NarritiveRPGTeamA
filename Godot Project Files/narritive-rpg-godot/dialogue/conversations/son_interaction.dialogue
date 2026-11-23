@@ -1,11 +1,105 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+if Global.son_dialogue_progress == 0:
+	S: Woah! Who are you?
+	
+	PC: Alright, who lost their kid?
+	PC: (This train is insane…)
+	
+	PC: (I don’t have time for this.)
+	PC: “No, kid, I don’t.”
+
+	$> Global.son_dialogue_progress = 1
+	=> END
+if Global.son_dialogue_progress == 1:
+	if Global.has_messy_music_sheet == true:
+		S: *Gasps* “You found my song! Yay!”
+
+		PC: “You mean this piece of-”
+
+		S: “Thank you so so much, Mister! Can I play it for you as a gift?”
+		S: “Mama told me that I have a hidden talent for music and that my songs are a gift to the world and that she’s proud of me and that Papa should be too and-“
+
+		PC: (At this rate, he should keep his talent hidden. Now that would be a proper gift to the world.)
+
+		S: “-and even though he is super busy all the time I know he cares because he got me a xylophone and-”
+		S: “Wait. I don’t have my xylophone. Mister, could you please please please get me one with a cherry on top?”
+
+		PC: “If it means you’ll be quiet again, then fine.”
+
+		S: “Woohooo!”
+
+		#Flashback
+		#$> Global.fade_in()
+		#$> Global.show_memorabilia("messy_music_sheet")
+
+		#$> Global.hide_memorabilia()
+		#$> Global.fade_out()
+		#Flashback end
+		
+		$> Global.son_dialogue_progress = 2
+		=> END
+	else:
+		S: Hi, Mister!
+
+		PC: (I don’t have time for this.)
+		=> END
+if Global.son_dialogue_progress == 2:
+	if Global.has_xylophone == true:
+		S: “Thanks again for the present, Mister!”
+
+		PC: “Stop calling me that.“
+
+		S: “Here goes nothing!”
+
+		#Flashback
+		$> Global.fade_in()
+		$> Global.show_memorabilia("xylophone")
+		
+		PC: (Haven’t I heard this before? Not all of it is familiar, but this melody…)
+		PC: (It must have been what my wife recorded at his recital. The one I missed because I had to work overtime.)
+		PC: (Or was I drinking? I can’t remember. Probably drinking in that case.) 
+		PC: (This song sounds just as bad as my first time hearing it, at least the first few seconds I bothered listening to before losing interest. 
+		PC: (Is that my fault for not getting a better instrument? He should be grateful that he has one at all.) 
+		PC: (Or does it suck because I wasn't there for him to teach him a lesson? Forget it, forget everything. No one listens to what I have to say anyway.)
+		PC: (Yes. Forget it all. But still… he exists, and I’m fading. In that case, forget me.)
+		PC: (But what if…)
+		
+		$> Global.hide_memorabilia()
+		$> Global.fade_out()
+		#Flashback end
+
+		S: “Mist- sorry, um, sir. Why are you crying?”
+
+		PC: “I’m not. I’m just feeling sleepy, is all.”
+
+		S: *Continues playing*
+
+		PC: “Are you trying to torture me?! ”
+		PC: “Don’t you have anyone else to perform for?”
+
+		S: “Yeah! At school, I’m going to show this song to everyone and it’ll be awesome! I can’t wait to see Papa there too, even if I don’t know what he looks like very well. Mama said not to get my hopes up, but the last time I saw him, he made a pinky promise with me.“
+		S: “Mama said that he always breaks his promises, but he made a pinky promise with me, which is super special and means he won’t break it no matter what.”
+
+		PC: “You know, I have an idea where your Papa might be.”
+
+		S: “Really?”
+
+		PC: “Yes. I can find him before your school performance starts. In fact, when does it start?”
+
+		S: “Next week. Here’s one of the handouts my teacher gave me for the concert. I gave one to Mama already, and since you can find Papa, you can have it!”
+
+		PC: “Great. How kind.”
+
+		Game: School Concert Handout obtained.
+
+		PC: “I promise I’ll find your Papa, so that we’ll both get what we want.”
+
+		S: “Pinky promise?”
+
+		PC: “Pinky promise.”
+		
+		$> Global.son_dialogue_progress = 3
+		=> END
+	else:
+		S: Mister, could you please please please get me a xylophone. Pretty please with a cherry on top?”
 => END

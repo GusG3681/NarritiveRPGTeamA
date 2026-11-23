@@ -60,6 +60,12 @@ const CHARACTERS = {
 		side = "right",
 		color = Color("668071ff")
 	},
+	d = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "ARLENE",
+		side = "right",
+		color = Color("b6546eff")
+	},
 	npc3 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
@@ -78,6 +84,12 @@ const CHARACTERS = {
 		side = "right",
 		color = Color("668071ff")
 	},
+	s = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "RONNY",
+		side = "right",
+		color = Color("c4ab60ff")
+	},
 	npc5 = {
 	#	portrait = preload("res://portraits/nathan.svg"),
 		name = "PASSENGER",
@@ -95,6 +107,12 @@ const CHARACTERS = {
 		name = "PASSENGER",
 		side = "right",
 		color = Color("668071ff")
+	},
+	game = {
+	#	portrait = preload("res://portraits/nathan.svg"),
+		name = "INVENTORY UPDATED",
+		side = "left",
+		color = Color("a8a8a8ff")
 	}
 }
 

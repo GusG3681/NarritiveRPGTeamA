@@ -6,6 +6,9 @@ var wife_name: String = "Maricela"
 var daughter_name: String = "Arlene"
 var son_name: String = "Ronny"
 var intercom_name: String = "Intercom"
+var teddy_bear_name: String = "Luna"
+
+var obtain_line: String = "Isko obtained the"
 
 # wife prgress checks
 var has_wedding_ring: bool = false
@@ -15,10 +18,14 @@ var has_divorce_papers: bool = false
 var wife_identity_revealed: bool = false
 
 # daughter progress checks
+var has_teddy_bear: bool = false
+var has_worn_story_book: bool = false
 var daughter_dialogue_progress: int = 0
 var daughter_identity_revealed: bool = false
 
 # son progress checks
+var has_messy_music_sheet: bool = false
+var has_xylophone: bool = false
 var son_dialogue_progress: int = 0
 var son_identity_revealed: bool = false 
 
@@ -50,6 +57,4 @@ func fade_out() -> void:
 	var ui = get_tree().get_first_node_in_group("dialogue_layer")
 	var dialogue = ui.get_child(0)
 	dialogue.fade_out()
-
-#func obtained_memorabilia(has_memorabilia: bool) -> void:
 	

@@ -16,11 +16,14 @@ else
 		NPCS: We don't carry that.
 	- A bottle of liquor
 		NPCS: $12.89. 
+		
+		GAME: {{Global.obtain_line}} Alcohol Bottle.
+		$> Global.has_alcohol_bottle = true
+		
 		NPCS: Have fun destroying your life, sir. 
 		PC: What?
 		NPCS: What?
 		PC: …
-		$> Global.has_alcohol_bottle = true
 		=> END
 	- Nothing
 		=> END

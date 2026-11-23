@@ -123,6 +123,7 @@ elif Global.wife_dialogue_progress == 3:
 	W: You misunderstand. I never did. 
 	W: I simply stayed sitting down, chewing upon the taste of lost catharsis…waiting for the courage to give you these.
 
+	GAME: {{Global.obtain_line}} Divorce Papers.
 	$> Global.has_divorce_papers = true
 
 	PC: …

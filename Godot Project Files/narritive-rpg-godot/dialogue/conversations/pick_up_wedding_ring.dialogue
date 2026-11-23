@@ -2,5 +2,7 @@
 PC: What’s this? 
 PC: A…wedding ring?
 PC: Why is it on the floor?
+
+GAME: {{Global.obtain_line}} Wedding Ring.
 $> Global.has_wedding_ring = true
 => END

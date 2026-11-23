@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bgukwxx5yr323"
+path="res://.godot/imported/daughter_car_intro.dialogue-bfaba41ee9db86759886d2c07ce3ef9b.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/daughter_car_intro.dialogue"
+dest_files=["res://.godot/imported/daughter_car_intro.dialogue-bfaba41ee9db86759886d2c07ce3ef9b.tres"]
+
+[params]
+
+defaults=true
