@@ -11,6 +11,10 @@ var can_move = true
 var standScale = Vector2(0.18, 0.18)
 var walkScale = Vector2(0.26, 0.26)
 
+func stop_walking() -> void:
+	$AnimatedSprite2D.play("Stand")
+	$AnimatedSprite2D.scale = standScale
+
 func _physics_process(delta: float) -> void:
 	if not can_move:
 		return

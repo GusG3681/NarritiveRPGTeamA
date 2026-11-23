@@ -103,6 +103,7 @@ func call_dialogue(dialogue_resource, blackscreen: bool = false, skip_fade: bool
 	player_talking = true	
 	player = get_tree().get_first_node_in_group("player")
 	player.can_move = false
+	player.stop_walking()
 	dialogue = dialogue_scene.instantiate()
 	dialogue.dialogue_resource = dialogue_resource
 	dialogue.dialogue_finished.connect(_on_dialogue_finished)
